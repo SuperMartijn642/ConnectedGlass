@@ -3,10 +3,11 @@ package com.supermartijn642.connectedglass.model;
 import com.supermartijn642.connectedglass.CGPaneBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.SixWayBlock;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.ILightReader;
+import net.minecraft.world.IEnviromentBlockReader;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelProperty;
 
@@ -26,16 +27,36 @@ public class CGConnectedPaneBakedModel extends CGPaneBakedModel {
 
     @Nonnull
     @Override
-    public IModelData getModelData(@Nonnull ILightReader world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData){
+    public IModelData getModelData(@Nonnull IEnviromentBlockReader world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData){
         ModelData modelData = new ModelData();
-        for(Direction direction : Direction.Plane.HORIZONTAL)
+        for(Direction direction : Direction.Plane.HORIZONTAL){
             modelData.sides.put(direction, new SideData(direction, world, pos, state.getBlock()));
+            BlockState upState = world.getBlockState(pos.up());
+            boolean up = upState.getBlock() == state.getBlock() && upState.get(SixWayBlock.FACING_TO_PROPERTY_MAP.get(direction));
+            modelData.up.put(direction, up);
+            modelData.upPost = upState.getBlock() == state.getBlock();
+            BlockState downState = world.getBlockState(pos.down());
+            boolean down = downState.getBlock() == state.getBlock() && downState.get(SixWayBlock.FACING_TO_PROPERTY_MAP.get(direction));
+            modelData.down.put(direction, down);
+            modelData.downPost = downState.getBlock() == state.getBlock();
+        }
+
         return modelData;
     }
 
     @Override
+    protected boolean isEnabledUp(Direction part, IModelData extraData){
+        return extraData instanceof ModelData && (part == null ? ((ModelData)extraData).upPost : ((ModelData)extraData).up.get(part));
+    }
+
+    @Override
+    protected boolean isEnabledDown(Direction part, IModelData extraData){
+        return extraData instanceof ModelData && (part == null ? ((ModelData)extraData).downPost : ((ModelData)extraData).down.get(part));
+    }
+
+    @Override
     protected float[] getBorderUV(){
-        return this.getUV(0,7);
+        return this.getUV(0, 7);
     }
 
     @Override
@@ -176,6 +197,8 @@ public class CGConnectedPaneBakedModel extends CGPaneBakedModel {
     private static class ModelData implements IModelData {
 
         public Map<Direction,SideData> sides = new HashMap<>();
+        public Map<Direction,Boolean> up = new HashMap<>(), down = new HashMap<>();
+        public boolean upPost, downPost;
 
         @Override
         public boolean hasProperty(ModelProperty<?> prop){

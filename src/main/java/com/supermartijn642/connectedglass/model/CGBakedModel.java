@@ -1,16 +1,14 @@
 package com.supermartijn642.connectedglass.model;
 
-import com.supermartijn642.connectedglass.ClientProxy;
 import com.supermartijn642.connectedglass.CGGlassBlock;
+import com.supermartijn642.connectedglass.ClientProxy;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.TransformationMatrix;
 import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.model.*;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.Direction;
-import net.minecraftforge.client.model.SimpleModelTransform;
 import net.minecraftforge.client.model.data.IDynamicBakedModel;
 import net.minecraftforge.client.model.data.IModelData;
 
@@ -42,11 +40,6 @@ public class CGBakedModel implements IDynamicBakedModel {
     }
 
     @Override
-    public boolean func_230044_c_(){
-        return false;
-    }
-
-    @Override
     public boolean isBuiltInRenderer(){
         return false;
     }
@@ -63,7 +56,7 @@ public class CGBakedModel implements IDynamicBakedModel {
 
     @Override
     public ItemCameraTransforms getItemCameraTransforms(){
-        return Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(Blocks.STONE.getRegistryName(),"")).getItemCameraTransforms();
+        return Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(Blocks.STONE.getRegistryName(), "")).getItemCameraTransforms();
     }
 
     @Nonnull
@@ -82,11 +75,11 @@ public class CGBakedModel implements IDynamicBakedModel {
     protected BakedQuad createQuad(Direction side, IModelData modelData){
         FaceBakery bakery = new FaceBakery();
         BlockPartFace face = new BlockPartFace(side.getOpposite(), 0, "", new BlockFaceUV(this.getUV(side, modelData), 0));
-        BakedQuad quad = bakery.bakeQuad(new Vector3f(0, 0, 0), new Vector3f(16, 16, 16), face, getTexture(), side, new SimpleModelTransform(TransformationMatrix.identity()), null, true, null);
+        BakedQuad quad = bakery.makeBakedQuad(new Vector3f(0, 0, 0), new Vector3f(16, 16, 16), face, getTexture(), side, ModelRotation.X0_Y0, null, false);
         return quad;
     }
 
     protected float[] getUV(Direction side, IModelData modelData){
-        return new float[]{0,0,16,16};
+        return new float[]{0, 0, 16, 16};
     }
 }

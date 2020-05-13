@@ -3,11 +3,10 @@ package com.supermartijn642.connectedglass.model;
 import com.supermartijn642.connectedglass.CGGlassBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.ILightReader;
+import net.minecraft.world.IEnviromentBlockReader;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelProperty;
 
@@ -27,7 +26,7 @@ public class CGConnectedBakedModel extends CGBakedModel {
 
     @Nonnull
     @Override
-    public IModelData getModelData(@Nonnull ILightReader world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData){
+    public IModelData getModelData(@Nonnull IEnviromentBlockReader world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData){
         ModelData modelData = new ModelData();
         for(Direction direction : Direction.values())
             modelData.sides.put(direction, new SideData(direction, world, pos, state.getBlock()));
@@ -37,7 +36,7 @@ public class CGConnectedBakedModel extends CGBakedModel {
     @Override
     protected float[] getUV(Direction side, IModelData modelData){
         if(!(modelData instanceof ModelData))
-            return getUV(0,0);
+            return getUV(0, 0);
 
         SideData blocks = ((ModelData)modelData).sides.get(side);
         float[] uv;
@@ -117,40 +116,40 @@ public class CGConnectedBakedModel extends CGBakedModel {
                             uv = this.getUV(6, 1);
                     }else{ // four directions
                         if(blocks.up_left && blocks.up_right && blocks.down_left && blocks.down_right)
-                            uv = this.getUV(2,2);
+                            uv = this.getUV(2, 2);
                         else{
                             if(!blocks.up_left && blocks.up_right && blocks.down_left && blocks.down_right)
-                                uv = this.getUV(7,7);
+                                uv = this.getUV(7, 7);
                             else if(blocks.up_left && !blocks.up_right && blocks.down_left && blocks.down_right)
-                                uv = this.getUV(6,7);
+                                uv = this.getUV(6, 7);
                             else if(blocks.up_left && blocks.up_right && !blocks.down_left && blocks.down_right)
-                                uv = this.getUV(7,6);
+                                uv = this.getUV(7, 6);
                             else if(blocks.up_left && blocks.up_right && blocks.down_left && !blocks.down_right)
-                                uv = this.getUV(6,6);
+                                uv = this.getUV(6, 6);
                             else{
                                 if(!blocks.up_left && blocks.up_right && !blocks.down_right && blocks.down_left)
-                                    uv = this.getUV(0,4);
+                                    uv = this.getUV(0, 4);
                                 else if(blocks.up_left && !blocks.up_right && blocks.down_right && !blocks.down_left)
-                                    uv = this.getUV(0,5);
+                                    uv = this.getUV(0, 5);
                                 else if(!blocks.up_left && !blocks.up_right && blocks.down_right && blocks.down_left)
-                                    uv = this.getUV(3,6);
+                                    uv = this.getUV(3, 6);
                                 else if(blocks.up_left && !blocks.up_right && !blocks.down_right && blocks.down_left)
-                                    uv = this.getUV(3,7);
+                                    uv = this.getUV(3, 7);
                                 else if(blocks.up_left && blocks.up_right && !blocks.down_right && !blocks.down_left)
-                                    uv = this.getUV(2,7);
+                                    uv = this.getUV(2, 7);
                                 else if(!blocks.up_left && blocks.up_right && blocks.down_right && !blocks.down_left)
-                                    uv = this.getUV(2,6);
+                                    uv = this.getUV(2, 6);
                                 else{
                                     if(blocks.up_left)
-                                        uv = this.getUV(5,7);
+                                        uv = this.getUV(5, 7);
                                     else if(blocks.up_right)
-                                        uv = this.getUV(4,7);
+                                        uv = this.getUV(4, 7);
                                     else if(blocks.down_right)
-                                        uv = this.getUV(4,6);
+                                        uv = this.getUV(4, 6);
                                     else if(blocks.down_left)
-                                        uv = this.getUV(5,6);
+                                        uv = this.getUV(5, 6);
                                     else
-                                        uv = this.getUV(0,6);
+                                        uv = this.getUV(0, 6);
                                 }
                             }
                         }
@@ -215,8 +214,7 @@ public class CGConnectedBakedModel extends CGBakedModel {
                 right = side == Direction.UP ? Direction.EAST : Direction.WEST;
                 up = Direction.NORTH;
                 down = Direction.SOUTH;
-            }
-            else{
+            }else{
                 left = side.rotateY();
                 right = side.rotateYCCW();
                 up = Direction.UP;

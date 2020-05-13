@@ -6,13 +6,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FourWayBlock;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.TransformationMatrix;
 import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.model.*;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.util.Direction;
-import net.minecraftforge.client.model.SimpleModelTransform;
 import net.minecraftforge.client.model.data.IDynamicBakedModel;
 import net.minecraftforge.client.model.data.IModelData;
 
@@ -47,11 +45,6 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
     }
 
     @Override
-    public boolean func_230044_c_(){
-        return false;
-    }
-
-    @Override
     public boolean isBuiltInRenderer(){
         return false;
     }
@@ -79,11 +72,11 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
         Direction[] sides = side == null ? Direction.values() : new Direction[]{side};
         boolean culling = side != null;
         for(Direction side2 : sides){
-            quads.addAll(this.getPostQuad(side2, culling));
+            quads.addAll(this.getPostQuad(side2, culling, this.isEnabledUp(null, extraData), this.isEnabledDown(null, extraData)));
 
             float[] uv = this.getUV(side2, extraData);
             for(Direction part : Direction.Plane.HORIZONTAL)
-                quads.addAll(this.getPartQuad(state, part, side2, uv, culling));
+                quads.addAll(this.getPartQuad(state, part, side2, uv, culling, this.isEnabledUp(part, extraData), this.isEnabledDown(part, extraData)));
         }
 
         return quads;
@@ -99,19 +92,23 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
         return new float[]{0, 0, 16, 16};
     }
 
-    protected List<BakedQuad> getPostQuad(Direction side, boolean culling){
-        if(side.getAxis() != Direction.Axis.Y || !culling)
+    protected List<BakedQuad> getPostQuad(Direction side, boolean culling, boolean isEnabledUp, boolean isEnabledDown){
+        if(side.getAxis() != Direction.Axis.Y)
+            return Collections.emptyList();
+
+        boolean hasCulling = side == Direction.UP ? isEnabledUp : isEnabledDown;
+        if(hasCulling != culling)
             return Collections.emptyList();
 
         Vector3f from = new Vector3f(7, 0, 7), to = new Vector3f(9, 16, 9);
         float[] uv = new float[]{7 / 8f, 2 * 7 + 7 / 8f, 9 / 8f, 2 * 7 + 9 / 8f};
-        BlockPartFace face = new BlockPartFace(side, -1, "", new BlockFaceUV(uv, 0));
+        BlockPartFace face = new BlockPartFace(hasCulling ? side : null, -1, "", new BlockFaceUV(uv, 0));
 
-        BakedQuad quad = BAKERY.bakeQuad(from, to, face, getTexture(), side, new SimpleModelTransform(TransformationMatrix.identity()), null, true, null);
+        BakedQuad quad = BAKERY.makeBakedQuad(from, to, face, getTexture(), side, ModelRotation.X0_Y0, null, true);
         return Collections.singletonList(quad);
     }
 
-    protected List<BakedQuad> getPartQuad(BlockState state, Direction part, Direction side, float[] totalUV, boolean culling){
+    protected List<BakedQuad> getPartQuad(BlockState state, Direction part, Direction side, float[] totalUV, boolean culling, boolean isEnabledUp, boolean isEnabledDown){
         List<BakedQuad> quads = new ArrayList<>();
         float unitW = (totalUV[2] - totalUV[0]) / 16, unitH = (totalUV[3] - totalUV[1]) / 16; // width and height of one pixel
 
@@ -124,7 +121,7 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
             int rotation = 0;
 
             if(side == Direction.UP || side == Direction.DOWN){
-                hasCulling = true;
+                hasCulling = side == Direction.UP ? isEnabledUp : isEnabledDown;
                 if(part == Direction.NORTH || part == Direction.EAST)
                     uv = new float[]{totalUV[0] + 7 * unitW, totalUV[1], totalUV[0] + 9 * unitW, totalUV[1] + 7 * unitH};
                 else
@@ -146,13 +143,13 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
             if(hasQuad && hasCulling == culling){
                 Vector3f from = getPartFromPos(part), to = getPartToPos(part);
                 BlockPartFace face = new BlockPartFace(hasCulling ? side : null, -1, "", new BlockFaceUV(uv, rotation));
-                quads.add(BAKERY.bakeQuad(from, to, face, getTexture(), side, new SimpleModelTransform(TransformationMatrix.identity()), null, true, null));
+                quads.add(BAKERY.makeBakedQuad(from, to, face, getTexture(), side, ModelRotation.X0_Y0, null, true));
             }
         }else if(side == part && !culling){
             Vector3f from = new Vector3f(7, 0, 7), to = new Vector3f(9, 16, 9);
             float[] uv = new float[]{totalUV[0] + 7 * unitW, totalUV[1], totalUV[0] + 9 * unitH, totalUV[3]};
             BlockPartFace face = new BlockPartFace(null, -1, "", new BlockFaceUV(uv, 0));
-            quads.add(BAKERY.bakeQuad(from, to, face, getTexture(), side, new SimpleModelTransform(TransformationMatrix.identity()), null, true, null));
+            quads.add(BAKERY.makeBakedQuad(from, to, face, getTexture(), side, ModelRotation.X0_Y0, null, true));
         }
 
         return quads;
@@ -184,6 +181,14 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
 
     protected float[] getBorderUV(){
         return new float[]{0, 0, 16, 16};
+    }
+
+    protected boolean isEnabledUp(Direction part, IModelData extraData){
+        return false;
+    }
+
+    protected boolean isEnabledDown(Direction part, IModelData extraData){
+        return false;
     }
 
 }
