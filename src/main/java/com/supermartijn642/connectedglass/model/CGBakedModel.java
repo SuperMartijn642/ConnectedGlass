@@ -25,6 +25,8 @@ import java.util.Random;
  */
 public class CGBakedModel implements IDynamicBakedModel {
 
+    private static final FaceBakery BAKERY = new FaceBakery();
+
     private final CGGlassBlock block;
 
     public CGBakedModel(CGGlassBlock block){
@@ -80,9 +82,8 @@ public class CGBakedModel implements IDynamicBakedModel {
     }
 
     protected BakedQuad createQuad(Direction side, IModelData modelData){
-        FaceBakery bakery = new FaceBakery();
         BlockPartFace face = new BlockPartFace(side.getOpposite(), 0, "", new BlockFaceUV(this.getUV(side, modelData), 0));
-        BakedQuad quad = bakery.bakeQuad(new Vector3f(0, 0, 0), new Vector3f(16, 16, 16), face, getTexture(), side, new SimpleModelTransform(TransformationMatrix.identity()), null, true, null);
+        BakedQuad quad = BAKERY.bakeQuad(new Vector3f(0, 0, 0), new Vector3f(16, 16, 16), face, getTexture(), side, new SimpleModelTransform(TransformationMatrix.identity()), null, true, null);
         return quad;
     }
 
