@@ -12,7 +12,7 @@ import java.util.Locale;
  */
 public enum CGGlassType {
 
-    BORDERLESS_GLASS, CLEAR_GLASS;
+    BORDERLESS_GLASS, CLEAR_GLASS, SCRATCHED_GLASS;
 
     public CGGlassBlock block;
     public final List<CGGlassBlock> blocks = new ArrayList<>();
