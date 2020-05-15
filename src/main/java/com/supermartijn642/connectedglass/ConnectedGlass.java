@@ -24,9 +24,6 @@ public class ConnectedGlass {
     public static final List<CGGlassBlock> BLOCKS = new ArrayList<>();
     public static final List<CGPaneBlock> PANES = new ArrayList<>();
 
-//    @ObjectHolder("connectedglass:borderless_glass")
-//    public static CGGlassBlock borderless_glass;
-
     public ConnectedGlass(){
     }
 
@@ -67,5 +64,4 @@ public class ConnectedGlass {
             e.getRegistry().register(new BlockItem(block, new Item.Properties().group(ItemGroup.SEARCH)).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
         }
     }
-
 }
