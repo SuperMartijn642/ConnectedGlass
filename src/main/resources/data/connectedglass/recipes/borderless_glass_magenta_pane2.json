@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GDG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "connectedglass:borderless_glass_pane"
+    },
+    "D": {
+      "tag": "forge:dyes/magenta"
+    }
+  },
+  "result": {
+    "item": "connectedglass:borderless_glass_magenta_pane",
+    "count": 8
+  }
+}

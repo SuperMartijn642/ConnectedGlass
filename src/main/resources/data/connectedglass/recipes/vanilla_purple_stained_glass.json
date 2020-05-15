@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GG",
+    "GG"
+  ],
+  "key": {
+    "G": {
+      "item": "connectedglass:scratched_glass_purple"
+    }
+  },
+  "result": {
+    "item": "minecraft:purple_stained_glass",
+    "count": 4
+  }
+}

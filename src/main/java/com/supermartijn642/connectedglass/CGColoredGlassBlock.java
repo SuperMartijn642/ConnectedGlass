@@ -25,7 +25,7 @@ public class CGColoredGlassBlock extends CGGlassBlock implements IBeaconBeamColo
     }
 
     @Override
-    public CGPaneBlock createPane(){
+    public CGColoredPaneBlock createPane(){
         return new CGColoredPaneBlock(this);
     }
 }

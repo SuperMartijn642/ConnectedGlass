@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GDG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "connectedglass:clear_glass_pane"
+    },
+    "D": {
+      "tag": "forge:dyes/yellow"
+    }
+  },
+  "result": {
+    "item": "connectedglass:clear_glass_yellow_pane",
+    "count": 8
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "connectedglass:vanilla_magenta_stained_glass_pane"
+    ]
+  },
+  "criteria": {
+    "glass_pane": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "connectedglass:scratched_glass_magenta_pane"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:vanilla_magenta_stained_glass_pane"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "glass_pane",
+      "has_the_recipe"
+    ]
+  ]
+}
