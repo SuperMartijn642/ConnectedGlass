@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GDG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "connectedglass:clear_glass_pane"
+    },
+    "D": {
+      "tag": "forge:dyes/brown"
+    }
+  },
+  "result": {
+    "item": "connectedglass:clear_glass_brown_pane",
+    "count": 8
+  }
+}

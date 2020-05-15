@@ -2,16 +2,15 @@ package com.supermartijn642.connectedglass;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 /**
@@ -26,21 +25,16 @@ public class ConnectedGlass {
     public ConnectedGlass(){
     }
 
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(modid = "connectedglass", bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
         @SubscribeEvent
         public static void onBlockRegistry(final RegistryEvent.Register<Block> e){
             // add blocks
-            BLOCKS.add(new CGGlassBlock("borderless_glass", true));
-            for(DyeColor color : DyeColor.values())
-                BLOCKS.add(new CGColoredGlassBlock("borderless_glass_" + color.name().toLowerCase(Locale.ROOT), true, color));
-            BLOCKS.add(new CGGlassBlock("clear_glass", true));
-            for(DyeColor color : DyeColor.values())
-                BLOCKS.add(new CGColoredGlassBlock("clear_glass_" + color.name().toLowerCase(Locale.ROOT), true, color));
-
-            // add panes
-            for(CGGlassBlock block : BLOCKS)
-                PANES.add(block.createPane());
+            for(CGGlassType type : CGGlassType.values()){
+                type.init();
+                BLOCKS.addAll(type.blocks);
+                PANES.addAll(type.panes);
+            }
 
             // register blocks
             for(Block block : BLOCKS)
@@ -61,6 +55,12 @@ public class ConnectedGlass {
 
         private static void registerItemBlock(RegistryEvent.Register<Item> e, Block block){
             e.getRegistry().register(new BlockItem(block, new Item.Properties().group(ItemGroup.SEARCH)).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
+        }
+
+        @SubscribeEvent
+        public static void registerDataProviders(final GatherDataEvent e){
+            if(e.includeServer())
+                e.getGenerator().addProvider(new CGRecipeProvider(e.getGenerator()));
         }
     }
 
