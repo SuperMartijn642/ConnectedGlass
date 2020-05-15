@@ -48,6 +48,21 @@ minecraft {
                 }
             }
         }
+
+        data {
+            workingDirectory project.file('run')
+
+            // Recommended logging data for a userdev environment
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
+            args '--mod', 'connectedglass', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/generated/resources')
+
+            mods {
+                connectedglass {
+                    source sourceSets.main
+                }
+            }
+        }
     }
 }
 
