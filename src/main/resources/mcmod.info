@@ -1,0 +1,16 @@
+[
+{
+  "modid": "connectedglass",
+  "name": "Connected Glass",
+  "description": "Connected Glass adds new types of glass with connecting textures!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["SuperMartijn642"],
+  "credits": "",
+  "logoFile": "connectedtextures.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]
