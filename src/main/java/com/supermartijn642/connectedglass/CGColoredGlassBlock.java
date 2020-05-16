@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
  */
 public class CGColoredGlassBlock extends CGGlassBlock {
 
-    private EnumDyeColor color;
+    public final EnumDyeColor color;
 
     public CGColoredGlassBlock(String registryName, String texture, boolean connected, EnumDyeColor color){
         super(registryName, texture, connected);
@@ -31,7 +31,7 @@ public class CGColoredGlassBlock extends CGGlassBlock {
     }
 
     @Override
-    public CGPaneBlock createPane(){
+    public CGColoredPaneBlock createPane(){
         return new CGColoredPaneBlock(this);
     }
 
