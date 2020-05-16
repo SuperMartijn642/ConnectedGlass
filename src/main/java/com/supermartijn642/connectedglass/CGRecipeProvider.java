@@ -85,11 +85,13 @@ public class CGRecipeProvider extends RecipeProvider {
             }
 
             // panes from blocks
-            for(CGColoredPaneBlock pane : type.colored_panes.values()){
+            for(CGGlassBlock block : type.blocks){
+                DyeColor color = block instanceof CGColoredGlassBlock ? ((CGColoredGlassBlock)block).getColor() : null;
+                CGPaneBlock pane = type.getPane(color);
                 ShapedRecipeBuilder.shapedRecipe(pane, 16)
                     .patternLine("GGG").patternLine("GGG")
-                    .key('G', type.block)
-                    .addCriterion("glass", InventoryChangeTrigger.Instance.forItems(type.block))
+                    .key('G', block)
+                    .addCriterion("glass", InventoryChangeTrigger.Instance.forItems(block))
                     .build(consumer, pane.getRegistryName() + "3");
             }
 
