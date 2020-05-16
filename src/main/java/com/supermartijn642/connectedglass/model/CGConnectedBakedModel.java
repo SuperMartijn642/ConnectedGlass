@@ -210,10 +210,10 @@ public class CGConnectedBakedModel extends CGBakedModel {
             Direction up;
             Direction down;
             if(side.getAxis() == Direction.Axis.Y){
-                left = side == Direction.UP ? Direction.WEST : Direction.EAST;
-                right = side == Direction.UP ? Direction.EAST : Direction.WEST;
-                up = Direction.NORTH;
-                down = Direction.SOUTH;
+                left = Direction.WEST;
+                right = Direction.EAST;
+                up = side == Direction.UP ? Direction.NORTH : Direction.SOUTH;
+                down = side == Direction.UP ? Direction.SOUTH : Direction.NORTH;
             }else{
                 left = side.rotateY();
                 right = side.rotateYCCW();
