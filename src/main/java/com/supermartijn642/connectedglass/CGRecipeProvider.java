@@ -84,6 +84,15 @@ public class CGRecipeProvider extends RecipeProvider {
                     .build(consumer, pane.getRegistryName() + "2");
             }
 
+            // panes from blocks
+            for(CGColoredPaneBlock pane : type.colored_panes.values()){
+                ShapedRecipeBuilder.shapedRecipe(pane, 16)
+                    .patternLine("GGG").patternLine("GGG")
+                    .key('G', type.block)
+                    .addCriterion("glass", InventoryChangeTrigger.Instance.forItems(type.block))
+                    .build(consumer, pane.getRegistryName() + "3");
+            }
+
             lastType = type;
         }
 
