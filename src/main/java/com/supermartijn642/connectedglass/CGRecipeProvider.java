@@ -69,6 +69,15 @@ public class CGRecipeProvider {
                 e.getRegistry().register(recipe);
             }
 
+            // panes from blocks
+            for(CGGlassBlock block : type.blocks){
+                EnumDyeColor color = block instanceof CGColoredGlassBlock ? ((CGColoredGlassBlock)block).color : null;
+                CGPaneBlock pane = type.getPane(color);
+                ShapedRecipes recipe = createShaped(new ResourceLocation(pane.getRegistryName().getResourceDomain(), pane.getRegistryName().getResourcePath() + "3"),
+                    new ItemStack(pane, 16), "GGG", "GGG", 'G', new ItemStack(block));
+                e.getRegistry().register(recipe);
+            }
+
             lastType = type;
         }
 
