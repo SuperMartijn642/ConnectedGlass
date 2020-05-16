@@ -61,6 +61,11 @@ public class ConnectedGlass {
         public static void registerDataProviders(final GatherDataEvent e){
             if(e.includeServer())
                 e.getGenerator().addProvider(new CGRecipeProvider(e.getGenerator()));
+
+            if(e.includeClient()){
+                e.getGenerator().addProvider(new CGDummyBlockStateProvider(e.getGenerator(), e.getExistingFileHelper()));
+                e.getGenerator().addProvider(new CGDummyItemModelProvider(e.getGenerator(), e.getExistingFileHelper()));
+            }
         }
     }
 
