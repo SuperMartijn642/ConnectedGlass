@@ -4,7 +4,6 @@ import com.supermartijn642.connectedglass.CGPaneBlock;
 import net.minecraft.block.BlockPane;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -23,12 +22,12 @@ public class CGConnectedPaneBakedModel extends CGPaneBakedModel {
 
         for(EnumFacing direction : EnumFacing.Plane.HORIZONTAL){
             modelData.sides.put(direction, new CGSideData(direction, world, pos, state.getBlock()));
-            IBlockState upState = world.getBlockState(pos.up()).getActualState(world,pos.up());
+            IBlockState upState = world.getBlockState(pos.up()).getActualState(world, pos.up());
             IProperty<Boolean> property = direction == EnumFacing.NORTH ? BlockPane.NORTH : direction == EnumFacing.EAST ? BlockPane.EAST : direction == EnumFacing.SOUTH ? BlockPane.SOUTH : direction == EnumFacing.WEST ? BlockPane.WEST : null;
             boolean up = upState.getBlock() == state.getBlock() && upState.getValue(property);
             modelData.up.put(direction, up);
             modelData.upPost = upState.getBlock() == state.getBlock();
-            IBlockState downState = world.getBlockState(pos.down()).getActualState(world,pos.down());
+            IBlockState downState = world.getBlockState(pos.down()).getActualState(world, pos.down());
             boolean down = downState.getBlock() == state.getBlock() && downState.getValue(property);
             modelData.down.put(direction, down);
             modelData.downPost = downState.getBlock() == state.getBlock();

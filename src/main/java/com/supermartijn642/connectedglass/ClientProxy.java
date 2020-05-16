@@ -1,10 +1,11 @@
 package com.supermartijn642.connectedglass;
 
-import com.supermartijn642.connectedglass.model.*;
+import com.supermartijn642.connectedglass.model.CGBakedModel;
+import com.supermartijn642.connectedglass.model.CGConnectedBakedModel;
+import com.supermartijn642.connectedglass.model.CGConnectedPaneBakedModel;
+import com.supermartijn642.connectedglass.model.CGPaneBakedModel;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.IBakedModel;
-import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -13,10 +14,7 @@ import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.client.model.ModelLoaderRegistry;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
@@ -34,7 +32,7 @@ public class ClientProxy {
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent e){
         for(CGGlassBlock block : ConnectedGlass.BLOCKS){
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block),0,new ModelResourceLocation(block.getRegistryName(), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
             ModelLoader.setCustomStateMapper(block, new StateMapperBase() {
                 @Override
                 protected ModelResourceLocation getModelResourceLocation(IBlockState state){
