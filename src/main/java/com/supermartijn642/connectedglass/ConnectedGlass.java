@@ -21,7 +21,7 @@ public class ConnectedGlass {
 
     public static final String MODID = "connectedglass";
     public static final String NAME = "Connected Glass";
-    public static final String VERSION = "1.0.2";
+    public static final String VERSION = "1.0.3";
     public static final String DEPENDENCIES = "required-after:forge";
 
     public static final List<CGGlassBlock> BLOCKS = new ArrayList<>();
