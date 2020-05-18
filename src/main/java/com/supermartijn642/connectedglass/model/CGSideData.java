@@ -31,10 +31,10 @@ public class CGSideData {
         EnumFacing up;
         EnumFacing down;
         if(side.getAxis() == EnumFacing.Axis.Y){
-            left = side == EnumFacing.UP ? EnumFacing.WEST : EnumFacing.EAST;
-            right = side == EnumFacing.UP ? EnumFacing.EAST : EnumFacing.WEST;
-            up = EnumFacing.NORTH;
-            down = EnumFacing.SOUTH;
+            left = EnumFacing.WEST;
+            right = EnumFacing.EAST;
+            up = side == EnumFacing.UP ? EnumFacing.NORTH : EnumFacing.SOUTH;
+            down = side == EnumFacing.UP ? EnumFacing.SOUTH : EnumFacing.NORTH;
         }else{
             left = side.rotateY();
             right = side.rotateYCCW();
