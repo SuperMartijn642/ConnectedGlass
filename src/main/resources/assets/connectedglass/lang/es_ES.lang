@@ -1,0 +1,107 @@
+tile.connectedglass:borderless_glass.name=Cristal Conectado
+tile.connectedglass:borderless_glass_black.name=Cristal Conectado tintado de Negro
+tile.connectedglass:borderless_glass_blue.name=Cristal Conectado tintado de Azul
+tile.connectedglass:borderless_glass_brown.name=Cristal Conectado tintado de Marrón
+tile.connectedglass:borderless_glass_cyan.name=Cristal Conectado tintado de Cian
+tile.connectedglass:borderless_glass_gray.name=Cristal Conectado tintado de Gris
+tile.connectedglass:borderless_glass_green.name=Cristal Conectado tintado de Verde
+tile.connectedglass:borderless_glass_light_blue.name=Cristal Conectado tintado de Azul Claro
+tile.connectedglass:borderless_glass_light_gray.name=Cristal Conectado tintado de Gris Claro
+tile.connectedglass:borderless_glass_lime.name=Cristal Conectado tintado de Verde Lima
+tile.connectedglass:borderless_glass_magenta.name=Cristal Conectado tintado de Magenta
+tile.connectedglass:borderless_glass_orange.name=Cristal Conectado tintado de Naranja
+tile.connectedglass:borderless_glass_pink.name=Cristal Conectado tintado de Rosa
+tile.connectedglass:borderless_glass_purple.name=Cristal Conectado tintado de Morado
+tile.connectedglass:borderless_glass_red.name=Cristal Conectado tintado de Rojo
+tile.connectedglass:borderless_glass_white.name=Cristal Conectado tintado de Blanco
+tile.connectedglass:borderless_glass_yellow.name=Cristal Conectado tintado de Amarillo
+
+tile.connectedglass:borderless_glass_pane.name=Panel de Cristal Conectado
+tile.connectedglass:borderless_glass_black_pane.name=Panel de Cristal Conectado tintado de Negro
+tile.connectedglass:borderless_glass_blue_pane.name=Panel de Cristal Conectado tintado de Azul
+tile.connectedglass:borderless_glass_brown_pane.name=Panel de Cristal Conectado tintado de Marrón
+tile.connectedglass:borderless_glass_cyan_pane.name=Panel de Cristal Conectado tintado de Cian
+tile.connectedglass:borderless_glass_gray_pane.name=Panel de Cristal Conectado tintado de Gris
+tile.connectedglass:borderless_glass_green_pane.name=Panel de Cristal Conectado tintado de Verde
+tile.connectedglass:borderless_glass_light_blue_pane.name=Panel de Cristal Conectado tintado de Azul Claro
+tile.connectedglass:borderless_glass_light_gray_pane.name=Panel de Cristal Conectado tintado de Gris Claro
+tile.connectedglass:borderless_glass_lime_pane.name=Panel de Cristal Conectado tintado de Verde Lima
+tile.connectedglass:borderless_glass_magenta_pane.name=Panel de Cristal Conectado tintado de Magenta
+tile.connectedglass:borderless_glass_orange_pane.name=Panel de Cristal Conectado tintado de Orange
+tile.connectedglass:borderless_glass_pink_pane.name=Panel de Cristal Conectado tintado de Rosa
+tile.connectedglass:borderless_glass_purple_pane.name=Panel de Cristal Conectado tintado de Morado
+tile.connectedglass:borderless_glass_red_pane.name=Panel de Cristal Conectado tintado de Rojo
+tile.connectedglass:borderless_glass_white_pane.name=Panel de Cristal Conectado tintado de Blanco
+tile.connectedglass:borderless_glass_yellow_pane.name=Panel de Cristal Conectado tintado de Amarillo
+
+tile.connectedglass:clear_glass.name=Cristal Reluciente
+tile.connectedglass:clear_glass_black.name=Cristal Reluciente tintado de Negro
+tile.connectedglass:clear_glass_blue.name=Cristal Reluciente tintado de Blue
+tile.connectedglass:clear_glass_brown.name=Cristal Reluciente tintado de Marrón
+tile.connectedglass:clear_glass_cyan.name=Cristal Reluciente tintado de Cian
+tile.connectedglass:clear_glass_gray.name=Cristal Reluciente tintado de Gris
+tile.connectedglass:clear_glass_green.name=Cristal Reluciente tintado de Verde
+tile.connectedglass:clear_glass_light_blue.name=Cristal Reluciente tintado de Azul Claro
+tile.connectedglass:clear_glass_light_gray.name=Cristal Reluciente tintado de Gris Claro
+tile.connectedglass:clear_glass_lime.name=Cristal Reluciente tintado de Verde Lima
+tile.connectedglass:clear_glass_magenta.name=Cristal Reluciente tintado de Magenta
+tile.connectedglass:clear_glass_orange.name=Cristal Reluciente tintado de Naranja
+tile.connectedglass:clear_glass_pink.name=Cristal Reluciente tintado de Rosa
+tile.connectedglass:clear_glass_purple.name=Cristal Reluciente tintado de Morado
+tile.connectedglass:clear_glass_red.name=Cristal Reluciente tintado de Rojo
+tile.connectedglass:clear_glass_white.name=Cristal Reluciente tintado de Blanco
+tile.connectedglass:clear_glass_yellow.name=Cristal Reluciente tintado de Amarillo
+
+tile.connectedglass:clear_glass_pane.name=Panel de Cristal Reluciente
+tile.connectedglass:clear_glass_black_pane.name=Panel de Cristal Reluciente tintado de Negro
+tile.connectedglass:clear_glass_blue_pane.name=Panel de Cristal Reluciente tintado de Azul
+tile.connectedglass:clear_glass_brown_pane.name=Panel de Cristal Reluciente tintado de Marrón
+tile.connectedglass:clear_glass_cyan_pane.name=Panel de Cristal Reluciente tintado de Cian
+tile.connectedglass:clear_glass_gray_pane.name=Panel de Cristal Reluciente tintado de Gris
+tile.connectedglass:clear_glass_green_pane.name=Panel de Cristal Reluciente tintado de Verde
+tile.connectedglass:clear_glass_light_blue_pane.name=Panel de Cristal Reluciente tintado de Azul Claro
+tile.connectedglass:clear_glass_light_gray_pane.name=Panel de Cristal Reluciente tintado de Gris Claro
+tile.connectedglass:clear_glass_lime_pane.name=Panel de Cristal Reluciente tintado de Verde Lima
+tile.connectedglass:clear_glass_magenta_pane.name=Panel de Cristal Reluciente tintado de Magenta
+tile.connectedglass:clear_glass_orange_pane.name=Panel de Cristal Reluciente tintado de Naranja
+tile.connectedglass:clear_glass_pink_pane.name=Panel de Cristal Reluciente tintado de Rosa
+tile.connectedglass:clear_glass_purple_pane.name=Panel de Cristal Reluciente tintado de Morado
+tile.connectedglass:clear_glass_red_pane.name=Panel de Cristal Reluciente tintado de Rojo
+tile.connectedglass:clear_glass_white_pane.name=Panel de Cristal Reluciente tintado de Blanco
+tile.connectedglass:clear_glass_yellow_pane.name=Panel de Cristal Reluciente tintado de Amarillo
+
+tile.connectedglass:scratched_glass":"Cristal Rayado
+tile.connectedglass:scratched_glass_black":"Cristal Rayado tintado de Negro
+tile.connectedglass:scratched_glass_blue":"Cristal Rayado tintado de Azul
+tile.connectedglass:scratched_glass_brown":"Cristal Rayado tintado de Marrón
+tile.connectedglass:scratched_glass_cyan":"Cristal Rayado tintado de Cian
+tile.connectedglass:scratched_glass_gray":"Cristal Rayado tintado de Gris
+tile.connectedglass:scratched_glass_green":"Cristal Rayado tintado de Verde
+tile.connectedglass:scratched_glass_light_blue":"Cristal Rayado tintado de Azul Claro
+tile.connectedglass:scratched_glass_silver":"Cristal Rayado tintado de Gris Claro
+tile.connectedglass:scratched_glass_lime":"Cristal Rayado tintado de Verde Lima
+tile.connectedglass:scratched_glass_magenta":"Cristal Rayado tintado de Magenta
+tile.connectedglass:scratched_glass_orange":"Cristal Rayado tintado de Naranja
+tile.connectedglass:scratched_glass_pink":"Cristal Rayado tintado de Rosa
+tile.connectedglass:scratched_glass_purple":"Cristal Rayado tintado de Morado
+tile.connectedglass:scratched_glass_red":"Cristal Rayado tintado de Rojo
+tile.connectedglass:scratched_glass_white":"Cristal Rayado tintado de Blanco
+tile.connectedglass:scratched_glass_yellow":"Cristal Rayado tintado de Amarillo
+
+tile.connectedglass:scratched_glass_pane.name=Panel de Cristal Rayado
+tile.connectedglass:scratched_glass_black_pane.name=Panel de Cristal Rayado tintado de Negro
+tile.connectedglass:scratched_glass_blue_pane.name=Panel de  Rayado tintado de Azul
+tile.connectedglass:scratched_glass_brown_pane.name=Panel de Cristal Rayado tintado de Marrón
+tile.connectedglass:scratched_glass_cyan_pane.name=Panel de Cristal Rayado tintado de Cian
+tile.connectedglass:scratched_glass_gray_pane.name=Panel de Cristal Rayado tintado de Gris
+tile.connectedglass:scratched_glass_green_pane.name=Panel de Cristal Rayado tintado de Verde
+tile.connectedglass:scratched_glass_light_blue_pane.name=Panel de Cristal Rayado tintado de Azul Claro
+tile.connectedglass:scratched_glass_light_gray_pane.name=Panel de Cristal Rayado tintado de Gris Claro
+tile.connectedglass:scratched_glass_lime_pane.name=Panel de Cristal Rayado tintado de Verde Lima
+tile.connectedglass:scratched_glass_magenta_pane.name=Panel de Cristal Rayado tintado de Magenta
+tile.connectedglass:scratched_glass_orange_pane.name=Panel de Cristal Rayado tintado de Naranja
+tile.connectedglass:scratched_glass_pink_pane.name=Panel de Cristal Rayado tintado de Rosa
+tile.connectedglass:scratched_glass_purple_pane.name=Panel de Cristal Rayado tintado de Morado
+tile.connectedglass:scratched_glass_red_pane.name=Panel de Cristal Rayado tintado de Rojo
+tile.connectedglass:scratched_glass_white_pane.name=Panel de Cristal Rayado tintado de Blanco
+tile.connectedglass:scratched_glass_yellow_pane.name=Panel de Cristal Rayado tintado de Amarillo
