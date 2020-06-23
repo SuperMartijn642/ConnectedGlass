@@ -1,13 +1,20 @@
 package com.supermartijn642.connectedglass;
 
+import com.supermartijn642.connectedglass.data.CGBlockTagProvider;
+import com.supermartijn642.connectedglass.data.CGItemTagProvider;
+import com.supermartijn642.connectedglass.data.CGRecipeProvider;
+import com.supermartijn642.connectedglass.data.CGTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.util.registry.Registry;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,8 +66,12 @@ public class ConnectedGlass {
 
         @SubscribeEvent
         public static void registerDataProviders(final GatherDataEvent e){
-            if(e.includeServer())
+            if(e.includeServer()){
                 e.getGenerator().addProvider(new CGRecipeProvider(e.getGenerator()));
+                CGTagProvider.init();
+                e.getGenerator().addProvider(new CGBlockTagProvider(e.getGenerator(), Registry.BLOCK));
+                e.getGenerator().addProvider(new CGItemTagProvider(e.getGenerator(), Registry.ITEM));
+            }
 
             if(e.includeClient()){
                 e.getGenerator().addProvider(new CGDummyBlockStateProvider(e.getGenerator(), e.getExistingFileHelper()));

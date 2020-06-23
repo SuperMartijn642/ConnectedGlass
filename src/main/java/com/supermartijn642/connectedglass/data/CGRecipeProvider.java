@@ -1,5 +1,6 @@
-package com.supermartijn642.connectedglass;
+package com.supermartijn642.connectedglass.data;
 
+import com.supermartijn642.connectedglass.*;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -11,6 +12,7 @@ import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.Tags;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
