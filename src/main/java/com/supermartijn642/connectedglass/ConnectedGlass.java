@@ -1,9 +1,6 @@
 package com.supermartijn642.connectedglass;
 
-import com.supermartijn642.connectedglass.data.CGBlockTagProvider;
-import com.supermartijn642.connectedglass.data.CGItemTagProvider;
-import com.supermartijn642.connectedglass.data.CGRecipeProvider;
-import com.supermartijn642.connectedglass.data.CGTagProvider;
+import com.supermartijn642.connectedglass.data.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -71,6 +68,7 @@ public class ConnectedGlass {
                 CGTagProvider.init();
                 e.getGenerator().addProvider(new CGBlockTagProvider(e.getGenerator(), Registry.BLOCK));
                 e.getGenerator().addProvider(new CGItemTagProvider(e.getGenerator(), Registry.ITEM));
+                e.getGenerator().addProvider(new CGLootTableProvider(e.getGenerator()));
             }
 
             if(e.includeClient()){
