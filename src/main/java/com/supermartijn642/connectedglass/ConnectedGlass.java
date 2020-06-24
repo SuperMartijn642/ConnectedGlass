@@ -2,12 +2,15 @@ package com.supermartijn642.connectedglass;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +31,40 @@ public class ConnectedGlass {
     public static final List<CGPaneBlock> PANES = new ArrayList<>();
 
     public ConnectedGlass(){
+    }
+
+    @Mod.EventHandler
+    public void init(FMLInitializationEvent e){
+        // register to ore dict
+        for(CGGlassType type : CGGlassType.values()){
+            type.blocks.forEach(block -> {
+                OreDictionary.registerOre("blockGlass", block);
+                OreDictionary.registerOre("blockGlass", Item.getItemFromBlock(block));
+            });
+            OreDictionary.registerOre("blockGlassColorless", type.block);
+            OreDictionary.registerOre("blockGlassColorless", Item.getItemFromBlock(type.block));
+            type.colored_blocks.forEach((color, block) -> {
+                String name = color == EnumDyeColor.SILVER ? "LightGray" : color.getUnlocalizedName().toUpperCase().charAt(0) + color.getUnlocalizedName().substring(1);
+                OreDictionary.registerOre("blockGlass" + name, block);
+                OreDictionary.registerOre("blockGlass" + name, Item.getItemFromBlock(block));
+                OreDictionary.registerOre("blockGlassColored", block);
+                OreDictionary.registerOre("blockGlassColored", Item.getItemFromBlock(block));
+            });
+
+            type.panes.forEach(pane -> {
+                OreDictionary.registerOre("blockPane", pane);
+                OreDictionary.registerOre("blockPane", Item.getItemFromBlock(pane));
+            });
+            OreDictionary.registerOre("blockPaneColorless", type.pane);
+            OreDictionary.registerOre("blockPaneColorless", Item.getItemFromBlock(type.pane));
+            type.colored_panes.forEach((color, pane) -> {
+                String name = color == EnumDyeColor.SILVER ? "LightGray" : color.getUnlocalizedName().toUpperCase().charAt(0) + color.getUnlocalizedName().substring(1);
+                OreDictionary.registerOre("blockPane" + name, pane);
+                OreDictionary.registerOre("blockPane" + name, Item.getItemFromBlock(pane));
+                OreDictionary.registerOre("blockPaneColored", pane);
+                OreDictionary.registerOre("blockPaneColored", Item.getItemFromBlock(pane));
+            });
+        }
     }
 
     @Mod.EventBusSubscriber
