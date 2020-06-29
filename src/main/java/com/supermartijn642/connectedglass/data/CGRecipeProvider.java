@@ -60,7 +60,7 @@ public class CGRecipeProvider extends RecipeProvider {
                     .key('G', type.block)
                     .key('D', block.getColor().getTag())
                     .addCriterion("glass", InventoryChangeTrigger.Instance.forItems(type.block))
-                    .addCriterion("dye", InventoryChangeTrigger.Instance.forItems(block.getColor().getTag().getAllElements().toArray(new Item[0])))
+                    .addCriterion("dye", InventoryChangeTrigger.Instance.forItems(block.getColor().getTag().func_230236_b_().toArray(new Item[0])))
                     .build(consumer, block.getRegistryName() + "2");
             }
 
@@ -82,7 +82,7 @@ public class CGRecipeProvider extends RecipeProvider {
                     .key('G', type.pane)
                     .key('D', pane.getColor().getTag())
                     .addCriterion("glass_pane", InventoryChangeTrigger.Instance.forItems(type.pane))
-                    .addCriterion("dye", InventoryChangeTrigger.Instance.forItems(pane.getColor().getTag().getAllElements().toArray(new Item[0])))
+                    .addCriterion("dye", InventoryChangeTrigger.Instance.forItems(pane.getColor().getTag().func_230236_b_().toArray(new Item[0])))
                     .build(consumer, pane.getRegistryName() + "2");
             }
 

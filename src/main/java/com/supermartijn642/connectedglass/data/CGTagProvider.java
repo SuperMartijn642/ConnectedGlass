@@ -3,6 +3,7 @@ package com.supermartijn642.connectedglass.data;
 import com.supermartijn642.connectedglass.CGGlassType;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.tags.ITag;
 import net.minecraft.tags.Tag;
 import net.minecraftforge.common.Tags;
 
@@ -16,8 +17,8 @@ import java.util.Map;
  */
 public class CGTagProvider {
 
-    public static Map<Tag<Block>,List<Block>> blockTags = new HashMap<>();
-    public static Map<Tag<Item>,List<Block>> itemTags = new HashMap<>();
+    public static Map<ITag.INamedTag<Block>,List<Block>> blockTags = new HashMap<>();
+    public static Map<ITag.INamedTag<Item>,List<Block>> itemTags = new HashMap<>();
 
     public static void init(){
         ArrayList<Block> glass = new ArrayList<>();
@@ -44,7 +45,7 @@ public class CGTagProvider {
         add(panesColorless, Tags.Blocks.GLASS_PANES_COLORLESS, Tags.Items.GLASS_PANES_COLORLESS);
     }
 
-    private static void add(List<Block> blocks, Tag<Block> blockTag, Tag<Item> itemTag){
+    private static void add(List<Block> blocks, ITag.INamedTag<Block> blockTag, ITag.INamedTag<Item> itemTag){
         blockTags.put(blockTag,blocks);
         itemTags.put(itemTag,blocks);
     }

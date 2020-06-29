@@ -66,8 +66,8 @@ public class ConnectedGlass {
             if(e.includeServer()){
                 e.getGenerator().addProvider(new CGRecipeProvider(e.getGenerator()));
                 CGTagProvider.init();
-                e.getGenerator().addProvider(new CGBlockTagProvider(e.getGenerator(), Registry.BLOCK));
-                e.getGenerator().addProvider(new CGItemTagProvider(e.getGenerator(), Registry.ITEM));
+//                e.getGenerator().addProvider(new CGBlockTagProvider(e.getGenerator(), Registry.BLOCK));
+//                e.getGenerator().addProvider(new CGItemTagProvider(e.getGenerator(), Registry.ITEM));
                 e.getGenerator().addProvider(new CGLootTableProvider(e.getGenerator()));
             }
 
