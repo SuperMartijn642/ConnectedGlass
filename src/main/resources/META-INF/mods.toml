@@ -48,6 +48,6 @@ description='''Connected Glass adds new types of glass with connecting textures'
 [[dependencies.movingelevators]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16,)"
+    versionRange="[1.16.2,1.17)"
     ordering="NONE"
     side="BOTH"
