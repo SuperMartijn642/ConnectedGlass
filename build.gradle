@@ -13,7 +13,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0.6-mc1.16.2'
+version = '1.0.6-mc1.16.3'
 group = 'com.supermartijn642.connectedglass' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'connectedglass'
 
@@ -80,7 +80,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.2-33.0.5'
+    minecraft 'net.minecraftforge:forge:1.16.3-34.0.0'
 
     // compile against the JEI API but do not include it at runtime
 //    compileOnly fg.deobf("mezz.jei:jei-1.15.2:6.0.0.2:api")
