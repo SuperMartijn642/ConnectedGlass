@@ -32,12 +32,12 @@ public class CGLootTableProvider extends LootTableProvider {
 
     @Override
     protected void validate(Map<ResourceLocation,LootTable> lootTables, ValidationTracker validationtracker){
-        Set<ResourceLocation> locations = LootTables.func_215796_a().stream().filter(resourceLocation -> resourceLocation.getNamespace().equals("connectedglass")).collect(Collectors.toSet());
+        Set<ResourceLocation> locations = LootTables.getReadOnlyLootTables().stream().filter(resourceLocation -> resourceLocation.getNamespace().equals("connectedglass")).collect(Collectors.toSet());
         for(ResourceLocation resourcelocation : Sets.difference(locations, lootTables.keySet()))
             validationtracker.addProblem("Missing built-in table: " + resourcelocation);
 
         lootTables.forEach((resourceLocation, lootTable) ->
-            LootTableManager.func_227508_a_(validationtracker, resourceLocation, lootTable)
+            LootTableManager.validateLootTable(validationtracker, resourceLocation, lootTable)
         );
     }
 

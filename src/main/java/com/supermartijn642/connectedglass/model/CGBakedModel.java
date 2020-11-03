@@ -42,8 +42,8 @@ public class CGBakedModel implements IDynamicBakedModel {
     }
 
     @Override
-    public boolean func_230044_c_(){
-        return false;
+    public boolean isSideLit(){
+        return true;
     }
 
     @Override
