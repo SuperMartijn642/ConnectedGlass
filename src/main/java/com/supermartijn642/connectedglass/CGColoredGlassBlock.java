@@ -1,8 +1,11 @@
 package com.supermartijn642.connectedglass;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.block.IBeaconBeamColorProvider;
 import net.minecraft.item.DyeColor;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorldReader;
 
 /**
  * Created 5/11/2020 by SuperMartijn642
@@ -33,5 +36,12 @@ public class CGColoredGlassBlock extends CGGlassBlock implements IBeaconBeamColo
     @Override
     public BlockRenderLayer getRenderLayer(){
         return BlockRenderLayer.TRANSLUCENT;
+    }
+
+    @Override
+    public float[] getBeaconColorMultiplier(BlockState state, IWorldReader world, BlockPos pos, BlockPos beaconPos){
+        if(getBlock() instanceof IBeaconBeamColorProvider)
+            return ((IBeaconBeamColorProvider)getBlock()).getColor().getColorComponentValues();
+        return null;
     }
 }
