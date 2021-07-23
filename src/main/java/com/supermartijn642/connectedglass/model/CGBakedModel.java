@@ -32,7 +32,7 @@ public class CGBakedModel implements IDynamicBakedModel {
     }
 
     @Override
-    public boolean isAmbientOcclusion(){
+    public boolean useAmbientOcclusion(){
         return false;
     }
 
@@ -42,17 +42,17 @@ public class CGBakedModel implements IDynamicBakedModel {
     }
 
     @Override
-    public boolean isSideLit(){
+    public boolean usesBlockLight(){
         return true;
     }
 
     @Override
-    public boolean isBuiltInRenderer(){
+    public boolean isCustomRenderer(){
         return false;
     }
 
     @Override
-    public TextureAtlasSprite getParticleTexture(){
+    public TextureAtlasSprite getParticleIcon(){
         return this.getTexture();
     }
 
@@ -62,8 +62,8 @@ public class CGBakedModel implements IDynamicBakedModel {
     }
 
     @Override
-    public ItemCameraTransforms getItemCameraTransforms(){
-        return Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(Blocks.STONE.getRegistryName(), "")).getItemCameraTransforms();
+    public ItemCameraTransforms getTransforms(){
+        return Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(Blocks.STONE.getRegistryName(), "")).getTransforms();
     }
 
     @Nonnull

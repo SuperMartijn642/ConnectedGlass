@@ -1,17 +1,16 @@
 package com.supermartijn642.connectedglass;
 
-import com.supermartijn642.connectedglass.data.*;
+import com.supermartijn642.connectedglass.data.CGLootTableProvider;
+import com.supermartijn642.connectedglass.data.CGRecipeProvider;
+import com.supermartijn642.connectedglass.data.CGTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.util.registry.Registry;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +57,7 @@ public class ConnectedGlass {
         }
 
         private static void registerItemBlock(RegistryEvent.Register<Item> e, Block block){
-            e.getRegistry().register(new BlockItem(block, new Item.Properties().group(ItemGroup.SEARCH)).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
+            e.getRegistry().register(new BlockItem(block, new Item.Properties().tab(ItemGroup.TAB_SEARCH)).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
         }
 
         @SubscribeEvent

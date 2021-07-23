@@ -19,7 +19,7 @@ public class CGGlassBlock extends AbstractGlassBlock {
     public final boolean connected;
 
     public CGGlassBlock(String registryName, String texture, boolean connected){
-        super(Properties.create(Material.GLASS).sound(SoundType.GLASS).hardnessAndResistance(0.3f).notSolid());
+        super(Properties.of(Material.GLASS).sound(SoundType.GLASS).strength(0.3f).noOcclusion());
         this.texture = new ResourceLocation("connectedglass", texture);
         this.connected = connected;
         this.setRegistryName(registryName);

@@ -31,12 +31,12 @@ public class CGConnectedPaneBakedModel extends CGPaneBakedModel {
         ModelData modelData = new ModelData();
         for(Direction direction : Direction.Plane.HORIZONTAL){
             modelData.sides.put(direction, new SideData(direction, world, pos, state.getBlock()));
-            BlockState upState = world.getBlockState(pos.up());
-            boolean up = upState.getBlock() == state.getBlock() && upState.get(SixWayBlock.FACING_TO_PROPERTY_MAP.get(direction));
+            BlockState upState = world.getBlockState(pos.above());
+            boolean up = upState.getBlock() == state.getBlock() && upState.getValue(SixWayBlock.PROPERTY_BY_DIRECTION.get(direction));
             modelData.up.put(direction, up);
             modelData.upPost = upState.getBlock() == state.getBlock();
-            BlockState downState = world.getBlockState(pos.down());
-            boolean down = downState.getBlock() == state.getBlock() && downState.get(SixWayBlock.FACING_TO_PROPERTY_MAP.get(direction));
+            BlockState downState = world.getBlockState(pos.below());
+            boolean down = downState.getBlock() == state.getBlock() && downState.getValue(SixWayBlock.PROPERTY_BY_DIRECTION.get(direction));
             modelData.down.put(direction, down);
             modelData.downPost = downState.getBlock() == state.getBlock();
         }
@@ -246,20 +246,20 @@ public class CGConnectedPaneBakedModel extends CGPaneBakedModel {
                 up = Direction.NORTH;
                 down = Direction.SOUTH;
             }else{
-                left = side.rotateY();
-                right = side.rotateYCCW();
+                left = side.getClockWise();
+                right = side.getCounterClockWise();
                 up = Direction.UP;
                 down = Direction.DOWN;
             }
 
-            this.left = this.isSameBlock(pos.offset(left));
-            this.right = this.isSameBlock(pos.offset(right));
-            this.up = this.isSameBlock(pos.offset(up));
-            this.up_left = this.isSameBlock(pos.offset(up).offset(left));
-            this.up_right = this.isSameBlock(pos.offset(up).offset(right));
-            this.down = this.isSameBlock(pos.offset(down));
-            this.down_left = this.isSameBlock(pos.offset(down).offset(left));
-            this.down_right = this.isSameBlock(pos.offset(down).offset(right));
+            this.left = this.isSameBlock(pos.relative(left));
+            this.right = this.isSameBlock(pos.relative(right));
+            this.up = this.isSameBlock(pos.relative(up));
+            this.up_left = this.isSameBlock(pos.relative(up).relative(left));
+            this.up_right = this.isSameBlock(pos.relative(up).relative(right));
+            this.down = this.isSameBlock(pos.relative(down));
+            this.down_left = this.isSameBlock(pos.relative(down).relative(left));
+            this.down_right = this.isSameBlock(pos.relative(down).relative(right));
         }
 
         private boolean isSameBlock(BlockPos pos){
