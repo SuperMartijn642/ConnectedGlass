@@ -1,13 +1,13 @@
 package com.supermartijn642.connectedglass;
 
-import net.minecraft.block.PaneBlock;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
+import net.minecraft.world.level.block.IronBarsBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.material.Material;
 
 /**
  * Created 5/11/2020 by SuperMartijn642
  */
-public class CGPaneBlock extends PaneBlock {
+public class CGPaneBlock extends IronBarsBlock {
 
     public final CGGlassBlock block;
 

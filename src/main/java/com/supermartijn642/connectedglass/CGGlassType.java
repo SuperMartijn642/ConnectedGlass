@@ -1,6 +1,6 @@
 package com.supermartijn642.connectedglass;
 
-import net.minecraft.item.DyeColor;
+import net.minecraft.world.item.DyeColor;
 
 import java.util.ArrayList;
 import java.util.EnumMap;

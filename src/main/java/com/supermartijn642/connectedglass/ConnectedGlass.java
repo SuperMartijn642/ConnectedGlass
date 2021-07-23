@@ -3,14 +3,14 @@ package com.supermartijn642.connectedglass;
 import com.supermartijn642.connectedglass.data.CGLootTableProvider;
 import com.supermartijn642.connectedglass.data.CGRecipeProvider;
 import com.supermartijn642.connectedglass.data.CGTagProvider;
-import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +30,7 @@ public class ConnectedGlass {
 
     @Mod.EventBusSubscriber(modid = "connectedglass", bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
+
         @SubscribeEvent
         public static void onBlockRegistry(final RegistryEvent.Register<Block> e){
             // add blocks
@@ -57,7 +58,7 @@ public class ConnectedGlass {
         }
 
         private static void registerItemBlock(RegistryEvent.Register<Item> e, Block block){
-            e.getRegistry().register(new BlockItem(block, new Item.Properties().tab(ItemGroup.TAB_SEARCH)).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
+            e.getRegistry().register(new BlockItem(block, new Item.Properties().tab(CreativeModeTab.TAB_SEARCH)).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
         }
 
         @SubscribeEvent

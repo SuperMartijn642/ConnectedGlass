@@ -1,12 +1,12 @@
 package com.supermartijn642.connectedglass;
 
-import net.minecraft.block.IBeaconBeamColorProvider;
-import net.minecraft.item.DyeColor;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.block.BeaconBeamBlock;
 
 /**
  * Created 5/11/2020 by SuperMartijn642
  */
-public class CGColoredGlassBlock extends CGGlassBlock implements IBeaconBeamColorProvider {
+public class CGColoredGlassBlock extends CGGlassBlock implements BeaconBeamBlock {
 
     private DyeColor color;
 

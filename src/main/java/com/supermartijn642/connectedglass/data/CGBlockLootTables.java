@@ -2,15 +2,15 @@ package com.supermartijn642.connectedglass.data;
 
 import com.supermartijn642.connectedglass.CGGlassType;
 import com.supermartijn642.connectedglass.ConnectedGlass;
-import net.minecraft.block.Block;
-import net.minecraft.data.loot.BlockLootTables;
+import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.world.level.block.Block;
 
 import java.util.ArrayList;
 
 /**
  * Created 6/24/2020 by SuperMartijn642
  */
-public class CGBlockLootTables extends BlockLootTables {
+public class CGBlockLootTables extends BlockLoot {
 
     @Override
     protected void addTables(){

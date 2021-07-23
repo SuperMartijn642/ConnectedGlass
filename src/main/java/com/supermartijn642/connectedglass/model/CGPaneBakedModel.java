@@ -1,16 +1,18 @@
 package com.supermartijn642.connectedglass.model;
 
+import com.mojang.math.Vector3f;
 import com.supermartijn642.connectedglass.CGPaneBlock;
 import com.supermartijn642.connectedglass.ClientProxy;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FourWayBlock;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.model.*;
+import net.minecraft.client.renderer.block.model.*;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.vector.Vector3f;
+import net.minecraft.client.resources.model.BlockModelRotation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CrossCollisionBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraftforge.client.model.data.IDynamicBakedModel;
 import net.minecraftforge.client.model.data.IModelData;
 
@@ -60,12 +62,12 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
     }
 
     @Override
-    public ItemOverrideList getOverrides(){
-        return ItemOverrideList.EMPTY;
+    public ItemOverrides getOverrides(){
+        return ItemOverrides.EMPTY;
     }
 
     @Override
-    public ItemCameraTransforms getTransforms(){
+    public ItemTransforms getTransforms(){
         return Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(Blocks.STONE.getRegistryName(), "")).getTransforms();
     }
 
@@ -107,9 +109,9 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
 
         Vector3f from = new Vector3f(7, 0, 7), to = new Vector3f(9, 16, 9);
         float[] uv = new float[]{7 / 8f, 2 * 7 + 7 / 8f, 9 / 8f, 2 * 7 + 9 / 8f};
-        BlockPartFace face = new BlockPartFace(hasCulling ? side : null, -1, "", new BlockFaceUV(uv, 0));
+        BlockElementFace face = new BlockElementFace(hasCulling ? side : null, -1, "", new BlockFaceUV(uv, 0));
 
-        BakedQuad quad = BAKERY.bakeQuad(from, to, face, getTexture(), side, ModelRotation.X0_Y0, null, true, null);
+        BakedQuad quad = BAKERY.bakeQuad(from, to, face, getTexture(), side, BlockModelRotation.X0_Y0, null, true, null);
         return Collections.singletonList(quad);
     }
 
@@ -117,7 +119,7 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
         List<BakedQuad> quads = new ArrayList<>();
         float unitW = (totalUV[2] - totalUV[0]) / 16, unitH = (totalUV[3] - totalUV[1]) / 16; // width and height of one pixel
 
-        BooleanProperty property = part == Direction.NORTH ? FourWayBlock.NORTH : part == Direction.EAST ? FourWayBlock.EAST : part == Direction.SOUTH ? FourWayBlock.SOUTH : part == Direction.WEST ? FourWayBlock.WEST : null;
+        BooleanProperty property = part == Direction.NORTH ? CrossCollisionBlock.NORTH : part == Direction.EAST ? CrossCollisionBlock.EAST : part == Direction.SOUTH ? CrossCollisionBlock.SOUTH : part == Direction.WEST ? CrossCollisionBlock.WEST : null;
         if((state == null && (part == Direction.NORTH || part == Direction.SOUTH)) || (state != null && state.getValue(property))){
 
             boolean hasQuad = true;
@@ -147,14 +149,14 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
 
             if(hasQuad && hasCulling == culling){
                 Vector3f from = getPartFromPos(part), to = getPartToPos(part);
-                BlockPartFace face = new BlockPartFace(hasCulling ? side : null, -1, "", new BlockFaceUV(uv, rotation));
-                quads.add(BAKERY.bakeQuad(from, to, face, getTexture(), side, ModelRotation.X0_Y0, null, true, null));
+                BlockElementFace face = new BlockElementFace(hasCulling ? side : null, -1, "", new BlockFaceUV(uv, rotation));
+                quads.add(BAKERY.bakeQuad(from, to, face, getTexture(), side, BlockModelRotation.X0_Y0, null, true, null));
             }
         }else if(side == part && !culling){
             Vector3f from = new Vector3f(7, 0, 7), to = new Vector3f(9, 16, 9);
             float[] uv = new float[]{totalUV[0] + 7 * unitW, totalUV[1], totalUV[0] + 9 * unitH, totalUV[3]};
-            BlockPartFace face = new BlockPartFace(null, -1, "", new BlockFaceUV(uv, 0));
-            quads.add(BAKERY.bakeQuad(from, to, face, getTexture(), side, ModelRotation.X0_Y0, null, true, null));
+            BlockElementFace face = new BlockElementFace(null, -1, "", new BlockFaceUV(uv, 0));
+            quads.add(BAKERY.bakeQuad(from, to, face, getTexture(), side, BlockModelRotation.X0_Y0, null, true, null));
         }
 
         return quads;
