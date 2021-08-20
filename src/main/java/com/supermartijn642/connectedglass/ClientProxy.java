@@ -39,6 +39,10 @@ public class ClientProxy {
                 e.getModelRegistry().put(new ModelResourceLocation(pane.getRegistryName(), variant), model);
             });
         }
+
+        CGBakedModel model = new CGBakedModel(ConnectedGlass.tinted_glass);
+        e.getModelRegistry().put(new ModelResourceLocation(ConnectedGlass.tinted_glass.getRegistryName(), ""), model);
+        e.getModelRegistry().put(new ModelResourceLocation(ConnectedGlass.tinted_glass.getRegistryName(), "inventory"), model);
     }
 
     @SubscribeEvent
@@ -47,6 +51,7 @@ public class ClientProxy {
             for(CGGlassBlock block : ConnectedGlass.BLOCKS){
                 e.addSprite(block.getRegistryName());
             }
+            e.addSprite(ConnectedGlass.tinted_glass.getRegistryName());
         }
     }
 
@@ -56,6 +61,7 @@ public class ClientProxy {
             for(CGGlassBlock block : ConnectedGlass.BLOCKS){
                 TEXTURES.put(block, e.getMap().getSprite(block.getRegistryName()));
             }
+            TEXTURES.put(ConnectedGlass.tinted_glass, e.getMap().getSprite(ConnectedGlass.tinted_glass.getRegistryName()));
         }
     }
 
