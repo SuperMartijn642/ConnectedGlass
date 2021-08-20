@@ -17,15 +17,12 @@ public class CGDummyItemModelProvider extends ItemModelProvider {
     protected void registerModels(){
         for(CGGlassType type : CGGlassType.values()){
             for(CGGlassBlock block : type.blocks)
-                getBuilder("item/" + block.getRegistryName().getPath());
+                this.getBuilder("item/" + block.getRegistryName().getPath());
 
             for(CGPaneBlock pane : type.panes)
-                getBuilder("item/" + pane.getRegistryName().getPath());
+                this.getBuilder("item/" + pane.getRegistryName().getPath());
         }
-    }
 
-    @Override
-    public String getName(){
-        return "connectedglass:dummyitemmodels";
+        this.getBuilder("item/" + ConnectedGlass.tinted_glass.getRegistryName().getPath());
     }
 }

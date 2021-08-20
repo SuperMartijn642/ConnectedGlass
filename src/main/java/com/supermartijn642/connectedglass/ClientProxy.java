@@ -28,7 +28,7 @@ public class ClientProxy {
     @SubscribeEvent
     public static void onBake(ModelBakeEvent e){
         for(CGGlassBlock block : ConnectedGlass.BLOCKS){
-            RenderTypeLookup.setRenderLayer(block, block instanceof CGColoredGlassBlock ? RenderType.translucent() : RenderType.cutout());
+            RenderTypeLookup.setRenderLayer(block, block instanceof CGColoredGlassBlock || block instanceof CGTintedGlassBlock ? RenderType.translucent() : RenderType.cutout());
             CGBakedModel model = block.connected ? new CGConnectedBakedModel(block) : new CGBakedModel(block);
             e.getModelRegistry().put(new ModelResourceLocation(block.getRegistryName(), ""), model);
             e.getModelRegistry().put(new ModelResourceLocation(block.getRegistryName(), "inventory"), model);
@@ -43,6 +43,11 @@ public class ClientProxy {
                 e.getModelRegistry().put(new ModelResourceLocation(pane.getRegistryName(), variant), model);
             });
         }
+
+        RenderTypeLookup.setRenderLayer(ConnectedGlass.tinted_glass, RenderType.translucent());
+        CGBakedModel model = new CGBakedModel(ConnectedGlass.tinted_glass);
+        e.getModelRegistry().put(new ModelResourceLocation(ConnectedGlass.tinted_glass.getRegistryName(), ""), model);
+        e.getModelRegistry().put(new ModelResourceLocation(ConnectedGlass.tinted_glass.getRegistryName(), "inventory"), model);
     }
 
     @SubscribeEvent
@@ -51,6 +56,7 @@ public class ClientProxy {
             for(CGGlassBlock block : ConnectedGlass.BLOCKS){
                 e.addSprite(block.getRegistryName());
             }
+            e.addSprite(ConnectedGlass.tinted_glass.getRegistryName());
         }
     }
 
@@ -60,6 +66,7 @@ public class ClientProxy {
             for(CGGlassBlock block : ConnectedGlass.BLOCKS){
                 TEXTURES.put(block, e.getMap().getSprite(block.getRegistryName()));
             }
+            TEXTURES.put(ConnectedGlass.tinted_glass, e.getMap().getSprite(ConnectedGlass.tinted_glass.getRegistryName()));
         }
     }
 
