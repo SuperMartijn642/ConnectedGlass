@@ -28,7 +28,7 @@ public class ClientProxy {
     @SubscribeEvent
     public static void onBake(ModelBakeEvent e){
         for(CGGlassBlock block : ConnectedGlass.BLOCKS){
-            ItemBlockRenderTypes.setRenderLayer(block, block instanceof CGColoredGlassBlock ? RenderType.translucent() : RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(block, block instanceof CGColoredGlassBlock || block instanceof CGTintedGlassBlock ? RenderType.translucent() : RenderType.cutout());
             CGBakedModel model = block.connected ? new CGConnectedBakedModel(block) : new CGBakedModel(block);
             e.getModelRegistry().put(new ModelResourceLocation(block.getRegistryName(), ""), model);
             e.getModelRegistry().put(new ModelResourceLocation(block.getRegistryName(), "inventory"), model);

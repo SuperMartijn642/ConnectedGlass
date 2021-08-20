@@ -4,6 +4,7 @@ import com.supermartijn642.connectedglass.data.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,6 +24,13 @@ public class ConnectedGlass {
     public static final List<CGGlassBlock> BLOCKS = new ArrayList<>();
     public static final List<CGPaneBlock> PANES = new ArrayList<>();
 
+    public static final CreativeModeTab GROUP = new CreativeModeTab("connectedglass") {
+        @Override
+        public ItemStack makeIcon(){
+            return new ItemStack(CGGlassType.BORDERLESS_GLASS.block);
+        }
+    };
+
     public ConnectedGlass(){
     }
 
@@ -35,7 +43,8 @@ public class ConnectedGlass {
             for(CGGlassType type : CGGlassType.values()){
                 type.init();
                 BLOCKS.addAll(type.blocks);
-                PANES.addAll(type.panes);
+                if(type.hasPanes)
+                    PANES.addAll(type.panes);
             }
 
             // register blocks
@@ -56,7 +65,7 @@ public class ConnectedGlass {
         }
 
         private static void registerItemBlock(RegistryEvent.Register<Item> e, Block block){
-            e.getRegistry().register(new BlockItem(block, new Item.Properties().tab(CreativeModeTab.TAB_SEARCH)).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
+            e.getRegistry().register(new BlockItem(block, new Item.Properties().tab(GROUP)).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
         }
 
         @SubscribeEvent

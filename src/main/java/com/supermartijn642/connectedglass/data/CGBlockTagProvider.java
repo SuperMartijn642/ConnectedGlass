@@ -19,7 +19,7 @@ public class CGBlockTagProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(){
-        CGTagProvider.blockTags.forEach(this::addAll);
+        CGTagProvider.BLOCK_TAGS.forEach(this::addAll);
     }
 
     private void addAll(Tag.Named<Block> blockTag, List<Block> blocks){

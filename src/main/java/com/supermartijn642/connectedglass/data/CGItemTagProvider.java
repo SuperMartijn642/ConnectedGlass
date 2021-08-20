@@ -21,7 +21,7 @@ public class CGItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(){
-        CGTagProvider.itemTags.forEach(this::addAll);
+        CGTagProvider.ITEM_TAGS.forEach(this::addAll);
     }
 
     private void addAll(Tag.Named<Item> itemTag, List<Block> blocks){

@@ -15,8 +15,9 @@ public class CGBlockLootTables extends BlockLoot {
     @Override
     protected void addTables(){
         for(CGGlassType type : CGGlassType.values()){
-            type.blocks.forEach(this::dropWhenSilkTouch);
-            type.panes.forEach(this::dropWhenSilkTouch);
+            type.blocks.forEach(type.isTinted ? this::dropSelf : this::dropWhenSilkTouch);
+            if(type.hasPanes)
+                type.panes.forEach(type.isTinted ? this::dropSelf : this::dropWhenSilkTouch);
         }
     }
 
