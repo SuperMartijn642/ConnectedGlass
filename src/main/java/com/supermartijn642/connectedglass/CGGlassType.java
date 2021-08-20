@@ -12,8 +12,10 @@ import java.util.Locale;
  */
 public enum CGGlassType {
 
-    BORDERLESS_GLASS, CLEAR_GLASS, SCRATCHED_GLASS;
+    BORDERLESS_GLASS(false, true), CLEAR_GLASS(false, true), SCRATCHED_GLASS(false, true), TINTED_BORDERLESS_GLASS(true, false);
 
+    public final boolean isTinted;
+    public final boolean hasPanes;
     public CGGlassBlock block;
     public final List<CGGlassBlock> blocks = new ArrayList<>();
     public final EnumMap<EnumDyeColor,CGColoredGlassBlock> colored_blocks = new EnumMap<>(EnumDyeColor.class);
@@ -21,21 +23,31 @@ public enum CGGlassType {
     public final List<CGPaneBlock> panes = new ArrayList<>();
     public final EnumMap<EnumDyeColor,CGColoredPaneBlock> colored_panes = new EnumMap<>(EnumDyeColor.class);
 
-    CGGlassType(){
+    CGGlassType(boolean isTinted, boolean hasPanes){
+        this.isTinted = isTinted;
+        this.hasPanes = hasPanes;
     }
 
     public void init(){
-        this.block = new CGGlassBlock(this.name().toLowerCase(Locale.ROOT), true);
+        this.block = this.isTinted ?
+            new CGTintedGlassBlock(this.name().toLowerCase(Locale.ROOT), true) :
+            new CGGlassBlock(this.name().toLowerCase(Locale.ROOT), true);
         this.blocks.add(this.block);
-        this.pane = this.block.createPane();
-        this.panes.add(this.pane);
+        if(this.hasPanes){
+            this.pane = this.block.createPane();
+            this.panes.add(this.pane);
+        }
         for(EnumDyeColor color : EnumDyeColor.values()){
-            CGColoredGlassBlock block = new CGColoredGlassBlock(this.name().toLowerCase(Locale.ROOT) + "_" + color.name().toLowerCase(Locale.ROOT), true, color);
+            CGColoredGlassBlock block = this.isTinted ?
+                new CGColoredTintedGlassBlock(this.name().toLowerCase(Locale.ROOT) + "_" + color.name().toLowerCase(Locale.ROOT), true, color) :
+                new CGColoredGlassBlock(this.name().toLowerCase(Locale.ROOT) + "_" + color.name().toLowerCase(Locale.ROOT), true, color);
             this.blocks.add(block);
             this.colored_blocks.put(color, block);
-            CGColoredPaneBlock pane = block.createPane();
-            this.panes.add(pane);
-            this.colored_panes.put(color, pane);
+            if(this.hasPanes){
+                CGColoredPaneBlock pane = block.createPane();
+                this.panes.add(pane);
+                this.colored_panes.put(color, pane);
+            }
         }
     }
 

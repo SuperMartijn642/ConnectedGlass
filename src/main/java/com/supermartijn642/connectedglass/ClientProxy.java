@@ -49,6 +49,14 @@ public class ClientProxy {
                 }
             });
         }
+
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(ConnectedGlass.tinted_glass), 0, new ModelResourceLocation(ConnectedGlass.tinted_glass.getRegistryName(), "inventory"));
+        ModelLoader.setCustomStateMapper(ConnectedGlass.tinted_glass, new StateMapperBase() {
+            @Override
+            protected ModelResourceLocation getModelResourceLocation(IBlockState state){
+                return new ModelResourceLocation(ConnectedGlass.tinted_glass.getRegistryName(), "normal");
+            }
+        });
     }
 
     @SubscribeEvent
@@ -63,6 +71,10 @@ public class ClientProxy {
             e.getModelRegistry().putObject(new ModelResourceLocation(pane.getRegistryName(), "normal"), model);
             e.getModelRegistry().putObject(new ModelResourceLocation(pane.getRegistryName(), "inventory"), model);
         }
+
+        CGBakedModel model = new CGBakedModel(ConnectedGlass.tinted_glass);
+        e.getModelRegistry().putObject(new ModelResourceLocation(ConnectedGlass.tinted_glass.getRegistryName(), "normal"), model);
+        e.getModelRegistry().putObject(new ModelResourceLocation(ConnectedGlass.tinted_glass.getRegistryName(), "inventory"), model);
     }
 
     @SubscribeEvent
@@ -71,6 +83,7 @@ public class ClientProxy {
             for(CGGlassBlock block : ConnectedGlass.BLOCKS){
                 TEXTURES.put(block, e.getMap().registerSprite(block.getRegistryName()));
             }
+            TEXTURES.put(ConnectedGlass.tinted_glass, e.getMap().registerSprite(ConnectedGlass.tinted_glass.getRegistryName()));
         }
     }
 
@@ -80,6 +93,7 @@ public class ClientProxy {
             for(CGGlassBlock block : ConnectedGlass.BLOCKS){
                 TEXTURES.put(block, e.getMap().getAtlasSprite(block.getRegistryName().toString()));
             }
+            TEXTURES.put(ConnectedGlass.tinted_glass, e.getMap().getAtlasSprite(ConnectedGlass.tinted_glass.getRegistryName().toString()));
         }
     }
 

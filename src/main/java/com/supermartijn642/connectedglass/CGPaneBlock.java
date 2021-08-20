@@ -47,11 +47,12 @@ public class CGPaneBlock extends BlockPane {
         super(Material.GLASS, true);
         this.block = block;
         this.setRegistryName(block.getRegistryName() + "_pane");
-        this.setUnlocalizedName(this.getRegistryName().toString());
+        this.setUnlocalizedName("connectedglass." + block.getRegistryName().getResourcePath() + "_pane");
 
         this.setSoundType(SoundType.GLASS);
         this.setHardness(0.3f);
         this.setResistance(0.3f);
+        this.setCreativeTab(ConnectedGlass.GROUP);
     }
 
     @Override

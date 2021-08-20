@@ -50,11 +50,12 @@ public class CGGlassBlock extends BlockGlass {
         this.texture = new ResourceLocation("connectedglass", texture);
         this.connected = connected;
         this.setRegistryName(registryName);
-        this.setUnlocalizedName(this.getRegistryName().toString());
+        this.setUnlocalizedName("connectedglass." + registryName);
 
         this.setSoundType(SoundType.GLASS);
         this.setHardness(0.3f);
         this.setResistance(0.3f);
+        this.setCreativeTab(ConnectedGlass.GROUP);
     }
 
     public CGGlassBlock(String registryName, boolean connected){
