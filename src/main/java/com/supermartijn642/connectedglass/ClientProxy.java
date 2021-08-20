@@ -33,7 +33,7 @@ public class ClientProxy {
         for(CGPaneBlock pane : ConnectedGlass.PANES){
             CGPaneBakedModel model = pane.block.connected ? new CGConnectedPaneBakedModel(pane) : new CGPaneBakedModel(pane);
             e.getModelRegistry().put(new ModelResourceLocation(pane.getRegistryName(), "inventory"), model);
-            pane.getStateContainer().getValidStates().forEach(state -> {
+            pane.getStateDefinition().getPossibleStates().forEach(state -> {
                 String variant = state.toString();
                 variant = variant.indexOf('[') > 0 ? variant.substring(variant.indexOf('[') + 1, variant.length() - 1) : "";
                 e.getModelRegistry().put(new ModelResourceLocation(pane.getRegistryName(), variant), model);

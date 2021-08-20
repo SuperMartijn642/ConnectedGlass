@@ -215,20 +215,20 @@ public class CGConnectedBakedModel extends CGBakedModel {
                 up = side == Direction.UP ? Direction.NORTH : Direction.SOUTH;
                 down = side == Direction.UP ? Direction.SOUTH : Direction.NORTH;
             }else{
-                left = side.rotateY();
-                right = side.rotateYCCW();
+                left = side.getClockWise();
+                right = side.getCounterClockWise();
                 up = Direction.UP;
                 down = Direction.DOWN;
             }
 
-            this.left = this.isSameBlock(pos.offset(left));
-            this.right = this.isSameBlock(pos.offset(right));
-            this.up = this.isSameBlock(pos.offset(up));
-            this.up_left = this.isSameBlock(pos.offset(up).offset(left));
-            this.up_right = this.isSameBlock(pos.offset(up).offset(right));
-            this.down = this.isSameBlock(pos.offset(down));
-            this.down_left = this.isSameBlock(pos.offset(down).offset(left));
-            this.down_right = this.isSameBlock(pos.offset(down).offset(right));
+            this.left = this.isSameBlock(pos.relative(left));
+            this.right = this.isSameBlock(pos.relative(right));
+            this.up = this.isSameBlock(pos.relative(up));
+            this.up_left = this.isSameBlock(pos.relative(up).relative(left));
+            this.up_right = this.isSameBlock(pos.relative(up).relative(right));
+            this.down = this.isSameBlock(pos.relative(down));
+            this.down_left = this.isSameBlock(pos.relative(down).relative(left));
+            this.down_right = this.isSameBlock(pos.relative(down).relative(right));
         }
 
         private boolean isSameBlock(BlockPos pos){

@@ -12,7 +12,6 @@ import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.Tags;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -36,7 +35,7 @@ public class CGRecipeProvider extends RecipeProvider {
     }
 
     @Override
-    protected void registerRecipes(Consumer<IFinishedRecipe> consumer){
+    protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer){
         this.gatherVanillaBlocks();
         this.gatherVanillaPanes();
 
@@ -46,55 +45,55 @@ public class CGRecipeProvider extends RecipeProvider {
             for(CGGlassBlock block : type.blocks){
                 DyeColor color = block instanceof CGColoredGlassBlock ? ((CGColoredGlassBlock)block).getColor() : null;
                 Block previous = lastType == null ? getVanillaBlock(color) : lastType.getBlock(color);
-                ShapedRecipeBuilder.shapedRecipe(block, 4)
-                    .patternLine("GG").patternLine("GG")
-                    .key('G', previous)
-                    .addCriterion("glass", InventoryChangeTrigger.Instance.forItems(previous))
-                    .build(consumer, block.getRegistryName() + "1");
+                ShapedRecipeBuilder.shaped(block, 4)
+                    .pattern("GG").pattern("GG")
+                    .define('G', previous)
+                    .unlocks("glass", InventoryChangeTrigger.Instance.hasItem(previous))
+                    .save(consumer, block.getRegistryName() + "1");
             }
 
             // colored blocks from dyes
             for(CGColoredGlassBlock block : type.colored_blocks.values()){
-                ShapedRecipeBuilder.shapedRecipe(block, 8)
-                    .patternLine("GGG").patternLine("GDG").patternLine("GGG")
-                    .key('G', type.block)
-                    .key('D', block.getColor().getTag())
-                    .addCriterion("glass", InventoryChangeTrigger.Instance.forItems(type.block))
-                    .addCriterion("dye", InventoryChangeTrigger.Instance.forItems(block.getColor().getTag().getAllElements().toArray(new Item[0])))
-                    .build(consumer, block.getRegistryName() + "2");
+                ShapedRecipeBuilder.shaped(block, 8)
+                    .pattern("GGG").pattern("GDG").pattern("GGG")
+                    .define('G', type.block)
+                    .define('D', block.getColor().getTag())
+                    .unlocks("glass", InventoryChangeTrigger.Instance.hasItem(type.block))
+                    .unlocks("dye", InventoryChangeTrigger.Instance.hasItem(block.getColor().getTag().getValues().toArray(new Item[0])))
+                    .save(consumer, block.getRegistryName() + "2");
             }
 
             // panes from previous type
             for(CGPaneBlock pane : type.panes){
                 DyeColor color = pane instanceof CGColoredPaneBlock ? ((CGColoredPaneBlock)pane).getColor() : null;
                 Block previous = lastType == null ? getVanillaPane(color) : lastType.getPane(color);
-                ShapedRecipeBuilder.shapedRecipe(pane, 4)
-                    .patternLine("GG").patternLine("GG")
-                    .key('G', previous)
-                    .addCriterion("glass_pane", InventoryChangeTrigger.Instance.forItems(previous))
-                    .build(consumer, pane.getRegistryName() + "1");
+                ShapedRecipeBuilder.shaped(pane, 4)
+                    .pattern("GG").pattern("GG")
+                    .define('G', previous)
+                    .unlocks("glass_pane", InventoryChangeTrigger.Instance.hasItem(previous))
+                    .save(consumer, pane.getRegistryName() + "1");
             }
 
             // colored panes from dyes
             for(CGColoredPaneBlock pane : type.colored_panes.values()){
-                ShapedRecipeBuilder.shapedRecipe(pane, 8)
-                    .patternLine("GGG").patternLine("GDG").patternLine("GGG")
-                    .key('G', type.pane)
-                    .key('D', pane.getColor().getTag())
-                    .addCriterion("glass_pane", InventoryChangeTrigger.Instance.forItems(type.pane))
-                    .addCriterion("dye", InventoryChangeTrigger.Instance.forItems(pane.getColor().getTag().getAllElements().toArray(new Item[0])))
-                    .build(consumer, pane.getRegistryName() + "2");
+                ShapedRecipeBuilder.shaped(pane, 8)
+                    .pattern("GGG").pattern("GDG").pattern("GGG")
+                    .define('G', type.pane)
+                    .define('D', pane.getColor().getTag())
+                    .unlocks("glass_pane", InventoryChangeTrigger.Instance.hasItem(type.pane))
+                    .unlocks("dye", InventoryChangeTrigger.Instance.hasItem(pane.getColor().getTag().getValues().toArray(new Item[0])))
+                    .save(consumer, pane.getRegistryName() + "2");
             }
 
             // panes from blocks
             for(CGGlassBlock block : type.blocks){
                 DyeColor color = block instanceof CGColoredGlassBlock ? ((CGColoredGlassBlock)block).getColor() : null;
                 CGPaneBlock pane = type.getPane(color);
-                ShapedRecipeBuilder.shapedRecipe(pane, 16)
-                    .patternLine("GGG").patternLine("GGG")
-                    .key('G', block)
-                    .addCriterion("glass", InventoryChangeTrigger.Instance.forItems(block))
-                    .build(consumer, pane.getRegistryName() + "3");
+                ShapedRecipeBuilder.shaped(pane, 16)
+                    .pattern("GGG").pattern("GGG")
+                    .define('G', block)
+                    .unlocks("glass", InventoryChangeTrigger.Instance.hasItem(block))
+                    .save(consumer, pane.getRegistryName() + "3");
             }
 
             lastType = type;
@@ -104,22 +103,22 @@ public class CGRecipeProvider extends RecipeProvider {
         for(Block block : this.vanillaBlocks){
             DyeColor color = block instanceof IBeaconBeamColorProvider ? ((IBeaconBeamColorProvider)block).getColor() : null;
             Block previous = lastType.getBlock(color);
-            ShapedRecipeBuilder.shapedRecipe(block, 4)
-                .patternLine("GG").patternLine("GG")
-                .key('G', previous)
-                .addCriterion("glass", InventoryChangeTrigger.Instance.forItems(previous))
-                .build(consumer, new ResourceLocation("connectedglass", "vanilla_" + block.getRegistryName().getPath()));
+            ShapedRecipeBuilder.shaped(block, 4)
+                .pattern("GG").pattern("GG")
+                .define('G', previous)
+                .unlocks("glass", InventoryChangeTrigger.Instance.hasItem(previous))
+                .save(consumer, new ResourceLocation("connectedglass", "vanilla_" + block.getRegistryName().getPath()));
         }
 
         // panes from previous type
         for(Block pane : this.vanillaPanes){
             DyeColor color = pane instanceof IBeaconBeamColorProvider ? ((IBeaconBeamColorProvider)pane).getColor() : null;
             Block previous = lastType.getPane(color);
-            ShapedRecipeBuilder.shapedRecipe(pane, 4)
-                .patternLine("GG").patternLine("GG")
-                .key('G', previous)
-                .addCriterion("glass_pane", InventoryChangeTrigger.Instance.forItems(previous))
-                .build(consumer, new ResourceLocation("connectedglass", "vanilla_" + pane.getRegistryName().getPath()));
+            ShapedRecipeBuilder.shaped(pane, 4)
+                .pattern("GG").pattern("GG")
+                .define('G', previous)
+                .unlocks("glass_pane", InventoryChangeTrigger.Instance.hasItem(previous))
+                .save(consumer, new ResourceLocation("connectedglass", "vanilla_" + pane.getRegistryName().getPath()));
         }
     }
 

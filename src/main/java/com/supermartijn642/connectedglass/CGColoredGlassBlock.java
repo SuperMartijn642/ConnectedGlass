@@ -41,7 +41,7 @@ public class CGColoredGlassBlock extends CGGlassBlock implements IBeaconBeamColo
     @Override
     public float[] getBeaconColorMultiplier(BlockState state, IWorldReader world, BlockPos pos, BlockPos beaconPos){
         if(getBlock() instanceof IBeaconBeamColorProvider)
-            return ((IBeaconBeamColorProvider)getBlock()).getColor().getColorComponentValues();
+            return ((IBeaconBeamColorProvider)getBlock()).getColor().getTextureDiffuseColors();
         return null;
     }
 }
