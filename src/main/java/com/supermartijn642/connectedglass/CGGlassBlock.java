@@ -42,23 +42,28 @@ public class CGGlassBlock extends AbstractGlassBlock {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public float getShadeBrightness(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    @Override
+    public float getShadeBrightness(BlockState state, IBlockReader worldIn, BlockPos pos){
         return 1.0F;
     }
 
-    public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {
+    @Override
+    public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos){
         return true;
     }
 
-    public boolean isSuffocating(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    @Override
+    public boolean isSuffocating(BlockState state, IBlockReader worldIn, BlockPos pos){
         return false;
     }
 
-    public boolean isRedstoneConductor(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    @Override
+    public boolean isRedstoneConductor(BlockState state, IBlockReader worldIn, BlockPos pos){
         return false;
     }
 
-    public boolean isValidSpawn(BlockState state, IBlockReader worldIn, BlockPos pos, EntityType<?> type) {
+    @Override
+    public boolean isValidSpawn(BlockState state, IBlockReader worldIn, BlockPos pos, EntityType<?> type){
         return false;
     }
 }

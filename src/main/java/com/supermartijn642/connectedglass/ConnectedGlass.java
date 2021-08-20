@@ -5,11 +5,12 @@ import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.registries.ObjectHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,18 +25,30 @@ public class ConnectedGlass {
     public static final List<CGGlassBlock> BLOCKS = new ArrayList<>();
     public static final List<CGPaneBlock> PANES = new ArrayList<>();
 
+    public static final ItemGroup GROUP = new ItemGroup("connectedglass") {
+        @Override
+        public ItemStack makeIcon(){
+            return new ItemStack(CGGlassType.BORDERLESS_GLASS.block);
+        }
+    };
+
+    @ObjectHolder("connectedglass:tinted_glass")
+    public static CGTintedGlassBlock tinted_glass;
+
     public ConnectedGlass(){
     }
 
     @Mod.EventBusSubscriber(modid = "connectedglass", bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
+
         @SubscribeEvent
         public static void onBlockRegistry(final RegistryEvent.Register<Block> e){
             // add blocks
             for(CGGlassType type : CGGlassType.values()){
                 type.init();
                 BLOCKS.addAll(type.blocks);
-                PANES.addAll(type.panes);
+                if(type.hasPanes)
+                    PANES.addAll(type.panes);
             }
 
             // register blocks
@@ -45,6 +58,9 @@ public class ConnectedGlass {
             // register panes
             for(Block pane : PANES)
                 e.getRegistry().register(pane);
+
+            // register regular tinted glass
+            e.getRegistry().register(new CGTintedGlassBlock("tinted_glass", false));
         }
 
         @SubscribeEvent
@@ -53,10 +69,12 @@ public class ConnectedGlass {
                 registerItemBlock(e, block);
             for(Block pane : PANES)
                 registerItemBlock(e, pane);
+
+            registerItemBlock(e, tinted_glass);
         }
 
         private static void registerItemBlock(RegistryEvent.Register<Item> e, Block block){
-            e.getRegistry().register(new BlockItem(block, new Item.Properties().tab(ItemGroup.TAB_SEARCH)).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
+            e.getRegistry().register(new BlockItem(block, new Item.Properties().tab(GROUP)).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
         }
 
         @SubscribeEvent
@@ -64,8 +82,8 @@ public class ConnectedGlass {
             if(e.includeServer()){
                 e.getGenerator().addProvider(new CGRecipeProvider(e.getGenerator()));
                 CGTagProvider.init();
-                e.getGenerator().addProvider(new CGBlockTagProvider(e.getGenerator(), Registry.BLOCK));
-                e.getGenerator().addProvider(new CGItemTagProvider(e.getGenerator(), Registry.ITEM));
+                e.getGenerator().addProvider(new CGBlockTagProvider(e.getGenerator()));
+                e.getGenerator().addProvider(new CGItemTagProvider(e.getGenerator()));
                 e.getGenerator().addProvider(new CGLootTableProvider(e.getGenerator()));
             }
 

@@ -43,7 +43,7 @@ public class CGBakedModel implements IDynamicBakedModel {
 
     @Override
     public boolean usesBlockLight(){
-        return false;
+        return true;
     }
 
     @Override

@@ -15,9 +15,12 @@ public class CGBlockLootTables extends BlockLootTables {
     @Override
     protected void addTables(){
         for(CGGlassType type : CGGlassType.values()){
-            type.blocks.forEach(this::dropWhenSilkTouch);
-            type.panes.forEach(this::dropWhenSilkTouch);
+            type.blocks.forEach(type.isTinted ? this::dropSelf : this::dropWhenSilkTouch);
+            if(type.hasPanes)
+                type.panes.forEach(type.isTinted ? this::dropSelf : this::dropWhenSilkTouch);
         }
+
+        this.dropSelf(ConnectedGlass.tinted_glass);
     }
 
     @Override
@@ -25,6 +28,7 @@ public class CGBlockLootTables extends BlockLootTables {
         ArrayList<Block> blocks = new ArrayList<>(ConnectedGlass.BLOCKS.size() + ConnectedGlass.PANES.size());
         blocks.addAll(ConnectedGlass.BLOCKS);
         blocks.addAll(ConnectedGlass.PANES);
+        blocks.add(ConnectedGlass.tinted_glass);
         return blocks;
     }
 }

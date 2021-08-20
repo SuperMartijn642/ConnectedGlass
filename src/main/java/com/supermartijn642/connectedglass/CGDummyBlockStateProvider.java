@@ -6,8 +6,6 @@ import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ExistingFileHelper;
 import net.minecraftforge.client.model.generators.ModelFile;
 
-import javax.annotation.Nonnull;
-
 /**
  * Created 5/16/2020 by SuperMartijn642
  */
@@ -19,19 +17,15 @@ public class CGDummyBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels(){
-        ModelFile model = models().getExistingFile(new ResourceLocation("minecraft", "block/cobblestone"));
+        ModelFile model = this.models().getExistingFile(new ResourceLocation("minecraft", "block/cobblestone"));
         for(CGGlassType type : CGGlassType.values()){
             for(CGGlassBlock block : type.blocks)
-                simpleBlock(block, model);
+                this.simpleBlock(block, model);
 
             for(CGPaneBlock pane : type.panes)
-                simpleBlock(pane, model);
+                this.simpleBlock(pane, model);
         }
-    }
 
-    @Nonnull
-    @Override
-    public String getName(){
-        return "connectedglass:dummyblockstates";
+        this.simpleBlock(ConnectedGlass.tinted_glass, model);
     }
 }
