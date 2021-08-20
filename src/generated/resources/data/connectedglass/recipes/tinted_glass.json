@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    "BCB",
+    " A "
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:gems/quartz"
+    },
+    "B": {
+      "tag": "forge:dyes/black"
+    },
+    "C": {
+      "tag": "forge:glass"
+    }
+  },
+  "result": {
+    "item": "connectedglass:tinted_glass"
+  }
+}
