@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GDG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "connectedglass:scratched_glass_pane"
+    },
+    "D": {
+      "tag": "forge:dyes/cyan"
+    }
+  },
+  "result": {
+    "item": "connectedglass:scratched_glass_cyan_pane",
+    "count": 8
+  }
+}

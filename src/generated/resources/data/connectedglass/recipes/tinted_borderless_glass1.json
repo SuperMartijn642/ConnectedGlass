@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GG",
+    "GG"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:tinted_glass"
+    }
+  },
+  "result": {
+    "item": "connectedglass:tinted_borderless_glass",
+    "count": 4
+  }
+}

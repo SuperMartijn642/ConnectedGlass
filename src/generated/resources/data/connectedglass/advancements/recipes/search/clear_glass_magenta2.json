@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "connectedglass:clear_glass_magenta2"
+    ]
+  },
+  "criteria": {
+    "glass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "connectedglass:clear_glass"
+            ]
+          }
+        ]
+      }
+    },
+    "dye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dyes/magenta"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:clear_glass_magenta2"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "glass",
+      "dye",
+      "has_the_recipe"
+    ]
+  ]
+}

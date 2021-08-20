@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "connectedglass:borderless_glass_blue_pane2"
+    ]
+  },
+  "criteria": {
+    "glass_pane": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "connectedglass:borderless_glass_pane"
+            ]
+          }
+        ]
+      }
+    },
+    "dye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dyes/blue"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:borderless_glass_blue_pane2"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "glass_pane",
+      "dye",
+      "has_the_recipe"
+    ]
+  ]
+}

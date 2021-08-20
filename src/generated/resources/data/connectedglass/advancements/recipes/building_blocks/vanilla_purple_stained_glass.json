@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "connectedglass:vanilla_purple_stained_glass"
+    ]
+  },
+  "criteria": {
+    "glass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "connectedglass:scratched_glass_purple"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:vanilla_purple_stained_glass"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "glass",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "connectedglass:borderless_glass_pink_pane1"
+    ]
+  },
+  "criteria": {
+    "glass_pane": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:pink_stained_glass_pane"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:borderless_glass_pink_pane1"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "glass_pane",
+      "has_the_recipe"
+    ]
+  ]
+}

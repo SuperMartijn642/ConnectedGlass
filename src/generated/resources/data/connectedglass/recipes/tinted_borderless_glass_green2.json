@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GDG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "connectedglass:tinted_borderless_glass"
+    },
+    "D": {
+      "tag": "forge:dyes/green"
+    }
+  },
+  "result": {
+    "item": "connectedglass:tinted_borderless_glass_green",
+    "count": 8
+  }
+}

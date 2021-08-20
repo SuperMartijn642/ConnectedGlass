@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "connectedglass:scratched_glass_light_gray"
+    }
+  },
+  "result": {
+    "item": "connectedglass:scratched_glass_light_gray_pane",
+    "count": 16
+  }
+}

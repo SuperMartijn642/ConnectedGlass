@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "connectedglass:clear_glass_orange_pane2"
+    ]
+  },
+  "criteria": {
+    "glass_pane": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "connectedglass:clear_glass_pane"
+            ]
+          }
+        ]
+      }
+    },
+    "dye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dyes/orange"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:clear_glass_orange_pane2"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "glass_pane",
+      "dye",
+      "has_the_recipe"
+    ]
+  ]
+}
