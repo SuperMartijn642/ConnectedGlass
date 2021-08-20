@@ -1,7 +1,6 @@
 buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
-        jcenter()
         mavenCentral()
     }
     dependencies {
@@ -11,7 +10,6 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
 
 version = '1.0.8-mc1.15'
 group = 'com.supermartijn642.connectedglass' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -55,7 +53,7 @@ minecraft {
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
-            args '--mod', 'connectedglass', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/generated/resources')
+            args '--mod', 'connectedglass', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
                 connectedglass {

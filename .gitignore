@@ -27,4 +27,5 @@ forge*changelog.txt
 !.idea
 
 images
-src/generated
+logs
+desktop.ini
