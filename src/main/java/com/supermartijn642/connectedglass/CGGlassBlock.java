@@ -22,7 +22,7 @@ public class CGGlassBlock extends AbstractGlassBlock {
     public final boolean connected;
 
     public CGGlassBlock(String registryName, String texture, boolean connected){
-        super(Properties.create(Material.GLASS).sound(SoundType.GLASS).hardnessAndResistance(0.3f).notSolid());
+        super(Properties.of(Material.GLASS).sound(SoundType.GLASS).strength(0.3f).noOcclusion());
         this.texture = new ResourceLocation("connectedglass", texture);
         this.connected = connected;
         this.setRegistryName(registryName);
@@ -42,7 +42,7 @@ public class CGGlassBlock extends AbstractGlassBlock {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public float getAmbientOcclusionLightValue(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    public float getShadeBrightness(BlockState state, IBlockReader worldIn, BlockPos pos) {
         return 1.0F;
     }
 
@@ -50,15 +50,15 @@ public class CGGlassBlock extends AbstractGlassBlock {
         return true;
     }
 
-    public boolean causesSuffocation(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    public boolean isSuffocating(BlockState state, IBlockReader worldIn, BlockPos pos) {
         return false;
     }
 
-    public boolean isNormalCube(BlockState state, IBlockReader worldIn, BlockPos pos) {
+    public boolean isRedstoneConductor(BlockState state, IBlockReader worldIn, BlockPos pos) {
         return false;
     }
 
-    public boolean canEntitySpawn(BlockState state, IBlockReader worldIn, BlockPos pos, EntityType<?> type) {
+    public boolean isValidSpawn(BlockState state, IBlockReader worldIn, BlockPos pos, EntityType<?> type) {
         return false;
     }
 }

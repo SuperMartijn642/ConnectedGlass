@@ -22,22 +22,22 @@ public class CGItemTagProvider extends TagsProvider<Item> {
     }
 
     @Override
-    protected void registerTags(){
+    protected void addTags(){
         CGTagProvider.itemTags.forEach(this::addAll);
     }
 
     private void addAll(Tag<Item> itemTag, List<Block> blocks){
-        Tag.Builder<Item> itemBuilder = getBuilder(itemTag).replace(false);
+        Tag.Builder<Item> itemBuilder = tag(itemTag).replace(false);
         blocks.forEach(block -> itemBuilder.add(block.asItem()));
         itemBuilder.build(itemTag.getId());
     }
 
     @Override
-    protected void setCollection(TagCollection colectionIn){
+    protected void useTags(TagCollection colectionIn){
     }
 
     @Override
-    protected Path makePath(ResourceLocation id){
+    protected Path getPath(ResourceLocation id){
         return this.generator.getOutputFolder().resolve("data/" + id.getNamespace() + "/tags/items/" + id.getPath() + ".json");
     }
 

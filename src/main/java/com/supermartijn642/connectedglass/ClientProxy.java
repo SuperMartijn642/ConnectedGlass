@@ -28,16 +28,16 @@ public class ClientProxy {
     @SubscribeEvent
     public static void onBake(ModelBakeEvent e){
         for(CGGlassBlock block : ConnectedGlass.BLOCKS){
-            RenderTypeLookup.setRenderLayer(block, block instanceof CGColoredGlassBlock ? RenderType.getTranslucent() : RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(block, block instanceof CGColoredGlassBlock ? RenderType.translucent() : RenderType.cutout());
             CGBakedModel model = block.connected ? new CGConnectedBakedModel(block) : new CGBakedModel(block);
             e.getModelRegistry().put(new ModelResourceLocation(block.getRegistryName(), ""), model);
             e.getModelRegistry().put(new ModelResourceLocation(block.getRegistryName(), "inventory"), model);
         }
         for(CGPaneBlock pane : ConnectedGlass.PANES){
-            RenderTypeLookup.setRenderLayer(pane, pane instanceof CGColoredPaneBlock ? RenderType.getTranslucent() : RenderType.getCutoutMipped());
+            RenderTypeLookup.setRenderLayer(pane, pane instanceof CGColoredPaneBlock ? RenderType.translucent() : RenderType.cutoutMipped());
             CGPaneBakedModel model = pane.block.connected ? new CGConnectedPaneBakedModel(pane) : new CGPaneBakedModel(pane);
             e.getModelRegistry().put(new ModelResourceLocation(pane.getRegistryName(), "inventory"), model);
-            pane.getStateContainer().getValidStates().forEach(state -> {
+            pane.getStateDefinition().getPossibleStates().forEach(state -> {
                 String variant = state.toString();
                 variant = variant.indexOf('[') > 0 ? variant.substring(variant.indexOf('[') + 1, variant.length() - 1) : "";
                 e.getModelRegistry().put(new ModelResourceLocation(pane.getRegistryName(), variant), model);
@@ -47,7 +47,7 @@ public class ClientProxy {
 
     @SubscribeEvent
     public static void onStitch(TextureStitchEvent.Pre e){
-        if(e.getMap().getTextureLocation().toString().equals("minecraft:textures/atlas/blocks.png")){
+        if(e.getMap().location().toString().equals("minecraft:textures/atlas/blocks.png")){
             for(CGGlassBlock block : ConnectedGlass.BLOCKS){
                 e.addSprite(block.getRegistryName());
             }
@@ -56,7 +56,7 @@ public class ClientProxy {
 
     @SubscribeEvent
     public static void onStitch(TextureStitchEvent.Post e){
-        if(e.getMap().getTextureLocation().toString().equals("minecraft:textures/atlas/blocks.png")){
+        if(e.getMap().location().toString().equals("minecraft:textures/atlas/blocks.png")){
             for(CGGlassBlock block : ConnectedGlass.BLOCKS){
                 TEXTURES.put(block, e.getMap().getSprite(block.getRegistryName()));
             }

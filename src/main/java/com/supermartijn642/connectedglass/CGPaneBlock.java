@@ -12,7 +12,7 @@ public class CGPaneBlock extends PaneBlock {
     public final CGGlassBlock block;
 
     public CGPaneBlock(CGGlassBlock block){
-        super(Properties.create(Material.GLASS).sound(SoundType.GLASS).hardnessAndResistance(0.3f).notSolid());
+        super(Properties.of(Material.GLASS).sound(SoundType.GLASS).strength(0.3f).noOcclusion());
         this.block = block;
         this.setRegistryName(block.getRegistryName().getPath() + "_pane");
     }

@@ -35,7 +35,7 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
     }
 
     @Override
-    public boolean isAmbientOcclusion(){
+    public boolean useAmbientOcclusion(){
         return false;
     }
 
@@ -45,17 +45,17 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
     }
 
     @Override
-    public boolean func_230044_c_(){
+    public boolean usesBlockLight(){
         return false;
     }
 
     @Override
-    public boolean isBuiltInRenderer(){
+    public boolean isCustomRenderer(){
         return false;
     }
 
     @Override
-    public TextureAtlasSprite getParticleTexture(){
+    public TextureAtlasSprite getParticleIcon(){
         return this.getTexture();
     }
 
@@ -65,8 +65,8 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
     }
 
     @Override
-    public ItemCameraTransforms getItemCameraTransforms(){
-        return Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(Blocks.STONE.getRegistryName(), "")).getItemCameraTransforms();
+    public ItemCameraTransforms getTransforms(){
+        return Minecraft.getInstance().getModelManager().getModel(new ModelResourceLocation(Blocks.STONE.getRegistryName(), "")).getTransforms();
     }
 
     @Nonnull
@@ -118,7 +118,7 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
         float unitW = (totalUV[2] - totalUV[0]) / 16, unitH = (totalUV[3] - totalUV[1]) / 16; // width and height of one pixel
 
         BooleanProperty property = part == Direction.NORTH ? FourWayBlock.NORTH : part == Direction.EAST ? FourWayBlock.EAST : part == Direction.SOUTH ? FourWayBlock.SOUTH : part == Direction.WEST ? FourWayBlock.WEST : null;
-        if((state == null && (part == Direction.NORTH || part == Direction.SOUTH)) || (state != null && state.get(property))){
+        if((state == null && (part == Direction.NORTH || part == Direction.SOUTH)) || (state != null && state.getValue(property))){
 
             boolean hasQuad = true;
             float[] uv = new float[0];
@@ -140,9 +140,9 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
                 uv[0] += 7 * unitW;
                 uv[2] -= 7 * unitW;
                 hasCulling = true;
-            }else if(side.rotateYCCW() == part)
+            }else if(side.getCounterClockWise() == part)
                 uv = new float[]{totalUV[0] + 9 * unitW, totalUV[1], totalUV[2], totalUV[3]};
-            else if(side.rotateY() == part)
+            else if(side.getClockWise() == part)
                 uv = new float[]{totalUV[0], totalUV[1], totalUV[0] + 7 * unitW, totalUV[3]};
 
             if(hasQuad && hasCulling == culling){

@@ -9,9 +9,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +56,7 @@ public class ConnectedGlass {
         }
 
         private static void registerItemBlock(RegistryEvent.Register<Item> e, Block block){
-            e.getRegistry().register(new BlockItem(block, new Item.Properties().group(ItemGroup.SEARCH)).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
+            e.getRegistry().register(new BlockItem(block, new Item.Properties().tab(ItemGroup.TAB_SEARCH)).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
         }
 
         @SubscribeEvent
