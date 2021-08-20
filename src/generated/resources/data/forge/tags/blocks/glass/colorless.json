@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "connectedglass:borderless_glass",
+    "connectedglass:clear_glass",
+    "connectedglass:scratched_glass",
+    "connectedglass:tinted_borderless_glass"
+  ]
+}
