@@ -47,7 +47,7 @@ public class ClientProxy {
 
     @SubscribeEvent
     public static void onStitch(TextureStitchEvent.Pre e){
-        if(e.getMap().location().toString().equals("minecraft:textures/atlas/blocks.png")){
+        if(e.getAtlas().location().toString().equals("minecraft:textures/atlas/blocks.png")){
             for(CGGlassBlock block : ConnectedGlass.BLOCKS){
                 e.addSprite(block.getRegistryName());
             }
@@ -56,9 +56,9 @@ public class ClientProxy {
 
     @SubscribeEvent
     public static void onStitch(TextureStitchEvent.Post e){
-        if(e.getMap().location().toString().equals("minecraft:textures/atlas/blocks.png")){
+        if(e.getAtlas().location().toString().equals("minecraft:textures/atlas/blocks.png")){
             for(CGGlassBlock block : ConnectedGlass.BLOCKS){
-                TEXTURES.put(block, e.getMap().getSprite(block.getRegistryName()));
+                TEXTURES.put(block, e.getAtlas().getSprite(block.getRegistryName()));
             }
         }
     }
