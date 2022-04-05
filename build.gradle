@@ -60,6 +60,15 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2855'
+
+    // Rechiseled
+    runtimeOnly fg.deobf('curse.maven:rechiseled-558998:3669007')
+    // Core lib
+    runtimeOnly fg.deobf('curse.maven:supermartijn642s-core-lib-454372:3612379')
+    // Config lib
+    runtimeOnly fg.deobf('curse.maven:supermartijn642s-config-lib-438332:3413933')
+    // Just Enough Items
+//    runtimeOnly fg.deobf('curse.maven:jei-238222:3039707')
 }
 
 sourceSets {

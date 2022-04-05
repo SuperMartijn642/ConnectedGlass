@@ -1,0 +1,16 @@
+{
+  "type": "rechiseled:chiseling",
+  "entries": [
+    {
+      "item": "minecraft:stained_glass_pane",
+      "item_data": 9,
+      "connecting_item": "connectedglass:borderless_glass_cyan_pane"
+    },
+    {
+      "connecting_item": "connectedglass:clear_glass_cyan_pane"
+    },
+    {
+      "connecting_item": "connectedglass:scratched_glass_cyan_pane"
+    }
+  ]
+}
