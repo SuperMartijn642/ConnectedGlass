@@ -5,11 +5,13 @@ buildscript {
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7.+'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
+apply plugin: 'org.spongepowered.mixin'
 
 version = '1.1.1-mc1.15'
 group = 'com.supermartijn642.connectedglass' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -76,6 +78,13 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.15.2-31.2.55'
 
-    // at runtime, use the full JEI jar
-    runtimeOnly fg.deobf("curse.maven:jei-238222:3272032")
+    // Rechiseled
+    implementation fg.deobf('curse.maven:rechiseled-558998:3669012')
+
+    // Core lib
+    runtimeOnly fg.deobf('curse.maven:supermartijn642s-core-lib-454372:3596461')
+    // Config lib
+    runtimeOnly fg.deobf('curse.maven:supermartijn642s-config-lib-438332:3413935')
+    // Just Enough Items
+    runtimeOnly fg.deobf('curse.maven:jei-238222:3272032')
 }
