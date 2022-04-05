@@ -1,6 +1,7 @@
 package com.supermartijn642.connectedglass.data;
 
 import com.supermartijn642.connectedglass.CGGlassType;
+import com.supermartijn642.connectedglass.ConnectedGlass;
 import com.supermartijn642.rechiseled.api.ChiselingRecipeProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.DyeColor;
@@ -112,7 +113,8 @@ public class CGChiselingRecipeProvider extends ChiselingRecipeProvider {
         }
 
         ChiselingRecipeBuilder builder = this.beginRecipe("tinted_glass");
-        CGGlassType.TINTED_BORDERLESS_GLASS.blocks.forEach(
+        builder.add(ConnectedGlass.tinted_glass.asItem(), CGGlassType.TINTED_BORDERLESS_GLASS.block.asItem());
+        CGGlassType.TINTED_BORDERLESS_GLASS.colored_blocks.values().forEach(
             block -> builder.addConnectingItem(block.asItem())
         );
     }

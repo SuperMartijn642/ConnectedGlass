@@ -2,6 +2,7 @@
   "type": "rechiseled:chiseling",
   "entries": [
     {
+      "item": "connectedglass:tinted_glass",
       "connecting_item": "connectedglass:tinted_borderless_glass"
     },
     {
