@@ -1,0 +1,56 @@
+{
+  "type": "rechiseled:chiseling",
+  "entries": [
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_white"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_orange"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_magenta"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_light_blue"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_yellow"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_lime"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_pink"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_gray"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_light_gray"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_cyan"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_purple"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_blue"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_brown"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_green"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_red"
+    },
+    {
+      "connecting_item": "connectedglass:tinted_borderless_glass_black"
+    }
+  ]
+}

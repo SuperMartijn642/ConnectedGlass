@@ -24,8 +24,6 @@ run
 # Files from Forge MDK
 forge*changelog.txt
 
-!.idea
-
 images
 logs
 desktop.ini

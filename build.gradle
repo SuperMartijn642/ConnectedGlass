@@ -76,6 +76,13 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.14.4-28.2.23'
 
-    // at runtime, use the full JEI jar
-    runtimeOnly fg.deobf("curse.maven:jei-238222:3039707")
+    // Rechiseled
+    implementation fg.deobf('curse.maven:rechiseled-558998:3669008')
+
+    // Core lib
+    runtimeOnly fg.deobf('curse.maven:supermartijn642s-core-lib-454372:3596458')
+    // Config lib
+    runtimeOnly fg.deobf('curse.maven:supermartijn642s-config-lib-438332:3413934')
+    // Just Enough Items
+    runtimeOnly fg.deobf('curse.maven:jei-238222:3039707')
 }
