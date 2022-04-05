@@ -1,0 +1,15 @@
+{
+  "type": "rechiseled:chiseling",
+  "entries": [
+    {
+      "item": "minecraft:brown_stained_glass",
+      "connecting_item": "connectedglass:borderless_glass_brown"
+    },
+    {
+      "connecting_item": "connectedglass:clear_glass_brown"
+    },
+    {
+      "connecting_item": "connectedglass:scratched_glass_brown"
+    }
+  ]
+}

@@ -33,7 +33,7 @@ authors="SuperMartijn642" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''Connected Glass adds new types of glass with connecting textures'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.movingelevators]] #optional
+[[dependencies.connectedglass]] #optional
     # the modid of the dependency
     modId="forge" #mandatory
     # Does this dependency have to exist - if not, ordering below must be specified
@@ -45,7 +45,7 @@ description='''Connected Glass adds new types of glass with connecting textures'
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
 # Here's another dependency
-[[dependencies.movingelevators]]
+[[dependencies.connectedglass]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.17,1.18)"

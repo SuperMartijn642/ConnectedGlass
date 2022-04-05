@@ -77,6 +77,7 @@ public class ConnectedGlass {
                 e.getGenerator().addProvider(blockTagProvider);
                 e.getGenerator().addProvider(new CGItemTagProvider(e.getGenerator(), blockTagProvider, e.getExistingFileHelper()));
                 e.getGenerator().addProvider(new CGLootTableProvider(e.getGenerator()));
+                e.getGenerator().addProvider(new CGChiselingRecipeProvider(e.getGenerator(), e.getExistingFileHelper()));
             }
 
             if(e.includeClient()){
@@ -85,5 +86,4 @@ public class ConnectedGlass {
             }
         }
     }
-
 }
