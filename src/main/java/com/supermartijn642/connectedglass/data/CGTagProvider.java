@@ -4,7 +4,7 @@ import com.supermartijn642.connectedglass.CGGlassType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
@@ -19,8 +19,8 @@ import java.util.Map;
  */
 public class CGTagProvider {
 
-    public static final Map<Tag.Named<Block>,List<Block>> BLOCK_TAGS = new HashMap<>();
-    public static final Map<Tag.Named<Item>,List<Block>> ITEM_TAGS = new HashMap<>();
+    public static final Map<TagKey<Block>,List<Block>> BLOCK_TAGS = new HashMap<>();
+    public static final Map<TagKey<Item>,List<Block>> ITEM_TAGS = new HashMap<>();
 
     public static void init(){
         ArrayList<Block> glass = new ArrayList<>();
@@ -54,14 +54,14 @@ public class CGTagProvider {
         add(glass, Tags.Blocks.GLASS, Tags.Items.GLASS);
         add(glassColored, Tags.Blocks.STAINED_GLASS, Tags.Items.STAINED_GLASS);
         add(glassColorless, Tags.Blocks.GLASS_COLORLESS, Tags.Items.GLASS_COLORLESS);
-        add(glassTinted, BlockTags.createOptional(new ResourceLocation("forge","glass/tinted")), ItemTags.createOptional(new ResourceLocation("forge","glass/tinted")));
+        add(glassTinted, BlockTags.create(new ResourceLocation("forge", "glass/tinted")), ItemTags.create(new ResourceLocation("forge", "glass/tinted")));
         add(panes, Tags.Blocks.GLASS_PANES, Tags.Items.GLASS_PANES);
         add(panesColored, Tags.Blocks.STAINED_GLASS_PANES, Tags.Items.STAINED_GLASS_PANES);
         add(panesColorless, Tags.Blocks.GLASS_PANES_COLORLESS, Tags.Items.GLASS_PANES_COLORLESS);
-        add(panesTinted, BlockTags.createOptional(new ResourceLocation("forge","glass_panes/tinted")), ItemTags.createOptional(new ResourceLocation("forge","glass_panes/tinted")));
+        add(panesTinted, BlockTags.create(new ResourceLocation("forge", "glass_panes/tinted")), ItemTags.create(new ResourceLocation("forge", "glass_panes/tinted")));
     }
 
-    private static void add(List<Block> blocks, Tag.Named<Block> blockTag, Tag.Named<Item> itemTag){
+    private static void add(List<Block> blocks, TagKey<Block> blockTag, TagKey<Item> itemTag){
         BLOCK_TAGS.put(blockTag, blocks);
         ITEM_TAGS.put(itemTag, blocks);
     }

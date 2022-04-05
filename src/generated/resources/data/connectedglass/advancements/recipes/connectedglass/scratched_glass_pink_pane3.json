@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "connectedglass:scratched_glass_pink_pane3"
+    ]
+  },
+  "criteria": {
+    "glass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "connectedglass:scratched_glass_pink"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:scratched_glass_pink_pane3"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "glass",
+      "has_the_recipe"
+    ]
+  ]
+}

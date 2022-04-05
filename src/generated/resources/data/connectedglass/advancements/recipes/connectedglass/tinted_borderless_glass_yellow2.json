@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "connectedglass:tinted_borderless_glass_yellow2"
+    ]
+  },
+  "criteria": {
+    "glass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "connectedglass:tinted_borderless_glass"
+            ]
+          }
+        ]
+      }
+    },
+    "dye": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dyes/yellow"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:tinted_borderless_glass_yellow2"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "glass",
+      "dye",
+      "has_the_recipe"
+    ]
+  ]
+}

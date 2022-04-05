@@ -2,7 +2,7 @@ package com.supermartijn642.connectedglass.data;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -22,7 +22,7 @@ public class CGBlockTagProvider extends BlockTagsProvider {
         CGTagProvider.BLOCK_TAGS.forEach(this::addAll);
     }
 
-    private void addAll(Tag.Named<Block> blockTag, List<Block> blocks){
+    private void addAll(TagKey<Block> blockTag, List<Block> blocks){
         TagAppender<Block> tag = this.tag(blockTag);
         blocks.forEach(tag::add);
     }
