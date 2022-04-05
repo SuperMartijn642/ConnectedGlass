@@ -1,8 +1,12 @@
 ![Connected Glass](https://imgur.com/9HhMKLg.png)  
 **Connected Glass** adds new types of glass with connecting textures! This includes regular, clear and the old glass textures!
 
+---
+
 ### CurseForge
 For more info and downloads, check out the project on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/connected-glass)
+
+---
 
 ### Content:
 
@@ -21,6 +25,8 @@ For more info and downloads, check out the project on [CurseForge](https://www.c
 
 ![Scratched Glass](https://imgur.com/SPgoOZY.png)
 
+---
+
 ### FAQ
 What if I also want the vanilla textures?  
 Connected Glass doesn't replace the vanilla glass blocks, but instead adds extra ones  
@@ -31,6 +37,8 @@ Yes, for every glass type there are also all the colored versions
 Can I use your mod in my modpack?  
 Yes, feel free to use my mod in your modpack
 
+---
+
 ### Discord
 For future content, upcoming mods, and discussion, feel free to join the SuperMartijn642 discord server!  
-[<img width='200' src='https://snrclan.com/wp-content/uploads/2020/02/join-discord-png-13.png'>](https://discord.gg/QEbGyUYB2e)
+[<img width='400' src='https://discord.com/assets/cb48d2a8d4991281d7a6a95d2f58195e.svg'>](https://discord.gg/QEbGyUYB2e)
