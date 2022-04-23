@@ -32,7 +32,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
 
     // Rechiseled
-    implementation fg.deobf('curse.maven:rechiseled-558998:3669012')
+    implementation fg.deobf("curse.maven:rechiseled-558998:${project.rechiseled_file}")
 
     // Just Enough Items
     runtimeOnly fg.deobf("curse.maven:jei-238222:${project.just_enough_items_file}")
