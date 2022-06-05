@@ -13,6 +13,7 @@ import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,15 +27,21 @@ public class ClientProxy {
     public static final Map<CGGlassBlock,TextureAtlasSprite> TEXTURES = new HashMap<>();
 
     @SubscribeEvent
+    public static void onSetup(FMLClientSetupEvent e){
+        for(CGGlassBlock block : ConnectedGlass.BLOCKS)
+            ItemBlockRenderTypes.setRenderLayer(block, block instanceof CGColoredGlassBlock || block instanceof CGTintedGlassBlock ? RenderType.translucent() : RenderType.cutout());
+        for(CGPaneBlock pane : ConnectedGlass.PANES)
+            ItemBlockRenderTypes.setRenderLayer(pane, pane instanceof CGColoredPaneBlock ? RenderType.translucent() : RenderType.cutoutMipped());
+    }
+
+    @SubscribeEvent
     public static void onBake(ModelBakeEvent e){
         for(CGGlassBlock block : ConnectedGlass.BLOCKS){
-            ItemBlockRenderTypes.setRenderLayer(block, block instanceof CGColoredGlassBlock || block instanceof CGTintedGlassBlock ? RenderType.translucent() : RenderType.cutout());
             CGBakedModel model = block.connected ? new CGConnectedBakedModel(block) : new CGBakedModel(block);
             e.getModelRegistry().put(new ModelResourceLocation(block.getRegistryName(), ""), model);
             e.getModelRegistry().put(new ModelResourceLocation(block.getRegistryName(), "inventory"), model);
         }
         for(CGPaneBlock pane : ConnectedGlass.PANES){
-            ItemBlockRenderTypes.setRenderLayer(pane, pane instanceof CGColoredPaneBlock ? RenderType.translucent() : RenderType.cutoutMipped());
             CGPaneBakedModel model = pane.block.connected ? new CGConnectedPaneBakedModel(pane) : new CGPaneBakedModel(pane);
             e.getModelRegistry().put(new ModelResourceLocation(pane.getRegistryName(), "inventory"), model);
             pane.getStateDefinition().getPossibleStates().forEach(state -> {
