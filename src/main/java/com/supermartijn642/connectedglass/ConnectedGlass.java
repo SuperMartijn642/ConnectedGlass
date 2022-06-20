@@ -1,15 +1,18 @@
 package com.supermartijn642.connectedglass;
 
 import com.supermartijn642.connectedglass.data.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.RegisterEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +41,14 @@ public class ConnectedGlass {
     public static class RegistryEvents {
 
         @SubscribeEvent
-        public static void onBlockRegistry(final RegistryEvent.Register<Block> e){
+        public static void onRegisterEvent(RegisterEvent e){
+            if(e.getRegistryKey().equals(ForgeRegistries.Keys.BLOCKS))
+                onBlockRegistry(Objects.requireNonNull(e.getForgeRegistry()));
+            else if(e.getRegistryKey().equals(ForgeRegistries.Keys.ITEMS))
+                onItemRegistry(Objects.requireNonNull(e.getForgeRegistry()));
+        }
+
+        public static void onBlockRegistry(IForgeRegistry<Block> registry){
             // add blocks
             for(CGGlassType type : CGGlassType.values()){
                 type.init();
@@ -48,41 +58,40 @@ public class ConnectedGlass {
             }
 
             // register blocks
-            for(Block block : BLOCKS)
-                e.getRegistry().register(block);
+            for(CGGlassBlock block : BLOCKS)
+                registry.register(block.getRegistryName(), block);
 
             // register panes
-            for(Block pane : PANES)
-                e.getRegistry().register(pane);
+            for(CGPaneBlock pane : PANES)
+                registry.register(pane.getRegistryName(), pane);
         }
 
-        @SubscribeEvent
-        public static void onItemRegistry(final RegistryEvent.Register<Item> e){
-            for(Block block : BLOCKS)
-                registerItemBlock(e, block);
-            for(Block pane : PANES)
-                registerItemBlock(e, pane);
+        public static void onItemRegistry(IForgeRegistry<Item> registry){
+            for(CGGlassBlock block : BLOCKS)
+                registerItemBlock(registry, block.getRegistryName(), block);
+            for(CGPaneBlock pane : PANES)
+                registerItemBlock(registry, pane.getRegistryName(), pane);
         }
 
-        private static void registerItemBlock(RegistryEvent.Register<Item> e, Block block){
-            e.getRegistry().register(new BlockItem(block, new Item.Properties().tab(GROUP)).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
+        private static void registerItemBlock(IForgeRegistry<Item> registry, ResourceLocation registryName, Block block){
+            registry.register(registryName, new BlockItem(block, new Item.Properties().tab(GROUP)));
         }
 
         @SubscribeEvent
         public static void registerDataProviders(final GatherDataEvent e){
             if(e.includeServer()){
-                e.getGenerator().addProvider(new CGRecipeProvider(e.getGenerator()));
+                e.getGenerator().addProvider(true, new CGRecipeProvider(e.getGenerator()));
                 CGTagProvider.init();
                 CGBlockTagProvider blockTagProvider = new CGBlockTagProvider(e.getGenerator(), e.getExistingFileHelper());
-                e.getGenerator().addProvider(blockTagProvider);
-                e.getGenerator().addProvider(new CGItemTagProvider(e.getGenerator(), blockTagProvider, e.getExistingFileHelper()));
-                e.getGenerator().addProvider(new CGLootTableProvider(e.getGenerator()));
-                e.getGenerator().addProvider(new CGChiselingRecipeProvider(e.getGenerator(), e.getExistingFileHelper()));
+                e.getGenerator().addProvider(true, blockTagProvider);
+                e.getGenerator().addProvider(true, new CGItemTagProvider(e.getGenerator(), blockTagProvider, e.getExistingFileHelper()));
+                e.getGenerator().addProvider(true, new CGLootTableProvider(e.getGenerator()));
+                e.getGenerator().addProvider(true, new CGChiselingRecipeProvider(e.getGenerator(), e.getExistingFileHelper()));
             }
 
             if(e.includeClient()){
-                e.getGenerator().addProvider(new CGDummyBlockStateProvider(e.getGenerator(), e.getExistingFileHelper()));
-                e.getGenerator().addProvider(new CGDummyItemModelProvider(e.getGenerator(), e.getExistingFileHelper()));
+                e.getGenerator().addProvider(true, new CGDummyBlockStateProvider(e.getGenerator(), e.getExistingFileHelper()));
+                e.getGenerator().addProvider(true, new CGDummyItemModelProvider(e.getGenerator(), e.getExistingFileHelper()));
             }
         }
     }

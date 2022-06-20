@@ -10,6 +10,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.BeaconBeamBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -119,7 +120,7 @@ public class CGRecipeProvider extends RecipeProvider {
                 .pattern("GG").pattern("GG")
                 .define('G', previous)
                 .unlockedBy("glass", has(previous))
-                .save(consumer, new ResourceLocation("connectedglass", "vanilla_" + block.getRegistryName().getPath()));
+                .save(consumer, new ResourceLocation("connectedglass", "vanilla_" + ForgeRegistries.BLOCKS.getKey(block).getPath()));
         }
 
         // panes from previous type to vanilla
@@ -130,7 +131,7 @@ public class CGRecipeProvider extends RecipeProvider {
                 .pattern("GG").pattern("GG")
                 .define('G', previous)
                 .unlockedBy("glass_pane", has(previous))
-                .save(consumer, new ResourceLocation("connectedglass", "vanilla_" + pane.getRegistryName().getPath()));
+                .save(consumer, new ResourceLocation("connectedglass", "vanilla_" + ForgeRegistries.BLOCKS.getKey(pane).getPath()));
         }
 
         // blocks from previous type to vanilla tinted
@@ -139,7 +140,7 @@ public class CGRecipeProvider extends RecipeProvider {
             .pattern("GG").pattern("GG")
             .define('G', previous)
             .unlockedBy("glass", has(previous))
-            .save(consumer, new ResourceLocation("connectedglass", "vanilla_" + Blocks.TINTED_GLASS.getRegistryName().getPath()));
+            .save(consumer, new ResourceLocation("connectedglass", "vanilla_" + ForgeRegistries.BLOCKS.getKey(Blocks.TINTED_GLASS).getPath()));
     }
 
     private void gatherVanillaBlocks(){

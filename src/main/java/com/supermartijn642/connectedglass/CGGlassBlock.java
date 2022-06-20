@@ -9,20 +9,23 @@ import net.minecraft.world.level.block.AbstractGlassBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
+import net.minecraftforge.fml.ModLoadingContext;
 
 /**
  * Created 5/7/2020 by SuperMartijn642
  */
 public class CGGlassBlock extends AbstractGlassBlock {
 
+    private final ResourceLocation registryName;
+
     public final ResourceLocation texture;
     public final boolean connected;
 
     public CGGlassBlock(String registryName, String texture, boolean connected){
         super(Properties.of(Material.GLASS).sound(SoundType.GLASS).strength(0.3f).noOcclusion());
+        this.registryName = new ResourceLocation(ModLoadingContext.get().getActiveNamespace(), registryName);
         this.texture = new ResourceLocation("connectedglass", texture);
         this.connected = connected;
-        this.setRegistryName(registryName);
     }
 
     public CGGlassBlock(String registryName, boolean connected){
@@ -36,5 +39,9 @@ public class CGGlassBlock extends AbstractGlassBlock {
     @Override
     public boolean isValidSpawn(BlockState state, BlockGetter world, BlockPos pos, SpawnPlacements.Type type, EntityType<?> entityType){
         return false;
+    }
+
+    public ResourceLocation getRegistryName(){
+        return this.registryName;
     }
 }
