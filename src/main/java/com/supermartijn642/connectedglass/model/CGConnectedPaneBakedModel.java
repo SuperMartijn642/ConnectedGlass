@@ -8,11 +8,10 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.IModelData;
+import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.client.model.data.ModelProperty;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,14 +20,16 @@ import java.util.Map;
  */
 public class CGConnectedPaneBakedModel extends CGPaneBakedModel {
 
+    private static final ModelProperty<PaneModelData> PANE_MODEL_DATA_PROPERTY = new ModelProperty<>();
+
     public CGConnectedPaneBakedModel(CGPaneBlock block){
         super(block);
     }
 
     @Nonnull
     @Override
-    public IModelData getModelData(@Nonnull BlockAndTintGetter world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData){
-        ModelData modelData = new ModelData();
+    public ModelData getModelData(@Nonnull BlockAndTintGetter world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull ModelData tileData){
+        PaneModelData modelData = new PaneModelData();
         for(Direction direction : Direction.Plane.HORIZONTAL){
             modelData.sides.put(direction, new SideData(direction, world, pos, state.getBlock()));
             BlockState upState = world.getBlockState(pos.above());
@@ -41,17 +42,17 @@ public class CGConnectedPaneBakedModel extends CGPaneBakedModel {
             modelData.downPost = downState.getBlock() == state.getBlock();
         }
 
-        return modelData;
+        return ModelData.builder().with(PANE_MODEL_DATA_PROPERTY, modelData).build();
     }
 
     @Override
-    protected boolean isEnabledUp(Direction part, IModelData extraData){
-        return extraData instanceof ModelData && (part == null ? ((ModelData)extraData).upPost : ((ModelData)extraData).up.get(part));
+    protected boolean isEnabledUp(Direction part, ModelData extraData){
+        return extraData.has(PANE_MODEL_DATA_PROPERTY) && (part == null ? extraData.get(PANE_MODEL_DATA_PROPERTY).upPost : extraData.get(PANE_MODEL_DATA_PROPERTY).up.get(part));
     }
 
     @Override
-    protected boolean isEnabledDown(Direction part, IModelData extraData){
-        return extraData instanceof ModelData && (part == null ? ((ModelData)extraData).downPost : ((ModelData)extraData).down.get(part));
+    protected boolean isEnabledDown(Direction part, ModelData extraData){
+        return extraData.has(PANE_MODEL_DATA_PROPERTY) && (part == null ? extraData.get(PANE_MODEL_DATA_PROPERTY).downPost : extraData.get(PANE_MODEL_DATA_PROPERTY).down.get(part));
     }
 
     @Override
@@ -60,14 +61,14 @@ public class CGConnectedPaneBakedModel extends CGPaneBakedModel {
     }
 
     @Override
-    protected float[] getUV(Direction side, IModelData modelData){
+    protected float[] getUV(Direction side, ModelData modelData){
         if(side == Direction.UP || side == Direction.DOWN)
             return this.getBorderUV();
 
-        if(!(modelData instanceof ModelData))
-            return getUV(0, 0);
+        if(!modelData.has(PANE_MODEL_DATA_PROPERTY))
+            return this.getUV(0, 0);
 
-        SideData blocks = ((ModelData)modelData).sides.get(side);
+        SideData blocks = modelData.get(PANE_MODEL_DATA_PROPERTY).sides.get(side);
         float[] uv;
 
         if(!blocks.left && !blocks.up && !blocks.right && !blocks.down) // all directions
@@ -194,28 +195,11 @@ public class CGConnectedPaneBakedModel extends CGPaneBakedModel {
         return new float[]{x * 2, y * 2, (x + 1) * 2, (y + 1) * 2};
     }
 
-    private static class ModelData implements IModelData {
+    private static class PaneModelData {
 
         public Map<Direction,SideData> sides = new HashMap<>();
         public Map<Direction,Boolean> up = new HashMap<>(), down = new HashMap<>();
         public boolean upPost, downPost;
-
-        @Override
-        public boolean hasProperty(ModelProperty<?> prop){
-            return false;
-        }
-
-        @Nullable
-        @Override
-        public <T> T getData(ModelProperty<T> prop){
-            return null;
-        }
-
-        @Nullable
-        @Override
-        public <T> T setData(ModelProperty<T> prop, T data){
-            return null;
-        }
     }
 
     private static class SideData {

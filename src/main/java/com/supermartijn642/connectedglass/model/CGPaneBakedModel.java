@@ -4,6 +4,7 @@ import com.mojang.math.Vector3f;
 import com.supermartijn642.connectedglass.CGPaneBlock;
 import com.supermartijn642.connectedglass.ClientProxy;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.*;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BlockModelRotation;
@@ -14,8 +15,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CrossCollisionBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraftforge.client.model.data.IDynamicBakedModel;
-import net.minecraftforge.client.model.data.IModelData;
+import net.minecraftforge.client.model.IDynamicBakedModel;
+import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
@@ -74,7 +75,7 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
 
     @Nonnull
     @Override
-    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull RandomSource rand, @Nonnull IModelData extraData){
+    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull RandomSource rand, @Nonnull ModelData extraData, RenderType renderType){
         List<BakedQuad> quads = new ArrayList<>();
 
         Direction[] sides = side == null ? Direction.values() : new Direction[]{side};
@@ -94,7 +95,7 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
         return ClientProxy.TEXTURES.get(this.pane.block);
     }
 
-    protected float[] getUV(Direction side, IModelData modelData){
+    protected float[] getUV(Direction side, ModelData modelData){
         if(side == Direction.UP || side == Direction.DOWN)
             return this.getBorderUV();
         return new float[]{0, 0, 16, 16};
@@ -191,11 +192,11 @@ public class CGPaneBakedModel implements IDynamicBakedModel {
         return new float[]{0, 0, 16, 16};
     }
 
-    protected boolean isEnabledUp(Direction part, IModelData extraData){
+    protected boolean isEnabledUp(Direction part, ModelData extraData){
         return false;
     }
 
-    protected boolean isEnabledDown(Direction part, IModelData extraData){
+    protected boolean isEnabledDown(Direction part, ModelData extraData){
         return false;
     }
 

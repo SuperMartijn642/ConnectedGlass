@@ -4,6 +4,7 @@ import com.mojang.math.Vector3f;
 import com.supermartijn642.connectedglass.CGGlassBlock;
 import com.supermartijn642.connectedglass.ClientProxy;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.*;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BlockModelRotation;
@@ -12,8 +13,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.IDynamicBakedModel;
-import net.minecraftforge.client.model.data.IModelData;
+import net.minecraftforge.client.model.IDynamicBakedModel;
+import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
@@ -71,7 +72,7 @@ public class CGBakedModel implements IDynamicBakedModel {
 
     @Nonnull
     @Override
-    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull RandomSource rand, @Nonnull IModelData extraData){
+    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull RandomSource rand, @Nonnull ModelData extraData, RenderType renderType){
         if(side == null)
             return Collections.emptyList();
 
@@ -82,13 +83,13 @@ public class CGBakedModel implements IDynamicBakedModel {
         return ClientProxy.TEXTURES.get(this.block);
     }
 
-    protected BakedQuad createQuad(Direction side, IModelData modelData){
+    protected BakedQuad createQuad(Direction side, ModelData modelData){
         BlockElementFace face = new BlockElementFace(side.getOpposite(), 0, "", new BlockFaceUV(this.getUV(side, modelData), 0));
         BakedQuad quad = BAKERY.bakeQuad(new Vector3f(0, 0, 0), new Vector3f(16, 16, 16), face, getTexture(), side, BlockModelRotation.X0_Y0, null, true, null);
         return quad;
     }
 
-    protected float[] getUV(Direction side, IModelData modelData){
+    protected float[] getUV(Direction side, ModelData modelData){
         return new float[]{0, 0, 16, 16};
     }
 }

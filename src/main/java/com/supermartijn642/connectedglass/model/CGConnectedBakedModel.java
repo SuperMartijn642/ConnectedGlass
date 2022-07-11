@@ -7,11 +7,10 @@ import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.IModelData;
+import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.client.model.data.ModelProperty;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,25 +19,26 @@ import java.util.Map;
  */
 public class CGConnectedBakedModel extends CGBakedModel {
 
+    private static final ModelProperty<Map<Direction,SideData>> CONNECTION_MODEL_PROPERTY = new ModelProperty<>();
+
     public CGConnectedBakedModel(CGGlassBlock block){
         super(block);
     }
 
-    @Nonnull
     @Override
-    public IModelData getModelData(@Nonnull BlockAndTintGetter world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData){
-        ModelData modelData = new ModelData();
+    public @Nonnull ModelData getModelData(@Nonnull BlockAndTintGetter world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull ModelData tileData){
+        Map<Direction,SideData> connections = new HashMap<>();
         for(Direction direction : Direction.values())
-            modelData.sides.put(direction, new SideData(direction, world, pos, state.getBlock()));
-        return modelData;
+            connections.put(direction, new SideData(direction, world, pos, state.getBlock()));
+        return ModelData.builder().with(CONNECTION_MODEL_PROPERTY, connections).build();
     }
 
     @Override
-    protected float[] getUV(Direction side, IModelData modelData){
-        if(!(modelData instanceof ModelData))
-            return getUV(0, 0);
+    protected float[] getUV(Direction side, ModelData modelData){
+        if(!modelData.has(CONNECTION_MODEL_PROPERTY))
+            return this.getUV(0, 0);
 
-        SideData blocks = ((ModelData)modelData).sides.get(side);
+        SideData blocks = modelData.get(CONNECTION_MODEL_PROPERTY).get(side);
         float[] uv;
 
         if(!blocks.left && !blocks.up && !blocks.right && !blocks.down) // all directions
@@ -163,28 +163,6 @@ public class CGConnectedBakedModel extends CGBakedModel {
 
     private float[] getUV(int x, int y){
         return new float[]{x * 2, y * 2, (x + 1) * 2, (y + 1) * 2};
-    }
-
-    private static class ModelData implements IModelData {
-
-        public Map<Direction,SideData> sides = new HashMap<>();
-
-        @Override
-        public boolean hasProperty(ModelProperty<?> prop){
-            return false;
-        }
-
-        @Nullable
-        @Override
-        public <T> T getData(ModelProperty<T> prop){
-            return null;
-        }
-
-        @Nullable
-        @Override
-        public <T> T setData(ModelProperty<T> prop, T data){
-            return null;
-        }
     }
 
     private static class SideData {
