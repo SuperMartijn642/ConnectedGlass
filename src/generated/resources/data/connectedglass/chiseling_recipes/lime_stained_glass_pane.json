@@ -2,8 +2,8 @@
   "type": "rechiseled:chiseling",
   "entries": [
     {
-      "item": "minecraft:lime_stained_glass_pane",
-      "connecting_item": "connectedglass:borderless_glass_lime_pane"
+      "connecting_item": "connectedglass:borderless_glass_lime_pane",
+      "item": "minecraft:lime_stained_glass_pane"
     },
     {
       "connecting_item": "connectedglass:clear_glass_lime_pane"

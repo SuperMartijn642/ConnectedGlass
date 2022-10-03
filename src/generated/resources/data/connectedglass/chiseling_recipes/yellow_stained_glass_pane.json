@@ -2,8 +2,8 @@
   "type": "rechiseled:chiseling",
   "entries": [
     {
-      "item": "minecraft:yellow_stained_glass_pane",
-      "connecting_item": "connectedglass:borderless_glass_yellow_pane"
+      "connecting_item": "connectedglass:borderless_glass_yellow_pane",
+      "item": "minecraft:yellow_stained_glass_pane"
     },
     {
       "connecting_item": "connectedglass:clear_glass_yellow_pane"

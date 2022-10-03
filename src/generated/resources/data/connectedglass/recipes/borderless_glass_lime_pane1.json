@@ -1,11 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "GG",
-    "GG"
+    "AA",
+    "AA"
   ],
   "key": {
-    "G": {
+    "A": {
       "item": "minecraft:lime_stained_glass_pane"
     }
   },
