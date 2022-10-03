@@ -1,15 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "GGG",
-    "GDG",
-    "GGG"
+    "AAA",
+    "ABA",
+    "AAA"
   ],
   "key": {
-    "G": {
+    "A": {
       "item": "connectedglass:scratched_glass_pane"
     },
-    "D": {
+    "B": {
       "tag": "forge:dyes/lime"
     }
   },

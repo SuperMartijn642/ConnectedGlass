@@ -1,12 +1,32 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "connectedglass:clear_glass_light_blue2"
-    ]
+  "display": {
+    "icon": {
+      "item": "connectedglass:clear_glass_light_blue"
+    },
+    "title": {
+      "translate": "connectedglass.advancement.recipes/connectedglass/clear_glass_light_blue2.title"
+    },
+    "description": {
+      "translate": "connectedglass.advancement.recipes/connectedglass/clear_glass_light_blue2.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
   },
   "criteria": {
-    "glass": {
+    "recipe_condition2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dyes/light_blue"
+          }
+        ]
+      }
+    },
+    "recipe_condition1": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -14,16 +34,6 @@
             "items": [
               "connectedglass:clear_glass"
             ]
-          }
-        ]
-      }
-    },
-    "dye": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "tag": "forge:dyes/light_blue"
           }
         ]
       }
@@ -37,9 +47,14 @@
   },
   "requirements": [
     [
-      "glass",
-      "dye",
-      "has_the_recipe"
+      "has_the_recipe",
+      "recipe_condition1",
+      "recipe_condition2"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "connectedglass:clear_glass_light_blue2"
+    ]
+  }
 }

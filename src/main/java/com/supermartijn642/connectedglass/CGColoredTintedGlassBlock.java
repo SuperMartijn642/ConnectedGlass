@@ -10,23 +10,17 @@ import net.minecraft.world.level.block.state.BlockState;
  */
 public class CGColoredTintedGlassBlock extends CGColoredGlassBlock {
 
-    private DyeColor color;
-
-    public CGColoredTintedGlassBlock(String registryName, String texture, boolean connected, DyeColor color){
-        super(registryName, texture, connected, color);
-    }
-
-    public CGColoredTintedGlassBlock(String registryName, boolean connected, DyeColor color){
-        super(registryName, registryName, connected, color);
+    public CGColoredTintedGlassBlock(String texture, boolean connected, DyeColor color){
+        super(texture, connected, color);
     }
 
     @Override
-    public boolean propagatesSkylightDown(BlockState state, BlockGetter world, BlockPos pos){
+    public boolean propagatesSkylightDown(BlockState state, BlockGetter level, BlockPos pos){
         return false;
     }
 
     @Override
-    public int getLightBlock(BlockState state, BlockGetter world, BlockPos pos){
-        return world.getMaxLightLevel();
+    public int getLightBlock(BlockState state, BlockGetter level, BlockPos pos){
+        return level.getMaxLightLevel();
     }
 }

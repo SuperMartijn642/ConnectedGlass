@@ -14,6 +14,5 @@ public class CGPaneBlock extends IronBarsBlock {
     public CGPaneBlock(CGGlassBlock block){
         super(Properties.of(Material.GLASS).sound(SoundType.GLASS).strength(0.3f).noOcclusion());
         this.block = block;
-        this.setRegistryName(block.getRegistryName().getPath() + "_pane");
     }
 }
