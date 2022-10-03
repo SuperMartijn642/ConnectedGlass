@@ -1,12 +1,28 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "connectedglass:borderless_glass_magenta_pane1"
-    ]
+  "display": {
+    "icon": {
+      "item": "connectedglass:borderless_glass_magenta_pane"
+    },
+    "title": {
+      "translate": "connectedglass.advancement.recipes/connectedglass/borderless_glass_magenta_pane1.title"
+    },
+    "description": {
+      "translate": "connectedglass.advancement.recipes/connectedglass/borderless_glass_magenta_pane1.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
   },
   "criteria": {
-    "glass_pane": {
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:borderless_glass_magenta_pane1"
+      }
+    },
+    "recipe_condition": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -17,18 +33,17 @@
           }
         ]
       }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "connectedglass:borderless_glass_magenta_pane1"
-      }
     }
   },
   "requirements": [
     [
-      "glass_pane",
-      "has_the_recipe"
+      "has_the_recipe",
+      "recipe_condition"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "connectedglass:borderless_glass_magenta_pane1"
+    ]
+  }
 }

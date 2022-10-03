@@ -1,11 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "GGG",
-    "GGG"
+    "AAA",
+    "AAA"
   ],
   "key": {
-    "G": {
+    "A": {
       "item": "connectedglass:clear_glass_yellow"
     }
   },

@@ -8,24 +8,15 @@ import net.minecraft.world.level.block.BeaconBeamBlock;
  */
 public class CGColoredGlassBlock extends CGGlassBlock implements BeaconBeamBlock {
 
-    private DyeColor color;
+    private final DyeColor color;
 
-    public CGColoredGlassBlock(String registryName, String texture, boolean connected, DyeColor color){
-        super(registryName, texture, connected);
+    public CGColoredGlassBlock(String texture, boolean connected, DyeColor color){
+        super(texture, connected);
         this.color = color;
-    }
-
-    public CGColoredGlassBlock(String registryName, boolean connected, DyeColor color){
-        this(registryName, registryName, connected, color);
     }
 
     @Override
     public DyeColor getColor(){
         return this.color;
-    }
-
-    @Override
-    public CGColoredPaneBlock createPane(){
-        return new CGColoredPaneBlock(this);
     }
 }
