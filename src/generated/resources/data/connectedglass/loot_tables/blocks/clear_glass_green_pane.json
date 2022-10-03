@@ -3,12 +3,6 @@
   "pools": [
     {
       "rolls": 1,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "connectedglass:clear_glass_green_pane"
-        }
-      ],
       "conditions": [
         {
           "condition": "minecraft:match_tool",
@@ -22,6 +16,12 @@
               }
             ]
           }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "connectedglass:clear_glass_green_pane"
         }
       ]
     }

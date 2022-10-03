@@ -18,23 +18,14 @@ public class CGGlassBlock extends AbstractGlassBlock {
     public final ResourceLocation texture;
     public final boolean connected;
 
-    public CGGlassBlock(String registryName, String texture, boolean connected){
+    public CGGlassBlock(String texture, boolean connected){
         super(Properties.of(Material.GLASS).sound(SoundType.GLASS).strength(0.3f).noOcclusion());
         this.texture = new ResourceLocation("connectedglass", texture);
         this.connected = connected;
-        this.setRegistryName(registryName);
-    }
-
-    public CGGlassBlock(String registryName, boolean connected){
-        this(registryName, registryName, connected);
-    }
-
-    public CGPaneBlock createPane(){
-        return new CGPaneBlock(this);
     }
 
     @Override
-    public boolean canCreatureSpawn(BlockState state, IBlockReader world, BlockPos pos, EntitySpawnPlacementRegistry.PlacementType type, EntityType<?> entityType){
+    public boolean canCreatureSpawn(BlockState state, IBlockReader level, BlockPos pos, EntitySpawnPlacementRegistry.PlacementType type, EntityType<?> entityType){
         return false;
     }
 }

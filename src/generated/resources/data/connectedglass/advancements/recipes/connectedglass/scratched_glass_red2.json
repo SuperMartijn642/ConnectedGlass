@@ -1,27 +1,37 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "connectedglass:scratched_glass_red2"
-    ]
+  "display": {
+    "icon": {
+      "item": "connectedglass:scratched_glass_red"
+    },
+    "title": {
+      "translate": "connectedglass.advancement.recipes/connectedglass/scratched_glass_red2.title"
+    },
+    "description": {
+      "translate": "connectedglass.advancement.recipes/connectedglass/scratched_glass_red2.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
   },
   "criteria": {
-    "glass": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "item": "connectedglass:scratched_glass"
-          }
-        ]
-      }
-    },
-    "dye": {
+    "recipe_condition2": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "tag": "forge:dyes/red"
+          }
+        ]
+      }
+    },
+    "recipe_condition1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "connectedglass:scratched_glass"
           }
         ]
       }
@@ -35,9 +45,14 @@
   },
   "requirements": [
     [
-      "glass",
-      "dye",
-      "has_the_recipe"
+      "has_the_recipe",
+      "recipe_condition1",
+      "recipe_condition2"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "connectedglass:scratched_glass_red2"
+    ]
+  }
 }

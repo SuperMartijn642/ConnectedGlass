@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "minecraft:block/cobblestone"
+      "model": "connectedglass:borderless_glass_green"
     }
   }
 }
