@@ -1,1 +1,6 @@
-{}
+{
+  "parent": "connectedglass:pane_item_template",
+  "textures": {
+    "all": "connectedglass:clear_glass_lime"
+  }
+}

@@ -9,21 +9,17 @@ import net.minecraft.world.IBlockReader;
  */
 public class CGTintedGlassBlock extends CGGlassBlock {
 
-    public CGTintedGlassBlock(String registryName, String texture, boolean connected){
-        super(registryName, texture, connected);
-    }
-
-    public CGTintedGlassBlock(String registryName, boolean connected){
-        super(registryName, connected);
+    public CGTintedGlassBlock(String texture, boolean connected){
+        super(texture, connected);
     }
 
     @Override
-    public boolean propagatesSkylightDown(BlockState state, IBlockReader world, BlockPos pos){
+    public boolean propagatesSkylightDown(BlockState state, IBlockReader level, BlockPos pos){
         return false;
     }
 
     @Override
-    public int getLightBlock(BlockState state, IBlockReader world, BlockPos pos){
-        return world.getMaxLightLevel();
+    public int getLightBlock(BlockState state, IBlockReader level, BlockPos pos){
+        return level.getMaxLightLevel();
     }
 }

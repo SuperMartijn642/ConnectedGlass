@@ -1,12 +1,28 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "connectedglass:scratched_glass_light_gray_pane3"
-    ]
+  "display": {
+    "icon": {
+      "item": "connectedglass:scratched_glass_light_gray_pane"
+    },
+    "title": {
+      "translate": "connectedglass.advancement.recipes/connectedglass/scratched_glass_light_gray_pane3.title"
+    },
+    "description": {
+      "translate": "connectedglass.advancement.recipes/connectedglass/scratched_glass_light_gray_pane3.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
   },
   "criteria": {
-    "glass": {
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:scratched_glass_light_gray_pane3"
+      }
+    },
+    "recipe_condition": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -15,18 +31,17 @@
           }
         ]
       }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "connectedglass:scratched_glass_light_gray_pane3"
-      }
     }
   },
   "requirements": [
     [
-      "glass",
-      "has_the_recipe"
+      "has_the_recipe",
+      "recipe_condition"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "connectedglass:scratched_glass_light_gray_pane3"
+    ]
+  }
 }

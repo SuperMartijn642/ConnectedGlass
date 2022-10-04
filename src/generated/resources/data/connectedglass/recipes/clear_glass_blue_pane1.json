@@ -1,11 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "GG",
-    "GG"
+    "AA",
+    "AA"
   ],
   "key": {
-    "G": {
+    "A": {
       "item": "connectedglass:borderless_glass_blue_pane"
     }
   },

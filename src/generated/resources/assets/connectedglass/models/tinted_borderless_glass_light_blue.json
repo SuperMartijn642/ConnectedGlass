@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "connectedglass:tinted_borderless_glass_light_blue"
+  }
+}
