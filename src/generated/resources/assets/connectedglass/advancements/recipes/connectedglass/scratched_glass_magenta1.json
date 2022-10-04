@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "display": {
+    "icon": {
+      "item": "connectedglass:scratched_glass_magenta"
+    },
+    "title": {
+      "translate": "connectedglass.advancement.recipes/connectedglass/scratched_glass_magenta1.title"
+    },
+    "description": {
+      "translate": "connectedglass.advancement.recipes/connectedglass/scratched_glass_magenta1.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:scratched_glass_magenta1"
+      }
+    },
+    "recipe_condition": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "connectedglass:clear_glass_magenta",
+            "data": 0
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "recipe_condition"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "connectedglass:scratched_glass_magenta1"
+    ]
+  }
+}

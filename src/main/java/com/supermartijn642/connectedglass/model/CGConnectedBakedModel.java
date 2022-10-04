@@ -1,144 +1,148 @@
 package com.supermartijn642.connectedglass.model;
 
-import com.supermartijn642.connectedglass.CGGlassBlock;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.block.model.IBakedModel;
+
+import java.util.Arrays;
 
 /**
  * Created 5/7/2020 by SuperMartijn642
  */
 public class CGConnectedBakedModel extends CGBakedModel {
 
-    public CGConnectedBakedModel(CGGlassBlock block){
-        super(block);
-    }
-
-    public static CGModelData getModelData(IBlockAccess world, BlockPos pos, IBlockState state){
-        CGModelData modelData = new CGModelData();
-        for(EnumFacing direction : EnumFacing.values())
-            modelData.sides.put(direction, new CGSideData(direction, world, pos, state.getBlock()));
-        return modelData;
+    public CGConnectedBakedModel(IBakedModel original){
+        super(original);
     }
 
     @Override
-    protected float[] getUV(EnumFacing side, CGModelData modelData){
-        if(modelData == null)
-            return getUV(0, 0);
+    protected BakedQuad remapQuad(BakedQuad quad, CGModelData modelData){
+        int[] vertexData = quad.getVertexData();
+        // Make sure we don't change the original quad
+        vertexData = Arrays.copyOf(vertexData, vertexData.length);
 
-        CGSideData blocks = modelData.sides.get(side);
-        float[] uv;
+        // Adjust the uv
+        int[] newUV = this.getUV(modelData == null ? null : modelData.getSideData(quad.getFace()));
+        adjustVertexDataUV(vertexData, newUV[0], newUV[1], quad.getSprite(), quad.getFormat());
 
-        if(!blocks.left && !blocks.up && !blocks.right && !blocks.down) // all directions
-            uv = this.getUV(0, 0);
+        // Create a new quad
+        return new BakedQuad(vertexData, quad.getTintIndex(), quad.getFace(), quad.getSprite(), quad.shouldApplyDiffuseLighting(), quad.getFormat());
+    }
+
+    protected int[] getUV(SideConnections sideData){
+        if(sideData == null)
+            return new int[]{0, 0};
+
+        int[] uv;
+
+        if(!sideData.left && !sideData.up && !sideData.right && !sideData.down) // all directions
+            uv = new int[]{0, 0};
         else{ // one direction
-            if(blocks.left && !blocks.up && !blocks.right && !blocks.down)
-                uv = this.getUV(3, 0);
-            else if(!blocks.left && blocks.up && !blocks.right && !blocks.down)
-                uv = this.getUV(0, 3);
-            else if(!blocks.left && !blocks.up && blocks.right && !blocks.down)
-                uv = this.getUV(1, 0);
-            else if(!blocks.left && !blocks.up && !blocks.right && blocks.down)
-                uv = this.getUV(0, 1);
+            if(sideData.left && !sideData.up && !sideData.right && !sideData.down)
+                uv = new int[]{3, 0};
+            else if(!sideData.left && sideData.up && !sideData.right && !sideData.down)
+                uv = new int[]{0, 3};
+            else if(!sideData.left && !sideData.up && sideData.right && !sideData.down)
+                uv = new int[]{1, 0};
+            else if(!sideData.left && !sideData.up && !sideData.right && sideData.down)
+                uv = new int[]{0, 1};
             else{ // two directions
-                if(blocks.left && !blocks.up && blocks.right && !blocks.down)
-                    uv = this.getUV(2, 0);
-                else if(!blocks.left && blocks.up && !blocks.right && blocks.down)
-                    uv = this.getUV(0, 2);
-                else if(blocks.left && blocks.up && !blocks.right && !blocks.down){
-                    if(blocks.up_left)
-                        uv = this.getUV(3, 3);
+                if(sideData.left && !sideData.up && sideData.right && !sideData.down)
+                    uv = new int[]{2, 0};
+                else if(!sideData.left && sideData.up && !sideData.right && sideData.down)
+                    uv = new int[]{0, 2};
+                else if(sideData.left && sideData.up && !sideData.right && !sideData.down){
+                    if(sideData.up_left)
+                        uv = new int[]{3, 3};
                     else
-                        uv = this.getUV(5, 1);
-                }else if(!blocks.left && blocks.up && blocks.right && !blocks.down){
-                    if(blocks.up_right)
-                        uv = this.getUV(1, 3);
+                        uv = new int[]{5, 1};
+                }else if(!sideData.left && sideData.up && sideData.right && !sideData.down){
+                    if(sideData.up_right)
+                        uv = new int[]{1, 3};
                     else
-                        uv = this.getUV(4, 1);
-                }else if(!blocks.left && !blocks.up && blocks.right && blocks.down){
-                    if(blocks.down_right)
-                        uv = this.getUV(1, 1);
+                        uv = new int[]{4, 1};
+                }else if(!sideData.left && !sideData.up && sideData.right && sideData.down){
+                    if(sideData.down_right)
+                        uv = new int[]{1, 1};
                     else
-                        uv = this.getUV(4, 0);
-                }else if(blocks.left && !blocks.up && !blocks.right && blocks.down){
-                    if(blocks.down_left)
-                        uv = this.getUV(3, 1);
+                        uv = new int[]{4, 0};
+                }else if(sideData.left && !sideData.up && !sideData.right && sideData.down){
+                    if(sideData.down_left)
+                        uv = new int[]{3, 1};
                     else
-                        uv = this.getUV(5, 0);
+                        uv = new int[]{5, 0};
                 }else{ // three directions
-                    if(!blocks.left){
-                        if(blocks.up_right && blocks.down_right)
-                            uv = this.getUV(1, 2);
-                        else if(blocks.up_right)
-                            uv = this.getUV(4, 2);
-                        else if(blocks.down_right)
-                            uv = this.getUV(6, 2);
+                    if(!sideData.left){
+                        if(sideData.up_right && sideData.down_right)
+                            uv = new int[]{1, 2};
+                        else if(sideData.up_right)
+                            uv = new int[]{4, 2};
+                        else if(sideData.down_right)
+                            uv = new int[]{6, 2};
                         else
-                            uv = this.getUV(6, 0);
-                    }else if(!blocks.up){
-                        if(blocks.down_left && blocks.down_right)
-                            uv = this.getUV(2, 1);
-                        else if(blocks.down_left)
-                            uv = this.getUV(7, 2);
-                        else if(blocks.down_right)
-                            uv = this.getUV(5, 2);
+                            uv = new int[]{6, 0};
+                    }else if(!sideData.up){
+                        if(sideData.down_left && sideData.down_right)
+                            uv = new int[]{2, 1};
+                        else if(sideData.down_left)
+                            uv = new int[]{7, 2};
+                        else if(sideData.down_right)
+                            uv = new int[]{5, 2};
                         else
-                            uv = this.getUV(7, 0);
-                    }else if(!blocks.right){
-                        if(blocks.up_left && blocks.down_left)
-                            uv = this.getUV(3, 2);
-                        else if(blocks.up_left)
-                            uv = this.getUV(7, 3);
-                        else if(blocks.down_left)
-                            uv = this.getUV(5, 3);
+                            uv = new int[]{7, 0};
+                    }else if(!sideData.right){
+                        if(sideData.up_left && sideData.down_left)
+                            uv = new int[]{3, 2};
+                        else if(sideData.up_left)
+                            uv = new int[]{7, 3};
+                        else if(sideData.down_left)
+                            uv = new int[]{5, 3};
                         else
-                            uv = this.getUV(7, 1);
-                    }else if(!blocks.down){
-                        if(blocks.up_left && blocks.up_right)
-                            uv = this.getUV(2, 3);
-                        else if(blocks.up_left)
-                            uv = this.getUV(4, 3);
-                        else if(blocks.up_right)
-                            uv = this.getUV(6, 3);
+                            uv = new int[]{7, 1};
+                    }else if(!sideData.down){
+                        if(sideData.up_left && sideData.up_right)
+                            uv = new int[]{2, 3};
+                        else if(sideData.up_left)
+                            uv = new int[]{4, 3};
+                        else if(sideData.up_right)
+                            uv = new int[]{6, 3};
                         else
-                            uv = this.getUV(6, 1);
+                            uv = new int[]{6, 1};
                     }else{ // four directions
-                        if(blocks.up_left && blocks.up_right && blocks.down_left && blocks.down_right)
-                            uv = this.getUV(2, 2);
+                        if(sideData.up_left && sideData.up_right && sideData.down_left && sideData.down_right)
+                            uv = new int[]{2, 2};
                         else{
-                            if(!blocks.up_left && blocks.up_right && blocks.down_left && blocks.down_right)
-                                uv = this.getUV(7, 7);
-                            else if(blocks.up_left && !blocks.up_right && blocks.down_left && blocks.down_right)
-                                uv = this.getUV(6, 7);
-                            else if(blocks.up_left && blocks.up_right && !blocks.down_left && blocks.down_right)
-                                uv = this.getUV(7, 6);
-                            else if(blocks.up_left && blocks.up_right && blocks.down_left && !blocks.down_right)
-                                uv = this.getUV(6, 6);
+                            if(!sideData.up_left && sideData.up_right && sideData.down_left && sideData.down_right)
+                                uv = new int[]{7, 7};
+                            else if(sideData.up_left && !sideData.up_right && sideData.down_left && sideData.down_right)
+                                uv = new int[]{6, 7};
+                            else if(sideData.up_left && sideData.up_right && !sideData.down_left && sideData.down_right)
+                                uv = new int[]{7, 6};
+                            else if(sideData.up_left && sideData.up_right && sideData.down_left && !sideData.down_right)
+                                uv = new int[]{6, 6};
                             else{
-                                if(!blocks.up_left && blocks.up_right && !blocks.down_right && blocks.down_left)
-                                    uv = this.getUV(0, 4);
-                                else if(blocks.up_left && !blocks.up_right && blocks.down_right && !blocks.down_left)
-                                    uv = this.getUV(0, 5);
-                                else if(!blocks.up_left && !blocks.up_right && blocks.down_right && blocks.down_left)
-                                    uv = this.getUV(3, 6);
-                                else if(blocks.up_left && !blocks.up_right && !blocks.down_right && blocks.down_left)
-                                    uv = this.getUV(3, 7);
-                                else if(blocks.up_left && blocks.up_right && !blocks.down_right && !blocks.down_left)
-                                    uv = this.getUV(2, 7);
-                                else if(!blocks.up_left && blocks.up_right && blocks.down_right && !blocks.down_left)
-                                    uv = this.getUV(2, 6);
+                                if(!sideData.up_left && sideData.up_right && !sideData.down_right && sideData.down_left)
+                                    uv = new int[]{0, 4};
+                                else if(sideData.up_left && !sideData.up_right && sideData.down_right && !sideData.down_left)
+                                    uv = new int[]{0, 5};
+                                else if(!sideData.up_left && !sideData.up_right && sideData.down_right && sideData.down_left)
+                                    uv = new int[]{3, 6};
+                                else if(sideData.up_left && !sideData.up_right && !sideData.down_right && sideData.down_left)
+                                    uv = new int[]{3, 7};
+                                else if(sideData.up_left && sideData.up_right && !sideData.down_right && !sideData.down_left)
+                                    uv = new int[]{2, 7};
+                                else if(!sideData.up_left && sideData.up_right && sideData.down_right && !sideData.down_left)
+                                    uv = new int[]{2, 6};
                                 else{
-                                    if(blocks.up_left)
-                                        uv = this.getUV(5, 7);
-                                    else if(blocks.up_right)
-                                        uv = this.getUV(4, 7);
-                                    else if(blocks.down_right)
-                                        uv = this.getUV(4, 6);
-                                    else if(blocks.down_left)
-                                        uv = this.getUV(5, 6);
+                                    if(sideData.up_left)
+                                        uv = new int[]{5, 7};
+                                    else if(sideData.up_right)
+                                        uv = new int[]{4, 7};
+                                    else if(sideData.down_right)
+                                        uv = new int[]{4, 6};
+                                    else if(sideData.down_left)
+                                        uv = new int[]{5, 6};
                                     else
-                                        uv = this.getUV(0, 6);
+                                        uv = new int[]{0, 6};
                                 }
                             }
                         }
@@ -149,9 +153,4 @@ public class CGConnectedBakedModel extends CGBakedModel {
 
         return uv;
     }
-
-    private float[] getUV(int x, int y){
-        return new float[]{x * 2, y * 2, (x + 1) * 2, (y + 1) * 2};
-    }
-
 }

@@ -1,0 +1,19 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "AA",
+    "AA"
+  ],
+  "key": {
+    "A": [
+      {
+        "type": "minecraft:item",
+        "item": "connectedglass:scratched_glass_pane"
+      }
+    ]
+  },
+  "result": {
+    "item": "minecraft:glass_pane",
+    "count": 4
+  }
+}

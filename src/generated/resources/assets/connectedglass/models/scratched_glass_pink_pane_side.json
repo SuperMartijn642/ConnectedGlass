@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/pane_side",
+  "textures": {
+    "edge": "connectedglass:scratched_glass_pink",
+    "pane": "connectedglass:scratched_glass_pink"
+  }
+}

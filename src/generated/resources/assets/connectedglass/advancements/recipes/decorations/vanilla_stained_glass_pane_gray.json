@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "display": {
+    "icon": {
+      "item": "minecraft:stained_glass_pane"
+    },
+    "title": {
+      "translate": "connectedglass.advancement.recipes/decorations/vanilla_stained_glass_pane_gray.title"
+    },
+    "description": {
+      "translate": "connectedglass.advancement.recipes/decorations/vanilla_stained_glass_pane_gray.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:vanilla_stained_glass_pane_gray"
+      }
+    },
+    "recipe_condition": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "connectedglass:scratched_glass_gray_pane",
+            "data": 0
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "recipe_condition"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "connectedglass:vanilla_stained_glass_pane_gray"
+    ]
+  }
+}

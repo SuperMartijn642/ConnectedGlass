@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "key": {
+    "A": [
+      {
+        "type": "minecraft:item",
+        "item": "connectedglass:scratched_glass"
+      }
+    ],
+    "B": {
+      "type": "forge:ore_dict",
+      "ore": "dyeLightBlue"
+    }
+  },
+  "result": {
+    "item": "connectedglass:scratched_glass_light_blue",
+    "count": 8
+  }
+}

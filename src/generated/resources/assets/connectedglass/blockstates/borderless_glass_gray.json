@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "normal": {
+      "type": "supermartijn642corelib:any_model_location",
+      "model": "connectedglass:borderless_glass_gray"
+    }
+  }
+}

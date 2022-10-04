@@ -1,7 +1,6 @@
 package com.supermartijn642.connectedglass;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
@@ -10,21 +9,12 @@ import net.minecraft.world.IBlockAccess;
  */
 public class CGTintedGlassBlock extends CGGlassBlock {
 
-    public CGTintedGlassBlock(String registryName, String texture, boolean connected){
-        super(registryName, texture, connected);
-    }
-
-    public CGTintedGlassBlock(String registryName, boolean connected){
-        super(registryName, connected);
+    public CGTintedGlassBlock(String texture, boolean connected){
+        super(texture, connected);
     }
 
     @Override
-    public int getLightOpacity(IBlockState state, IBlockAccess world, BlockPos pos){
+    public int getLightOpacity(IBlockState state, IBlockAccess level, BlockPos pos){
         return 15;
-    }
-
-    @Override
-    public BlockRenderLayer getBlockLayer(){
-        return BlockRenderLayer.TRANSLUCENT;
     }
 }

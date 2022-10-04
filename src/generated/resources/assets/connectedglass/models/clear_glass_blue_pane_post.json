@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/pane_post",
+  "textures": {
+    "edge": "connectedglass:clear_glass_blue",
+    "pane": "connectedglass:clear_glass_blue"
+  }
+}

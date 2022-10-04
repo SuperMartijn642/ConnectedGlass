@@ -1,0 +1,31 @@
+{
+  "pools": [
+    {
+      "name": "pool1",
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "predicate": {
+            "enchantments": [
+              {
+                "enchantment": "minecraft:silk_touch",
+                "levels": {
+                  "min": 1.0
+                }
+              }
+            ]
+          },
+          "condition": "supermartijn642corelib:match_tool"
+        }
+      ],
+      "entries": [
+        {
+          "weight": 1,
+          "quality": 0,
+          "type": "item",
+          "name": "connectedglass:scratched_glass_purple"
+        }
+      ]
+    }
+  ]
+}

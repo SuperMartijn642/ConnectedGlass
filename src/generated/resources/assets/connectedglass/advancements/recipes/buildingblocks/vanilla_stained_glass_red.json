@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "display": {
+    "icon": {
+      "item": "minecraft:stained_glass"
+    },
+    "title": {
+      "translate": "connectedglass.advancement.recipes/buildingblocks/vanilla_stained_glass_red.title"
+    },
+    "description": {
+      "translate": "connectedglass.advancement.recipes/buildingblocks/vanilla_stained_glass_red.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:vanilla_stained_glass_red"
+      }
+    },
+    "recipe_condition": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "connectedglass:scratched_glass_red",
+            "data": 0
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "recipe_condition"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "connectedglass:vanilla_stained_glass_red"
+    ]
+  }
+}

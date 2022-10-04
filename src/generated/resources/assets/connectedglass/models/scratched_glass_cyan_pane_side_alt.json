@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/pane_side_alt",
+  "textures": {
+    "edge": "connectedglass:scratched_glass_cyan",
+    "pane": "connectedglass:scratched_glass_cyan"
+  }
+}

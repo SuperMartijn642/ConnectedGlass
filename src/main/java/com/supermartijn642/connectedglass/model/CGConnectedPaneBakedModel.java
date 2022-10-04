@@ -1,189 +1,85 @@
 package com.supermartijn642.connectedglass.model;
 
-import com.supermartijn642.connectedglass.CGPaneBlock;
-import net.minecraft.block.BlockPane;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.block.model.IBakedModel;
+import net.minecraft.client.renderer.vertex.VertexFormat;
+import net.minecraft.client.renderer.vertex.VertexFormatElement;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
+
+import java.util.Arrays;
 
 /**
  * Created 5/11/2020 by SuperMartijn642
  */
-public class CGConnectedPaneBakedModel extends CGPaneBakedModel {
+public class CGConnectedPaneBakedModel extends CGConnectedBakedModel {
 
-    public CGConnectedPaneBakedModel(CGPaneBlock block){
-        super(block);
+    public CGConnectedPaneBakedModel(IBakedModel originalModel){
+        super(originalModel);
     }
 
-    public static CGPaneModelData getModelData(IBlockAccess world, BlockPos pos, IBlockState state){
-        CGPaneModelData modelData = new CGPaneModelData();
+    @Override
+    protected BakedQuad remapQuad(BakedQuad quad, CGModelData modelData){
+        EnumFacing quadDirection = quad.getFace();
+        boolean isUpOrDown = quadDirection == EnumFacing.UP || quadDirection == EnumFacing.DOWN;
+        float[] quadCenter = this.getQuadCenter(quad.getVertexData(), quad.getFormat());
+        double quadDistance = Math.sqrt((quadCenter[0] - 0.5) * (quadCenter[0] - 0.5) + (quadCenter[2] - 0.5) * (quadCenter[2] - 0.5));
 
-        for(EnumFacing direction : EnumFacing.Plane.HORIZONTAL){
-            modelData.sides.put(direction, new CGSideData(direction, world, pos, state.getBlock()));
-            IBlockState upState = world.getBlockState(pos.up()).getActualState(world, pos.up());
-            IProperty<Boolean> property = direction == EnumFacing.NORTH ? BlockPane.NORTH : direction == EnumFacing.EAST ? BlockPane.EAST : direction == EnumFacing.SOUTH ? BlockPane.SOUTH : direction == EnumFacing.WEST ? BlockPane.WEST : null;
-            boolean up = upState.getBlock() == state.getBlock() && upState.getValue(property);
-            modelData.up.put(direction, up);
-            modelData.upPost = upState.getBlock() == state.getBlock();
-            IBlockState downState = world.getBlockState(pos.down()).getActualState(world, pos.down());
-            boolean down = downState.getBlock() == state.getBlock() && downState.getValue(property);
-            modelData.down.put(direction, down);
-            modelData.downPost = downState.getBlock() == state.getBlock();
+        if(isUpOrDown && modelData instanceof CGPaneModelData){
+            EnumFacing partSide = EnumFacing.getFacingFromVector(quadCenter[0] - 0.5f, 0, quadCenter[2] - 0.5f);
+            if(quadDistance < 0.1 ? quadDirection == EnumFacing.UP ? ((CGPaneModelData)modelData).isAbovePane() : ((CGPaneModelData)modelData).isBelowPane() :
+                quadDirection == EnumFacing.UP ? ((CGPaneModelData)modelData).isAboveConnectedTo(partSide) : ((CGPaneModelData)modelData).isBelowConnectedTo(partSide))
+                return null;
         }
 
-        return modelData;
+        int[] vertexData = quad.getVertexData();
+        // Make sure we don't change the original quad
+        vertexData = Arrays.copyOf(vertexData, vertexData.length);
+
+        // Adjust the uv
+        int[] newUV = isUpOrDown || quadDistance > 0.4 ? new int[]{0, 7} : this.getUV(modelData == null ? null : modelData.getSideData(quadDirection == EnumFacing.NORTH ? EnumFacing.SOUTH : quadDirection == EnumFacing.WEST ? EnumFacing.EAST : quadDirection));
+        adjustVertexDataUV(vertexData, newUV[0], newUV[1], quad.getSprite(), quad.getFormat());
+
+        // Create a new quad
+        return new BakedQuad(vertexData, quad.getTintIndex(), quadDirection, quad.getSprite(), quad.shouldApplyDiffuseLighting(), quad.getFormat());
     }
 
-    @Override
-    protected boolean isEnabledUp(EnumFacing part, CGPaneModelData extraData){
-        return extraData != null && (part == null ? extraData.upPost : extraData.up.get(part));
+    private float[] getQuadCenter(int[] vertexData, VertexFormat vertexFormat){
+        int vertexSize = vertexFormat.getIntegerSize();
+        int vertices = vertexData.length / vertexSize;
+        int positionOffset = findPositionOffset(vertexFormat) / 4;
+
+        float averageX = 0, averageY = 0, averageZ = 0;
+
+        for(int i = 0; i < vertices; i++){
+            int offset = i * vertexSize + positionOffset;
+
+            averageX += Float.intBitsToFloat(vertexData[offset]);
+            averageY += Float.intBitsToFloat(vertexData[offset + 1]);
+            averageZ += Float.intBitsToFloat(vertexData[offset + 2]);
+        }
+
+        averageX /= vertices;
+        averageY /= vertices;
+        averageZ /= vertices;
+        return new float[]{averageX, averageY, averageZ};
     }
 
-    @Override
-    protected boolean isEnabledDown(EnumFacing part, CGPaneModelData extraData){
-        return extraData != null && (part == null ? extraData.downPost : extraData.down.get(part));
-    }
-
-    @Override
-    protected float[] getBorderUV(){
-        return this.getUV(0, 7);
-    }
-
-    @Override
-    protected float[] getUV(EnumFacing side, CGPaneModelData modelData){
-        if(side == EnumFacing.UP || side == EnumFacing.DOWN)
-            return this.getBorderUV();
-
-        if(modelData == null)
-            return getUV(0, 0);
-
-        CGSideData blocks = modelData.sides.get(side);
-        float[] uv;
-
-        if(!blocks.left && !blocks.up && !blocks.right && !blocks.down) // all directions
-            uv = this.getUV(0, 0);
-        else{ // one direction
-            if(blocks.left && !blocks.up && !blocks.right && !blocks.down)
-                uv = this.getUV(3, 0);
-            else if(!blocks.left && blocks.up && !blocks.right && !blocks.down)
-                uv = this.getUV(0, 3);
-            else if(!blocks.left && !blocks.up && blocks.right && !blocks.down)
-                uv = this.getUV(1, 0);
-            else if(!blocks.left && !blocks.up && !blocks.right && blocks.down)
-                uv = this.getUV(0, 1);
-            else{ // two directions
-                if(blocks.left && !blocks.up && blocks.right && !blocks.down)
-                    uv = this.getUV(2, 0);
-                else if(!blocks.left && blocks.up && !blocks.right && blocks.down)
-                    uv = this.getUV(0, 2);
-                else if(blocks.left && blocks.up && !blocks.right && !blocks.down){
-                    if(blocks.up_left)
-                        uv = this.getUV(3, 3);
-                    else
-                        uv = this.getUV(5, 1);
-                }else if(!blocks.left && blocks.up && blocks.right && !blocks.down){
-                    if(blocks.up_right)
-                        uv = this.getUV(1, 3);
-                    else
-                        uv = this.getUV(4, 1);
-                }else if(!blocks.left && !blocks.up && blocks.right && blocks.down){
-                    if(blocks.down_right)
-                        uv = this.getUV(1, 1);
-                    else
-                        uv = this.getUV(4, 0);
-                }else if(blocks.left && !blocks.up && !blocks.right && blocks.down){
-                    if(blocks.down_left)
-                        uv = this.getUV(3, 1);
-                    else
-                        uv = this.getUV(5, 0);
-                }else{ // three directions
-                    if(!blocks.left){
-                        if(blocks.up_right && blocks.down_right)
-                            uv = this.getUV(1, 2);
-                        else if(blocks.up_right)
-                            uv = this.getUV(4, 2);
-                        else if(blocks.down_right)
-                            uv = this.getUV(6, 2);
-                        else
-                            uv = this.getUV(6, 0);
-                    }else if(!blocks.up){
-                        if(blocks.down_left && blocks.down_right)
-                            uv = this.getUV(2, 1);
-                        else if(blocks.down_left)
-                            uv = this.getUV(7, 2);
-                        else if(blocks.down_right)
-                            uv = this.getUV(5, 2);
-                        else
-                            uv = this.getUV(7, 0);
-                    }else if(!blocks.right){
-                        if(blocks.up_left && blocks.down_left)
-                            uv = this.getUV(3, 2);
-                        else if(blocks.up_left)
-                            uv = this.getUV(7, 3);
-                        else if(blocks.down_left)
-                            uv = this.getUV(5, 3);
-                        else
-                            uv = this.getUV(7, 1);
-                    }else if(!blocks.down){
-                        if(blocks.up_left && blocks.up_right)
-                            uv = this.getUV(2, 3);
-                        else if(blocks.up_left)
-                            uv = this.getUV(4, 3);
-                        else if(blocks.up_right)
-                            uv = this.getUV(6, 3);
-                        else
-                            uv = this.getUV(6, 1);
-                    }else{ // four directions
-                        if(blocks.up_left && blocks.up_right && blocks.down_left && blocks.down_right)
-                            uv = this.getUV(2, 2);
-                        else{
-                            if(!blocks.up_left && blocks.up_right && blocks.down_left && blocks.down_right)
-                                uv = this.getUV(7, 7);
-                            else if(blocks.up_left && !blocks.up_right && blocks.down_left && blocks.down_right)
-                                uv = this.getUV(6, 7);
-                            else if(blocks.up_left && blocks.up_right && !blocks.down_left && blocks.down_right)
-                                uv = this.getUV(7, 6);
-                            else if(blocks.up_left && blocks.up_right && blocks.down_left && !blocks.down_right)
-                                uv = this.getUV(6, 6);
-                            else{
-                                if(!blocks.up_left && blocks.up_right && !blocks.down_right && blocks.down_left)
-                                    uv = this.getUV(0, 4);
-                                else if(blocks.up_left && !blocks.up_right && blocks.down_right && !blocks.down_left)
-                                    uv = this.getUV(0, 5);
-                                else if(!blocks.up_left && !blocks.up_right && blocks.down_right && blocks.down_left)
-                                    uv = this.getUV(3, 6);
-                                else if(blocks.up_left && !blocks.up_right && !blocks.down_right && blocks.down_left)
-                                    uv = this.getUV(3, 7);
-                                else if(blocks.up_left && blocks.up_right && !blocks.down_right && !blocks.down_left)
-                                    uv = this.getUV(2, 7);
-                                else if(!blocks.up_left && blocks.up_right && blocks.down_right && !blocks.down_left)
-                                    uv = this.getUV(2, 6);
-                                else{
-                                    if(blocks.up_left)
-                                        uv = this.getUV(5, 7);
-                                    else if(blocks.up_right)
-                                        uv = this.getUV(4, 7);
-                                    else if(blocks.down_right)
-                                        uv = this.getUV(4, 6);
-                                    else if(blocks.down_left)
-                                        uv = this.getUV(5, 6);
-                                    else
-                                        uv = this.getUV(0, 6);
-                                }
-                            }
-                        }
-                    }
-                }
+    private static int findPositionOffset(VertexFormat vertexFormat){
+        int index;
+        VertexFormatElement element = null;
+        for(index = 0; index < vertexFormat.getElements().size(); index++){
+            VertexFormatElement el = vertexFormat.getElements().get(index);
+            if(el.getUsage() == VertexFormatElement.EnumUsage.POSITION){
+                element = el;
+                break;
             }
         }
-
-        return uv;
+        if(index == vertexFormat.getElements().size() || element == null)
+            throw new RuntimeException("Expected vertex format to have a POSITION attribute");
+        if(element.getType() != VertexFormatElement.EnumType.FLOAT)
+            throw new RuntimeException("Expected POSITION attribute to have data type FLOAT");
+        if(element.getSize() != 12)
+            throw new RuntimeException("Expected POSITION attribute to have 3 dimensions");
+        return vertexFormat.getOffset(index);
     }
-
-    private float[] getUV(int x, int y){
-        return new float[]{x * 2, y * 2, (x + 1) * 2, (y + 1) * 2};
-    }
-
 }

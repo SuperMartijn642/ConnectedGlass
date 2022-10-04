@@ -1,0 +1,19 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": [
+      {
+        "type": "minecraft:item",
+        "item": "connectedglass:clear_glass_blue"
+      }
+    ]
+  },
+  "result": {
+    "item": "connectedglass:clear_glass_blue_pane",
+    "count": 16
+  }
+}

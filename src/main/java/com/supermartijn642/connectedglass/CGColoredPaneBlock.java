@@ -1,7 +1,7 @@
 package com.supermartijn642.connectedglass;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -16,14 +16,13 @@ public class CGColoredPaneBlock extends CGPaneBlock {
         super(block);
     }
 
+    public EnumDyeColor getColor(){
+        return ((CGColoredGlassBlock)this.block).getColor();
+    }
+
     @Nullable
     @Override
     public float[] getBeaconColorMultiplier(IBlockState state, World world, BlockPos pos, BlockPos beaconPos){
         return this.block.getBeaconColorMultiplier(state, world, pos, beaconPos);
-    }
-
-    @Override
-    public BlockRenderLayer getBlockLayer(){
-        return BlockRenderLayer.TRANSLUCENT;
     }
 }

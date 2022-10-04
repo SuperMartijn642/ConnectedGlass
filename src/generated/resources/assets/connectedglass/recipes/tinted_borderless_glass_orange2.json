@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "key": {
+    "A": [
+      {
+        "type": "minecraft:item",
+        "item": "connectedglass:tinted_borderless_glass"
+      }
+    ],
+    "B": {
+      "type": "forge:ore_dict",
+      "ore": "dyeOrange"
+    }
+  },
+  "result": {
+    "item": "connectedglass:tinted_borderless_glass_orange",
+    "count": 8
+  }
+}

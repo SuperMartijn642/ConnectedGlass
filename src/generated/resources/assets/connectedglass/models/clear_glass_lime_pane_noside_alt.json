@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/pane_noside_alt",
+  "textures": {
+    "edge": "connectedglass:clear_glass_lime",
+    "pane": "connectedglass:clear_glass_lime"
+  }
+}
