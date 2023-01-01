@@ -1,0 +1,57 @@
+{
+  "parent": "minecraft:recipes/root",
+  "display": {
+    "icon": {
+      "item": "connectedglass:borderless_glass_green_pane"
+    },
+    "title": {
+      "translate": "connectedglass.advancement.recipes/decorations/borderless_glass_green_pane2.title"
+    },
+    "description": {
+      "translate": "connectedglass.advancement.recipes/decorations/borderless_glass_green_pane2.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "recipe_condition2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          null
+        ]
+      }
+    },
+    "recipe_condition1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "connectedglass:borderless_glass_pane",
+            "data": 0
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:borderless_glass_green_pane2"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "recipe_condition1",
+      "recipe_condition2"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "connectedglass:borderless_glass_green_pane2"
+    ]
+  }
+}
