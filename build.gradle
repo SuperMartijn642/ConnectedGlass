@@ -72,7 +72,7 @@ processResources {
 minecraft {
     mappings channel: "official", version: project.minecraft_version
 
-     accessTransformer = file("src/main/resources/META-INF/accesstransformer.cfg")
+    accessTransformer = file("src/main/resources/META-INF/accesstransformer.cfg")
 
     runs {
         client {
@@ -126,7 +126,7 @@ task prepareDataResources(type: Sync) {
 
 // Run prepareDataResources before prepareRunData
 tasks.whenTaskAdded {
-    if(it.name == "prepareRunData")
+    if (it.name == "prepareRunData")
         it.dependsOn "prepareDataResources"
 }
 
