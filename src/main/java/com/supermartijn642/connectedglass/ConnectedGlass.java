@@ -46,7 +46,9 @@ public class ConnectedGlass {
         GeneratorRegistrationHandler handler = GeneratorRegistrationHandler.get("connectedglass");
         handler.addGenerator(CGModelGenerator::new);
         handler.addGenerator(CGBlockStateGenerator::new);
-        handler.addGenerator(CGChiselingRecipeProvider::new);
+        // This needs to be a lambda in order to prevent the CGChiselingRecipeProvider class from loading
+        //noinspection Convert2MethodRef
+        handler.addGenerator(cache -> new CGChiselingRecipeProvider(cache));
         handler.addGenerator(CGLanguageGenerator::new);
         handler.addGenerator(CGLootTableGenerator::new);
         handler.addGenerator(CGRecipeGenerator::new);
