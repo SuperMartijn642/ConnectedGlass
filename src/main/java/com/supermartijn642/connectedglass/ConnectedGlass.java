@@ -2,6 +2,8 @@ package com.supermartijn642.connectedglass;
 
 import com.supermartijn642.connectedglass.data.*;
 import com.supermartijn642.core.CommonUtils;
+import com.supermartijn642.core.generator.ResourceCache;
+import com.supermartijn642.core.generator.ResourceGenerator;
 import com.supermartijn642.core.item.BaseBlockItem;
 import com.supermartijn642.core.item.CreativeItemGroup;
 import com.supermartijn642.core.item.ItemProperties;
@@ -13,6 +15,8 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.function.Function;
 
 /**
  * Created 5/7/2020 by SuperMartijn642
@@ -46,9 +50,9 @@ public class ConnectedGlass {
         GeneratorRegistrationHandler handler = GeneratorRegistrationHandler.get("connectedglass");
         handler.addGenerator(CGModelGenerator::new);
         handler.addGenerator(CGBlockStateGenerator::new);
-        // This needs to be a lambda in order to prevent the CGChiselingRecipeProvider class from loading
-        //noinspection Convert2MethodRef
-        handler.addGenerator(cache -> new CGChiselingRecipeProvider(cache));
+        // I have no clue why this needs to be so stupid in 1.12 to prevent the CGChiselingRecipeProvider class from loading
+        //noinspection TrivialFunctionalExpressionUsage
+        handler.addGenerator(cache -> ((Function<ResourceCache,ResourceGenerator>)CGChiselingRecipeProvider::new).apply(cache));
         handler.addGenerator(CGLanguageGenerator::new);
         handler.addGenerator(CGLootTableGenerator::new);
         handler.addGenerator(CGRecipeGenerator::new);
