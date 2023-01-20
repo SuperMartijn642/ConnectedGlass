@@ -8,8 +8,10 @@ import com.mojang.blaze3d.vertex.VertexFormatElement;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
+import net.minecraft.client.renderer.texture.SpriteContents;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.metadata.animation.AnimationMetadataSection;
+import net.minecraft.client.resources.metadata.animation.FrameSize;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -138,14 +140,12 @@ public class CGBakedModel extends BakedModelWrapper<BakedModel> {
 
         protected CroppedTextureAtlasSprite(TextureAtlasSprite original){
             super(
-                original.atlas(),
-                new Info(original.getName(), original.getWidth() / 8, original.getHeight() / 8, new AnimationMetadataSection(List.of(), original.getWidth(), original.getHeight(), 0, false)),
-                0,
+                original.atlasLocation(),
+                new SpriteContents(original.contents().name(), new FrameSize(original.contents().width() / 8, original.contents().height() / 8), new NativeImage(original.contents().width() / 8, original.contents().height() / 8, false), new AnimationMetadataSection(List.of(), original.contents().width(), original.contents().height(), 0, false), original.contents().forgeMeta),
                 Math.round(original.getX() / original.getU0()),
                 Math.round(original.getY() / original.getV0()),
                 original.getX(),
-                original.getY(),
-                new NativeImage(original.getWidth() / 8, original.getHeight() / 8, false)
+                original.getY()
             );
         }
     }

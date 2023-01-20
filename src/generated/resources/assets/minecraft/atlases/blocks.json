@@ -1,0 +1,276 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_brown"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_purple"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_black"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_white"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_pink"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_black"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_cyan"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_purple"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_red"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_black"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_light_gray"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_magenta"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_gray"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_green"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_gray"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_purple"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_green"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_yellow"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_orange"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_cyan"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_white"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_orange"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_blue"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_magenta"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_red"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_pink"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_pink"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_purple"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_orange"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_green"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_orange"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_light_blue"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_gray"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_brown"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_red"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_black"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_magenta"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_yellow"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_yellow"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_green"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_white"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_lime"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_lime"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_red"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_lime"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_lime"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_cyan"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_light_gray"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_blue"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_brown"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_blue"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_blue"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_light_blue"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_yellow"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:borderless_glass_cyan"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_brown"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_white"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:scratched_glass_light_blue"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_gray"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_light_blue"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_pink"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_magenta"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:clear_glass_light_gray"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "connectedglass:tinted_borderless_glass_light_gray"
+    }
+  ]
+}

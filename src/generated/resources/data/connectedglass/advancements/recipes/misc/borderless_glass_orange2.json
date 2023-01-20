@@ -1,0 +1,60 @@
+{
+  "parent": "minecraft:recipes/root",
+  "display": {
+    "icon": {
+      "item": "connectedglass:borderless_glass_orange"
+    },
+    "title": {
+      "translate": "connectedglass.advancement.recipes/misc/borderless_glass_orange2.title"
+    },
+    "description": {
+      "translate": "connectedglass.advancement.recipes/misc/borderless_glass_orange2.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "recipe_condition2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dyes/orange"
+          }
+        ]
+      }
+    },
+    "recipe_condition1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "connectedglass:borderless_glass"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:borderless_glass_orange2"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "recipe_condition1",
+      "recipe_condition2"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "connectedglass:borderless_glass_orange2"
+    ]
+  }
+}
