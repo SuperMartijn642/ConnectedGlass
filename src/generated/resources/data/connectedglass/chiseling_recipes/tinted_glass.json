@@ -2,8 +2,8 @@
   "type": "rechiseled:chiseling",
   "entries": [
     {
-      "item": "minecraft:tinted_glass",
-      "connecting_item": "connectedglass:tinted_borderless_glass"
+      "connecting_item": "connectedglass:tinted_borderless_glass",
+      "item": "minecraft:tinted_glass"
     },
     {
       "connecting_item": "connectedglass:tinted_borderless_glass_white"

@@ -1,0 +1,49 @@
+{
+  "parent": "minecraft:recipes/root",
+  "display": {
+    "icon": {
+      "item": "connectedglass:clear_glass_magenta"
+    },
+    "title": {
+      "translate": "connectedglass.advancement.recipes/misc/clear_glass_magenta1.title"
+    },
+    "description": {
+      "translate": "connectedglass.advancement.recipes/misc/clear_glass_magenta1.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:clear_glass_magenta1"
+      }
+    },
+    "recipe_condition": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "connectedglass:borderless_glass_magenta"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "recipe_condition"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "connectedglass:clear_glass_magenta1"
+    ]
+  }
+}

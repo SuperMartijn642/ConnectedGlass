@@ -8,11 +8,14 @@ import com.supermartijn642.core.util.Pair;
 import net.fabricmc.fabric.api.renderer.v1.model.ForwardingBakedModel;
 import net.fabricmc.fabric.api.renderer.v1.render.RenderContext;
 import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.texture.SpriteContents;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.metadata.animation.AnimationMetadataSection;
+import net.minecraft.client.resources.metadata.animation.FrameSize;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
@@ -41,19 +44,19 @@ public class CGBakedModel extends ForwardingBakedModel {
     }
 
     @Override
-    public void emitBlockQuads(BlockAndTintGetter blockView, BlockState state, BlockPos pos, Supplier<Random> randomSupplier, RenderContext context){
+    public void emitBlockQuads(BlockAndTintGetter blockView, BlockState state, BlockPos pos, Supplier<RandomSource> randomSupplier, RenderContext context){
         this.levelCapture.set(Pair.of(blockView, pos));
-        context.fallbackConsumer().accept(this);
+        context.bakedModelConsumer().accept(this);
         this.levelCapture.set(null);
     }
 
     @Override
-    public void emitItemQuads(ItemStack stack, Supplier<Random> randomSupplier, RenderContext context){
-        context.fallbackConsumer().accept(this);
+    public void emitItemQuads(ItemStack stack, Supplier<RandomSource> randomSupplier, RenderContext context){
+        context.bakedModelConsumer().accept(this);
     }
 
     @Override
-    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, Random rand){
+    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, RandomSource rand){
         CGModelData data = this.levelCapture.get() == null ? null : this.getModelData(this.levelCapture.get().left(), this.levelCapture.get().right(), state);
         int hashCode = data == null ? 0 : data.hashCode();
 
@@ -133,18 +136,21 @@ public class CGBakedModel extends ForwardingBakedModel {
         return this.particleSprite;
     }
 
+    @Override
+    public boolean isVanillaAdapter(){
+        return false;
+    }
+
     private static class CroppedTextureAtlasSprite extends TextureAtlasSprite {
 
         protected CroppedTextureAtlasSprite(TextureAtlasSprite original){
             super(
-                original.atlas(),
-                new Info(original.getName(), original.getWidth() / 8, original.getHeight() / 8, new AnimationMetadataSection(List.of(), original.getWidth(), original.getHeight(), 0, false)),
-                0,
+                original.atlasLocation(),
+                new SpriteContents(original.contents().name(), new FrameSize(original.contents().width() / 8, original.contents().height() / 8), new NativeImage(original.contents().width() / 8, original.contents().height() / 8, false), new AnimationMetadataSection(List.of(), original.contents().width(), original.contents().height(), 0, false)),
                 Math.round(original.getX() / original.getU0()),
                 Math.round(original.getY() / original.getV0()),
                 original.getX(),
-                original.getY(),
-                new NativeImage(original.getWidth() / 8, original.getHeight() / 8, false)
+                original.getY()
             );
         }
     }

@@ -1,0 +1,60 @@
+{
+  "parent": "minecraft:recipes/root",
+  "display": {
+    "icon": {
+      "item": "connectedglass:clear_glass_yellow_pane"
+    },
+    "title": {
+      "translate": "connectedglass.advancement.recipes/misc/clear_glass_yellow_pane2.title"
+    },
+    "description": {
+      "translate": "connectedglass.advancement.recipes/misc/clear_glass_yellow_pane2.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "recipe_condition2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:yellow_dyes"
+          }
+        ]
+      }
+    },
+    "recipe_condition1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "connectedglass:clear_glass_pane"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "connectedglass:clear_glass_yellow_pane2"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "recipe_condition1",
+      "recipe_condition2"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "connectedglass:clear_glass_yellow_pane2"
+    ]
+  }
+}

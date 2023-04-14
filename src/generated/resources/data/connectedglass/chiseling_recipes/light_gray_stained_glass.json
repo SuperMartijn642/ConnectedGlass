@@ -2,8 +2,8 @@
   "type": "rechiseled:chiseling",
   "entries": [
     {
-      "item": "minecraft:light_gray_stained_glass",
-      "connecting_item": "connectedglass:borderless_glass_light_gray"
+      "connecting_item": "connectedglass:borderless_glass_light_gray",
+      "item": "minecraft:light_gray_stained_glass"
     },
     {
       "connecting_item": "connectedglass:clear_glass_light_gray"

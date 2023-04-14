@@ -2,7 +2,7 @@ package com.supermartijn642.connectedglass.data;
 
 import com.supermartijn642.connectedglass.CGGlassType;
 import com.supermartijn642.rechiseled.api.ChiselingRecipeProvider;
-import net.minecraft.data.DataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -12,7 +12,7 @@ import net.minecraft.world.item.Items;
  */
 public class CGChiselingRecipeProvider extends ChiselingRecipeProvider {
 
-    public CGChiselingRecipeProvider(DataGenerator generator){
+    public CGChiselingRecipeProvider(FabricDataOutput generator){
         super("connectedglass", generator);
     }
 
