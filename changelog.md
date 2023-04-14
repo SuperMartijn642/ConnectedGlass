@@ -1,5 +1,2 @@
 ### Connected Glass 1.1.6
-- Fix crash when Rechiseled is not installed
-
-### Connected Glass 1.1.5
-- Updated to core library 1.1
+- Initial release of Connected Glass for Fabric

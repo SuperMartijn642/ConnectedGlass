@@ -4,7 +4,10 @@ import com.supermartijn642.connectedglass.*;
 import com.supermartijn642.core.generator.RecipeGenerator;
 import com.supermartijn642.core.generator.ResourceCache;
 import com.supermartijn642.core.registry.Registries;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.BeaconBeamBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -17,6 +20,26 @@ import java.util.List;
  * Created 5/15/2020 by SuperMartijn642
  */
 public class CGRecipeGenerator extends RecipeGenerator {
+
+    @SuppressWarnings("unchecked")
+    private static final TagKey<Item>[] DYE_TAGS = new TagKey[]{
+        ConventionalItemTags.WHITE_DYES,
+        ConventionalItemTags.ORANGE_DYES,
+        ConventionalItemTags.MAGENTA_DYES,
+        ConventionalItemTags.LIGHT_BLUE_DYES,
+        ConventionalItemTags.YELLOW_DYES,
+        ConventionalItemTags.LIME_DYES,
+        ConventionalItemTags.PINK_DYES,
+        ConventionalItemTags.GRAY_DYES,
+        ConventionalItemTags.LIGHT_GRAY_DYES,
+        ConventionalItemTags.CYAN_DYES,
+        ConventionalItemTags.PURPLE_DYES,
+        ConventionalItemTags.BLUE_DYES,
+        ConventionalItemTags.BROWN_DYES,
+        ConventionalItemTags.GREEN_DYES,
+        ConventionalItemTags.RED_DYES,
+        ConventionalItemTags.BLACK_DYES
+    };
 
     private Block vanillaBlock;
     private final List<Block> vanillaBlocks = new ArrayList<>();
@@ -59,9 +82,9 @@ public class CGRecipeGenerator extends RecipeGenerator {
                     .pattern("ABA")
                     .pattern("AAA")
                     .input('A', type.block)
-                    .input('B', block.getColor().getTag())
+                    .input('B', DYE_TAGS[block.getColor().ordinal()])
                     .unlockedBy(type.block)
-                    .unlockedBy(block.getColor().getTag());
+                    .unlockedBy(DYE_TAGS[block.getColor().ordinal()]);
             }
 
             if(type.hasPanes){
@@ -87,9 +110,9 @@ public class CGRecipeGenerator extends RecipeGenerator {
                         .pattern("ABA")
                         .pattern("AAA")
                         .input('A', type.pane)
-                        .input('B', pane.getColor().getTag())
+                        .input('B', DYE_TAGS[pane.getColor().ordinal()])
                         .unlockedBy(type.pane)
-                        .unlockedBy(pane.getColor().getTag());
+                        .unlockedBy(DYE_TAGS[pane.getColor().ordinal()]);
                 }
 
                 // panes from blocks

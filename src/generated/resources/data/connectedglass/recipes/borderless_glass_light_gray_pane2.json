@@ -10,7 +10,7 @@
       "item": "connectedglass:borderless_glass_pane"
     },
     "B": {
-      "tag": "forge:dyes/light_gray"
+      "tag": "c:light_gray_dyes"
     }
   },
   "result": {

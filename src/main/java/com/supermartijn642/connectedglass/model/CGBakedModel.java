@@ -2,51 +2,59 @@ package com.supermartijn642.connectedglass.model;
 
 import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormatElement;
+import com.supermartijn642.core.util.Pair;
+import net.fabricmc.fabric.api.renderer.v1.model.ForwardingBakedModel;
+import net.fabricmc.fabric.api.renderer.v1.render.RenderContext;
 import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.metadata.animation.AnimationMetadataSection;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.BakedModelWrapper;
-import net.minecraftforge.client.model.data.EmptyModelData;
-import net.minecraftforge.client.model.data.IModelData;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.util.*;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 /**
  * Created 5/7/2020 by SuperMartijn642
  */
-public class CGBakedModel extends BakedModelWrapper<BakedModel> {
+public class CGBakedModel extends ForwardingBakedModel {
 
     // [cullface][hashcode * 6]
     private final Map<Direction,Map<Integer,List<BakedQuad>>> quadCache = new HashMap<>();
     private final Map<Integer,List<BakedQuad>> directionlessQuadCache = new HashMap<>();
     private final TextureAtlasSprite particleSprite;
+    private final ThreadLocal<Pair<BlockAndTintGetter,BlockPos>> levelCapture = new ThreadLocal<>();
 
     public CGBakedModel(BakedModel original){
-        super(original);
+        this.wrapped = original;
         for(Direction direction : Direction.values())
             this.quadCache.put(direction, new HashMap<>());
         this.particleSprite = new CroppedTextureAtlasSprite(original.getParticleIcon());
     }
 
     @Override
-    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, Random rand){
-        return this.getQuads(state, side, rand, EmptyModelData.INSTANCE);
+    public void emitBlockQuads(BlockAndTintGetter blockView, BlockState state, BlockPos pos, Supplier<Random> randomSupplier, RenderContext context){
+        this.levelCapture.set(Pair.of(blockView, pos));
+        context.fallbackConsumer().accept(this);
+        this.levelCapture.set(null);
     }
 
-    @NotNull
     @Override
-    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @NotNull Random rand, @NotNull IModelData modelData){
-        CGModelData data = modelData.hasProperty(CGModelData.MODEL_PROPERTY) ? modelData.getData(CGModelData.MODEL_PROPERTY) : null;
+    public void emitItemQuads(ItemStack stack, Supplier<Random> randomSupplier, RenderContext context){
+        context.fallbackConsumer().accept(this);
+    }
+
+    @Override
+    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, Random rand){
+        CGModelData data = this.levelCapture.get() == null ? null : this.getModelData(this.levelCapture.get().left(), this.levelCapture.get().right(), state);
         int hashCode = data == null ? 0 : data.hashCode();
 
         // Compute the quads if they aren't in the cache yet
@@ -55,7 +63,7 @@ public class CGBakedModel extends BakedModelWrapper<BakedModel> {
             //noinspection SynchronizationOnLocalVariableOrMethodParameter
             synchronized(cache){
                 if(!cache.containsKey(hashCode))
-                    cache.put(hashCode, this.remapQuads(this.originalModel.getQuads(state, side, rand, modelData), data));
+                    cache.put(hashCode, this.remapQuads(this.wrapped.getQuads(state, side, rand), data));
             }
         }
 
@@ -113,18 +121,16 @@ public class CGBakedModel extends BakedModelWrapper<BakedModel> {
             throw new RuntimeException("Expected UV attribute to have data type FLOAT");
         if(element.getByteSize() < 4)
             throw new RuntimeException("Expected UV attribute to have at least 4 dimensions");
-        return vertexFormat.getOffset(index);
+        return vertexFormat.offsets.getInt(index);
+    }
+
+    public CGModelData getModelData(BlockAndTintGetter level, BlockPos pos, BlockState state){
+        return null;
     }
 
     @Override
     public TextureAtlasSprite getParticleIcon(){
         return this.particleSprite;
-    }
-
-    @Override
-    public BakedModel handlePerspective(ItemTransforms.TransformType cameraTransformType, PoseStack poseStack){
-        super.handlePerspective(cameraTransformType, poseStack);
-        return this;
     }
 
     private static class CroppedTextureAtlasSprite extends TextureAtlasSprite {

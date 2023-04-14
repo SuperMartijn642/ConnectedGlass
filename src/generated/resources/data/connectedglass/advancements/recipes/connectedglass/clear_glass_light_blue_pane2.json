@@ -21,7 +21,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:dyes/light_blue"
+            "tag": "c:light_blue_dyes"
           }
         ]
       }

@@ -10,7 +10,7 @@
       "item": "connectedglass:clear_glass_pane"
     },
     "B": {
-      "tag": "forge:dyes/gray"
+      "tag": "c:gray_dyes"
     }
   },
   "result": {

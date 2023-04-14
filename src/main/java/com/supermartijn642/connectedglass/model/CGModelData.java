@@ -4,7 +4,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.ModelProperty;
 
 import java.util.Map;
 import java.util.Objects;
@@ -14,8 +13,6 @@ import java.util.stream.Stream;
  * Created 02/10/2022 by SuperMartijn642
  */
 public class CGModelData {
-
-    public static final ModelProperty<CGModelData> MODEL_PROPERTY = new ModelProperty<>();
 
     public static CGModelData create(BlockGetter level, BlockPos pos, BlockState state){
         return new CGModelData(

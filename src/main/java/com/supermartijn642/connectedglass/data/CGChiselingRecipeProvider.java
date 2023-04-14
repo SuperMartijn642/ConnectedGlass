@@ -6,15 +6,14 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.common.data.ExistingFileHelper;
 
 /**
  * Created 05/04/2022 by SuperMartijn642
  */
 public class CGChiselingRecipeProvider extends ChiselingRecipeProvider {
 
-    public CGChiselingRecipeProvider(DataGenerator generator, ExistingFileHelper existingFileHelper){
-        super("connectedglass", generator, existingFileHelper);
+    public CGChiselingRecipeProvider(DataGenerator generator){
+        super("connectedglass", generator);
     }
 
     @Override

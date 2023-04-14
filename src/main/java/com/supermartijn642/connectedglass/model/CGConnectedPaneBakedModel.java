@@ -9,9 +9,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.IModelData;
-import net.minecraftforge.client.model.data.ModelDataMap;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 
@@ -24,10 +21,9 @@ public class CGConnectedPaneBakedModel extends CGConnectedBakedModel {
         super(originalModel);
     }
 
-    @NotNull
     @Override
-    public IModelData getModelData(@NotNull BlockAndTintGetter level, @NotNull BlockPos pos, @NotNull BlockState state, @NotNull IModelData tileData){
-        return new ModelDataMap.Builder().withInitial(CGModelData.MODEL_PROPERTY, CGPaneModelData.create(level, pos, state)).build();
+    public CGModelData getModelData(BlockAndTintGetter level, BlockPos pos, BlockState state){
+        return CGPaneModelData.create(level, pos, state);
     }
 
     @Override
@@ -93,6 +89,6 @@ public class CGConnectedPaneBakedModel extends CGConnectedBakedModel {
             throw new RuntimeException("Expected POSITION attribute to have data type FLOAT");
         if(element.getByteSize() != 12)
             throw new RuntimeException("Expected POSITION attribute to have 3 dimensions");
-        return vertexFormat.getOffset(index);
+        return vertexFormat.offsets.getInt(index);
     }
 }

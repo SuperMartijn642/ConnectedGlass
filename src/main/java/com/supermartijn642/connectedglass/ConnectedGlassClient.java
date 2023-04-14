@@ -3,15 +3,18 @@ package com.supermartijn642.connectedglass;
 import com.supermartijn642.connectedglass.model.CGConnectedBakedModel;
 import com.supermartijn642.connectedglass.model.CGConnectedPaneBakedModel;
 import com.supermartijn642.core.registry.ClientRegistrationHandler;
+import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.world.item.DyeColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.common.Mod;
 
 /**
  * Created 5/7/2020 by SuperMartijn642
  */
-@Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ConnectedGlassClient {
+public class ConnectedGlassClient implements ClientModInitializer {
+
+    @Override
+    public void onInitializeClient(){
+        register();
+    }
 
     public static void register(){
         ClientRegistrationHandler handler = ClientRegistrationHandler.get("connectedglass");

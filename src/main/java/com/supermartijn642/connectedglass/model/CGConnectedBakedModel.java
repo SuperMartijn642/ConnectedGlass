@@ -6,10 +6,7 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.IModelData;
-import net.minecraftforge.client.model.data.ModelDataMap;
 
-import javax.annotation.Nonnull;
 import java.util.Arrays;
 
 /**
@@ -22,8 +19,8 @@ public class CGConnectedBakedModel extends CGBakedModel {
     }
 
     @Override
-    public @Nonnull IModelData getModelData(@Nonnull BlockAndTintGetter level, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData){
-        return new ModelDataMap.Builder().withInitial(CGModelData.MODEL_PROPERTY, CGModelData.create(level, pos, state)).build();
+    public CGModelData getModelData(BlockAndTintGetter level, BlockPos pos, BlockState state){
+        return CGModelData.create(level, pos, state);
     }
 
     @Override

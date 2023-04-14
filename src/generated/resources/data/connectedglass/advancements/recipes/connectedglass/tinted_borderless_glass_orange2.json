@@ -21,7 +21,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:dyes/orange"
+            "tag": "c:orange_dyes"
           }
         ]
       }

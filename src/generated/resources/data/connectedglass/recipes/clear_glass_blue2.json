@@ -10,7 +10,7 @@
       "item": "connectedglass:clear_glass"
     },
     "B": {
-      "tag": "forge:dyes/blue"
+      "tag": "c:blue_dyes"
     }
   },
   "result": {
