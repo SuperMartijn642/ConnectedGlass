@@ -133,6 +133,11 @@ public class CGBakedModel extends ForwardingBakedModel {
         return this.particleSprite;
     }
 
+    @Override
+    public boolean isVanillaAdapter(){
+        return false;
+    }
+
     private static class CroppedTextureAtlasSprite extends TextureAtlasSprite {
 
         protected CroppedTextureAtlasSprite(TextureAtlasSprite original){
