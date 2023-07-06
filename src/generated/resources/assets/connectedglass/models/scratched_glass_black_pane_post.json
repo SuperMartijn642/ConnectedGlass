@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/pane_post",
   "textures": {
-    "edge": "connectedglass:scratched_glass_black",
-    "pane": "connectedglass:scratched_glass_black"
+    "pane": "connectedglass:scratched_glass_black",
+    "edge": "connectedglass:scratched_glass_black"
   }
 }

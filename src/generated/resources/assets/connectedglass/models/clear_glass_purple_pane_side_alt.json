@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/pane_side_alt",
   "textures": {
-    "edge": "connectedglass:clear_glass_purple",
-    "pane": "connectedglass:clear_glass_purple"
+    "pane": "connectedglass:clear_glass_purple",
+    "edge": "connectedglass:clear_glass_purple"
   }
 }

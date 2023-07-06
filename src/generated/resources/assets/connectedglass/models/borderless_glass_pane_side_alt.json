@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/pane_side_alt",
   "textures": {
-    "edge": "connectedglass:borderless_glass",
-    "pane": "connectedglass:borderless_glass"
+    "pane": "connectedglass:borderless_glass",
+    "edge": "connectedglass:borderless_glass"
   }
 }

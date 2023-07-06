@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/pane_noside_alt",
   "textures": {
-    "edge": "connectedglass:clear_glass_magenta",
-    "pane": "connectedglass:clear_glass_magenta"
+    "pane": "connectedglass:clear_glass_magenta",
+    "edge": "connectedglass:clear_glass_magenta"
   }
 }

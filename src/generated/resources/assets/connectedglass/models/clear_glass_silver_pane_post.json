@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/pane_post",
   "textures": {
-    "edge": "connectedglass:clear_glass_silver",
-    "pane": "connectedglass:clear_glass_silver"
+    "pane": "connectedglass:clear_glass_silver",
+    "edge": "connectedglass:clear_glass_silver"
   }
 }
