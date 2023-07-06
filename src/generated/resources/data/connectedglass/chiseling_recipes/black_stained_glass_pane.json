@@ -11,5 +11,6 @@
     {
       "connecting_item": "connectedglass:scratched_glass_black_pane"
     }
-  ]
+  ],
+  "overwrite": false
 }
