@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/template_glass_pane_side_alt",
   "textures": {
-    "edge": "connectedglass:scratched_glass_light_gray",
-    "pane": "connectedglass:scratched_glass_light_gray"
+    "pane": "connectedglass:scratched_glass_light_gray",
+    "edge": "connectedglass:scratched_glass_light_gray"
   }
 }
