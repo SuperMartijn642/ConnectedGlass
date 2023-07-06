@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/template_glass_pane_noside",
   "textures": {
-    "edge": "connectedglass:scratched_glass_white",
-    "pane": "connectedglass:scratched_glass_white"
+    "pane": "connectedglass:scratched_glass_white",
+    "edge": "connectedglass:scratched_glass_white"
   }
 }

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/template_glass_pane_noside_alt",
   "textures": {
-    "edge": "connectedglass:scratched_glass_purple",
-    "pane": "connectedglass:scratched_glass_purple"
+    "pane": "connectedglass:scratched_glass_purple",
+    "edge": "connectedglass:scratched_glass_purple"
   }
 }

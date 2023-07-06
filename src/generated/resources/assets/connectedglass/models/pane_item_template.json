@@ -16,7 +16,7 @@
         16.0
       ],
       "faces": {
-        "east": {
+        "west": {
           "texture": "#all"
         },
         "up": {
@@ -25,10 +25,10 @@
         "north": {
           "texture": "#all"
         },
-        "south": {
+        "east": {
           "texture": "#all"
         },
-        "west": {
+        "south": {
           "texture": "#all"
         },
         "down": {
