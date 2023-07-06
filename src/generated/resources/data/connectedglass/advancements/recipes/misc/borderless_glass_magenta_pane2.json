@@ -16,14 +16,10 @@
     "hidden": false
   },
   "criteria": {
-    "recipe_condition2": {
-      "trigger": "minecraft:inventory_changed",
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "items": [
-          {
-            "tag": "forge:dyes/magenta"
-          }
-        ]
+        "recipe": "connectedglass:borderless_glass_magenta_pane2"
       }
     },
     "recipe_condition1": {
@@ -38,10 +34,14 @@
         ]
       }
     },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
+    "recipe_condition2": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "recipe": "connectedglass:borderless_glass_magenta_pane2"
+        "items": [
+          {
+            "tag": "forge:dyes/magenta"
+          }
+        ]
       }
     }
   },

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/template_glass_pane_noside_alt",
   "textures": {
-    "edge": "connectedglass:clear_glass_brown",
-    "pane": "connectedglass:clear_glass_brown"
+    "pane": "connectedglass:clear_glass_brown",
+    "edge": "connectedglass:clear_glass_brown"
   }
 }

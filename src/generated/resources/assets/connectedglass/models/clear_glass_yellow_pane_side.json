@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/template_glass_pane_side",
   "textures": {
-    "edge": "connectedglass:clear_glass_yellow",
-    "pane": "connectedglass:clear_glass_yellow"
+    "pane": "connectedglass:clear_glass_yellow",
+    "edge": "connectedglass:clear_glass_yellow"
   }
 }
