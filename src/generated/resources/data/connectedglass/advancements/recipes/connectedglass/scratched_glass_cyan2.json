@@ -16,14 +16,10 @@
     "hidden": false
   },
   "criteria": {
-    "recipe_condition2": {
-      "trigger": "minecraft:inventory_changed",
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "items": [
-          {
-            "tag": "c:cyan_dyes"
-          }
-        ]
+        "recipe": "connectedglass:scratched_glass_cyan2"
       }
     },
     "recipe_condition1": {
@@ -38,10 +34,14 @@
         ]
       }
     },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
+    "recipe_condition2": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "recipe": "connectedglass:scratched_glass_cyan2"
+        "items": [
+          {
+            "tag": "c:cyan_dyes"
+          }
+        ]
       }
     }
   },

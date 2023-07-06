@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/template_glass_pane_post",
   "textures": {
-    "edge": "connectedglass:borderless_glass_cyan",
-    "pane": "connectedglass:borderless_glass_cyan"
+    "pane": "connectedglass:borderless_glass_cyan",
+    "edge": "connectedglass:borderless_glass_cyan"
   }
 }
