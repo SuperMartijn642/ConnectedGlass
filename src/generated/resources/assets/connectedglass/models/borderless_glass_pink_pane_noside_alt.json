@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/template_glass_pane_noside_alt",
   "textures": {
-    "edge": "connectedglass:borderless_glass_pink",
-    "pane": "connectedglass:borderless_glass_pink"
+    "pane": "connectedglass:borderless_glass_pink",
+    "edge": "connectedglass:borderless_glass_pink"
   }
 }
