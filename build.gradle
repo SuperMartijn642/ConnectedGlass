@@ -34,16 +34,15 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
     // Rechiseled
-//    modImplementation "curse.maven:rechiseled-558998:${project.rechiseled_file}"
-    modCompileOnly "com.supermartijn642:rechiseled:1.0.12a-fabric-mc1.19"
+    modImplementation "curse.maven:rechiseled-558998:${project.rechiseled_file}"
 
     // Core library
-//    modImplementation "curse.maven:supermartijn642s-core-lib-454372:${project.core_library_file}"
-    modImplementation "com.supermartijn642:supermartijn642corelib:1.1.9-fabric-mc1.20"
+    modImplementation "curse.maven:supermartijn642s-core-lib-454372:${project.core_library_file}"
 
     // Config library
-//    modRuntimeOnly "curse.maven:supermartijn642s-config-lib-438332:${project.config_library_file}"
-//    modRuntimeOnly "com.supermartijn642:supermartijn642configlib:1.1.6-fabric-mc1.19"
+    modRuntimeOnly "curse.maven:supermartijn642s-config-lib-438332:${project.config_library_file}"
+    // Fusion
+    modRuntimeOnly "curse.maven:fusion-854949:${project.fusion_file}"
     // Just Enough Items
 //    modRuntimeOnly "curse.maven:jei-238222:${project.just_enough_items_file}"
 }
@@ -58,7 +57,7 @@ processResources {
         Map<String, ?> copyProperties = project.properties.clone() as Map<String, ?>
         String modVersion = project.properties.mod_version
         if (Character.isAlphabetic(modVersion.charAt(modVersion.length() - 1) as int))
-            copyProperties.mod_version = modVersion.substring(0, modVersion.length() - 1) + "-" + modVersion.chars[-1]
+            copyProperties.mod_version = modVersion.substring(0, modVersion.length() - 1) + "+" + modVersion.chars[-1]
         expand copyProperties
     }
 
