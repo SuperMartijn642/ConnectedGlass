@@ -38,10 +38,11 @@ dependencies {
     minecraft "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
 
     // Rechiseled
-    implementation fg.deobf("curse.maven:rechiseled-558998:${project.rechiseled_file}")
+    compileOnly fg.deobf("curse.maven:rechiseled-558998:${project.rechiseled_file}")
 
     // Core library
-    implementation fg.deobf("curse.maven:supermartijn642s-core-lib-454372:${project.core_library_file}")
+//    implementation fg.deobf("curse.maven:supermartijn642s-core-lib-454372:${project.core_library_file}")
+    implementation fg.deobf("com.supermartijn642:supermartijn642corelib:1.1.12-forge-mc1.20.2")
 
     // Config library
     runtimeOnly fg.deobf("curse.maven:supermartijn642s-config-lib-438332:${project.config_library_file}")
