@@ -10,11 +10,11 @@ import net.fabricmc.fabric.api.renderer.v1.render.RenderContext;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.SpriteContents;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.metadata.animation.AnimationMetadataSection;
 import net.minecraft.client.resources.metadata.animation.FrameSize;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.packs.resources.ResourceMetadata;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockAndTintGetter;
@@ -98,11 +98,11 @@ public class CGBakedModel extends ForwardingBakedModel {
             int offset = i * vertexSize + uvOffset;
 
             float width = sprite.getU1() - sprite.getU0();
-            float u = (newU + (Float.intBitsToFloat(vertexData[offset]) - sprite.getU0()) / width) * 2;
+            float u = (newU + (Float.intBitsToFloat(vertexData[offset]) - sprite.getU0()) / width) / 8;
             vertexData[offset] = Float.floatToRawIntBits(sprite.getU(u));
 
             float height = sprite.getV1() - sprite.getV0();
-            float v = (newV + (Float.intBitsToFloat(vertexData[offset + 1]) - sprite.getV0()) / height) * 2;
+            float v = (newV + (Float.intBitsToFloat(vertexData[offset + 1]) - sprite.getV0()) / height) / 8;
             vertexData[offset + 1] = Float.floatToRawIntBits(sprite.getV(v));
         }
         return vertexData;
@@ -146,7 +146,7 @@ public class CGBakedModel extends ForwardingBakedModel {
         protected CroppedTextureAtlasSprite(TextureAtlasSprite original){
             super(
                 original.atlasLocation(),
-                new SpriteContents(original.contents().name(), new FrameSize(original.contents().width() / 8, original.contents().height() / 8), new NativeImage(original.contents().width() / 8, original.contents().height() / 8, false), new AnimationMetadataSection(List.of(), original.contents().width(), original.contents().height(), 0, false)),
+                new SpriteContents(original.contents().name(), new FrameSize(original.contents().width() / 8, original.contents().height() / 8), new NativeImage(original.contents().width() / 8, original.contents().height() / 8, false), ResourceMetadata.EMPTY),
                 Math.round(original.getX() / original.getU0()),
                 Math.round(original.getY() / original.getV0()),
                 original.getX(),
