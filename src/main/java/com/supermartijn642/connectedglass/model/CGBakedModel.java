@@ -46,7 +46,7 @@ public class CGBakedModel extends ForwardingBakedModel {
     @Override
     public void emitBlockQuads(BlockAndTintGetter blockView, BlockState state, BlockPos pos, Supplier<RandomSource> randomSupplier, RenderContext context){
         this.levelCapture.set(Pair.of(blockView, pos));
-        context.bakedModelConsumer().accept(this);
+        context.bakedModelConsumer().accept(this, state);
         this.levelCapture.set(null);
     }
 
