@@ -51,17 +51,31 @@ public class CGBakedModel extends BakedModelWrapper<BakedModel> {
         CGModelData data = modelData.has(CGModelData.MODEL_PROPERTY) ? modelData.get(CGModelData.MODEL_PROPERTY) : null;
         int hashCode = data == null ? 0 : data.hashCode();
 
-        // Compute the quads if they aren't in the cache yet
+        // Get the correct cache and quads
         Map<Integer,List<BakedQuad>> cache = side == null ? this.directionlessQuadCache : this.quadCache.get(side);
-        if(!cache.containsKey(hashCode)){
+        List<BakedQuad> quads;
+        //noinspection SynchronizationOnLocalVariableOrMethodParameter
+        synchronized(cache){
+            quads = cache.get(hashCode);
+        }
+
+        // Compute the quads if they don't exist yet
+        if(quads == null){
+            quads = this.remapQuads(this.originalModel.getQuads(state, side, rand, modelData, renderType), data);
             //noinspection SynchronizationOnLocalVariableOrMethodParameter
             synchronized(cache){
                 if(!cache.containsKey(hashCode))
-                    cache.put(hashCode, this.remapQuads(this.originalModel.getQuads(state, side, rand, modelData, renderType), data));
+                    cache.put(hashCode, quads);
+                else
+                    quads = cache.get(hashCode);
             }
         }
 
-        return cache.get(hashCode);
+        // Safety check even though this should never happen
+        if(quads == null)
+            throw new IllegalStateException("Tried returning null list from ConnectingBakedModel#getQuads for side '" + side + "'!");
+
+        return quads;
     }
 
     private List<BakedQuad> remapQuads(List<BakedQuad> originalQuads, CGModelData modelData){
