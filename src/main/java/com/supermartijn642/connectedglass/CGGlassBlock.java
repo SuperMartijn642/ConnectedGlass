@@ -1,12 +1,9 @@
 package com.supermartijn642.connectedglass;
 
-import com.supermartijn642.connectedglass.model.CGModelData;
 import com.supermartijn642.core.block.EditableBlockRenderLayer;
 import net.minecraft.block.BlockGlass;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLiving;
@@ -14,9 +11,6 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.common.property.ExtendedBlockState;
-import net.minecraftforge.common.property.IExtendedBlockState;
-import net.minecraftforge.common.property.IUnlistedProperty;
 
 /**
  * Created 5/7/2020 by SuperMartijn642
@@ -52,21 +46,11 @@ public class CGGlassBlock extends BlockGlass implements EditableBlockRenderLayer
         return this.renderLayer;
     }
 
-    public IBlockState getExtendedState(IBlockState state, IBlockAccess level, BlockPos pos){
-        return ((IExtendedBlockState)state).withProperty(CGModelData.MODEL_PROPERTY, this.connected ? CGModelData.create(level, pos, state) : null);
-    }
-
-    protected BlockStateContainer createBlockState(){
-        BlockStateContainer container = super.createBlockState();
-        IProperty<?>[] properties = container.getProperties().toArray(new IProperty[0]);
-        return new ExtendedBlockState(this, properties, new IUnlistedProperty[]{CGModelData.MODEL_PROPERTY});
-    }
-
-    public String getLocalizedName() {
+    public String getLocalizedName(){
         return I18n.format(this.getUnlocalizedName()).trim();
     }
 
-    public String getUnlocalizedName() {
+    public String getUnlocalizedName(){
         return this.getRegistryName().getResourceDomain() + ".block." + this.getRegistryName().getResourcePath();
     }
 }

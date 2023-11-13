@@ -21,7 +21,7 @@ import java.util.function.Function;
 /**
  * Created 5/7/2020 by SuperMartijn642
  */
-@Mod(modid = "@mod_id@", name = "@mod_name@", version = "@mod_version@", dependencies = "required-after:supermartijn642corelib@@core_library_dependency@")
+@Mod(modid = "@mod_id@", name = "@mod_name@", version = "@mod_version@", dependencies = "required-after:supermartijn642corelib@@core_library_dependency@;required-after:fusion@@fusion_dependency@")
 public class ConnectedGlass {
 
     public static final CreativeItemGroup GROUP = CreativeItemGroup.create("connectedglass", () -> CGGlassType.BORDERLESS_GLASS.getBlock());
@@ -48,11 +48,14 @@ public class ConnectedGlass {
 
     private static void registerGenerators(){
         GeneratorRegistrationHandler handler = GeneratorRegistrationHandler.get("connectedglass");
-        handler.addGenerator(CGModelGenerator::new);
-        handler.addGenerator(CGBlockStateGenerator::new);
         // I have no clue why this needs to be so stupid in 1.12 to prevent the CGChiselingRecipeProvider class from loading
         //noinspection TrivialFunctionalExpressionUsage
         handler.addGenerator(cache -> ((Function<ResourceCache,ResourceGenerator>)CGChiselingRecipeProvider::new).apply(cache));
+        //noinspection TrivialFunctionalExpressionUsage
+        handler.addGenerator(cache -> ((Function<ResourceCache,ResourceGenerator>)CGTextureProvider::new).apply(cache));
+        handler.addGenerator(CGFusionModelGenerator::new);
+        handler.addGenerator(CGModelGenerator::new);
+        handler.addGenerator(CGBlockStateGenerator::new);
         handler.addGenerator(CGLanguageGenerator::new);
         handler.addGenerator(CGLootTableGenerator::new);
         handler.addGenerator(CGRecipeGenerator::new);
