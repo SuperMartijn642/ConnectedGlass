@@ -1,6 +1,7 @@
 {
   "parent": "connectedglass:pane_item_template",
   "textures": {
-    "all": "connectedglass:scratched_glass_lime"
+    "all": "connectedglass:scratched_glass/scratched_glass_lime",
+    "edge": "connectedglass:scratched_glass/scratched_glass_lime_edge"
   }
 }

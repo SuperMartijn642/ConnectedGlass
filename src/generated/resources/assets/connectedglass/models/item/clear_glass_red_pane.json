@@ -1,6 +1,7 @@
 {
   "parent": "connectedglass:pane_item_template",
   "textures": {
-    "all": "connectedglass:clear_glass_red"
+    "all": "connectedglass:clear_glass/clear_glass_red",
+    "edge": "connectedglass:clear_glass/clear_glass_red_edge"
   }
 }
