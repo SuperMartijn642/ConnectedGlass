@@ -1,6 +1,8 @@
 {
+  "type": "fusion:connecting",
   "parent": "minecraft:block/cube_all",
+  "loader": "fusion:model",
   "textures": {
-    "all": "connectedglass:clear_glass_magenta"
+    "all": "connectedglass:clear_glass/clear_glass_magenta"
   }
 }
