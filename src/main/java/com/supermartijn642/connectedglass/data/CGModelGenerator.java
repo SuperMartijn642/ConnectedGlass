@@ -3,8 +3,10 @@ package com.supermartijn642.connectedglass.data;
 import com.supermartijn642.connectedglass.CGGlassType;
 import com.supermartijn642.core.generator.ModelGenerator;
 import com.supermartijn642.core.generator.ResourceCache;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.Direction;
 import net.minecraft.world.item.DyeColor;
+
+import java.util.function.BiConsumer;
 
 /**
  * Created 26/09/2022 by SuperMartijn642
@@ -19,12 +21,9 @@ public class CGModelGenerator extends ModelGenerator {
     public void generate(){
         // Create the glass block models
         for(CGGlassType type : CGGlassType.values()){
-            this.cubeAll(type.getRegistryName(), new ResourceLocation("connectedglass", type.getRegistryName()));
             this.model("item/" + type.getRegistryName()).parent(type.getRegistryName());
-            for(DyeColor color : DyeColor.values()){
-                this.cubeAll(type.getRegistryName(color), new ResourceLocation("connectedglass", type.getRegistryName(color)));
+            for(DyeColor color : DyeColor.values())
                 this.model("item/" + type.getRegistryName(color)).parent(type.getRegistryName(color));
-            }
         }
 
         // Pane item model template
@@ -33,26 +32,20 @@ public class CGModelGenerator extends ModelGenerator {
             .particleTexture("#all")
             .element(element ->
                 element.shape(7, 0, 0, 9, 16, 16)
-                    .allFaces(face -> face.texture("#all"))
+                    .allFaces((BiConsumer<Direction,FaceBuilder>)(side, face) -> face.texture(side == Direction.EAST || side == Direction.WEST ? "#all" : "#edge"))
             );
-
 
         // Create the pane models
         for(CGGlassType type : CGGlassType.values()){
             if(type.hasPanes){
-                this.createPaneModels(type.getPaneRegistryName(), type.getRegistryName());
+                this.model("item/" + type.getPaneRegistryName()).parent("pane_item_template")
+                    .texture("all", type.getRegistryName() + "/" + type.getRegistryName())
+                    .texture("edge", type.getRegistryName() + "/" + type.getRegistryName() + "_edge");
                 for(DyeColor color : DyeColor.values())
-                    this.createPaneModels(type.getPaneRegistryName(color), type.getRegistryName(color));
+                    this.model("item/" + type.getPaneRegistryName(color)).parent("pane_item_template")
+                        .texture("all", type.getRegistryName() + "/" + type.getRegistryName(color))
+                        .texture("edge", type.getRegistryName() + "/" + type.getRegistryName(color) + "_edge");
             }
         }
-    }
-
-    private void createPaneModels(String identifier, String texture){
-        this.model(identifier + "_side").parent("minecraft", "block/template_glass_pane_side").texture("pane", texture).texture("edge", texture);
-        this.model(identifier + "_post").parent("minecraft", "block/template_glass_pane_post").texture("pane", texture).texture("edge", texture);
-        this.model(identifier + "_side_alt").parent("minecraft", "block/template_glass_pane_side_alt").texture("pane", texture).texture("edge", texture);
-        this.model(identifier + "_noside").parent("minecraft", "block/template_glass_pane_noside").texture("pane", texture).texture("edge", texture);
-        this.model(identifier + "_noside_alt").parent("minecraft", "block/template_glass_pane_noside_alt").texture("pane", texture).texture("edge", texture);
-        this.model("item/" + identifier).parent("pane_item_template").texture("all", texture);
     }
 }
