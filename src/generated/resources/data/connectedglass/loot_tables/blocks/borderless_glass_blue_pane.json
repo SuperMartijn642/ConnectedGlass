@@ -5,7 +5,6 @@
       "rolls": 1.0,
       "conditions": [
         {
-          "condition": "minecraft:match_tool",
           "predicate": {
             "enchantments": [
               {
@@ -15,13 +14,14 @@
                 }
               }
             ]
-          }
+          },
+          "condition": "minecraft:match_tool"
         }
       ],
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "connectedglass:borderless_glass_blue_pane"
+          "name": "connectedglass:borderless_glass_blue_pane",
+          "type": "minecraft:item"
         }
       ]
     }

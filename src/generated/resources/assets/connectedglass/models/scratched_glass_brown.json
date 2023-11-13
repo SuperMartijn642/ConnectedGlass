@@ -1,6 +1,8 @@
 {
+  "type": "fusion:connecting",
   "parent": "minecraft:block/cube_all",
+  "loader": "fusion:model",
   "textures": {
-    "all": "connectedglass:scratched_glass_brown"
+    "all": "connectedglass:scratched_glass/scratched_glass_brown"
   }
 }
