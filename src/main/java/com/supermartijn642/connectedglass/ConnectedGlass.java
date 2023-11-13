@@ -29,11 +29,14 @@ public class ConnectedGlass implements ModInitializer {
 
     private static void registerGenerators(){
         GeneratorRegistrationHandler handler = GeneratorRegistrationHandler.get("connectedglass");
-        handler.addGenerator(CGModelGenerator::new);
-        handler.addGenerator(CGBlockStateGenerator::new);
         // This needs to be a lambda in order to prevent the CGChiselingRecipeProvider class from loading
         //noinspection Convert2MethodRef
         handler.addProvider((generator) -> new CGChiselingRecipeProvider(generator));
+        //noinspection Convert2MethodRef
+        handler.addProvider((generator) -> new CGTextureProvider(generator));
+        handler.addProvider(CGFusionModelGenerator::new);
+        handler.addGenerator(CGModelGenerator::new);
+        handler.addGenerator(CGBlockStateGenerator::new);
         handler.addGenerator(CGLanguageGenerator::new);
         handler.addGenerator(CGLootTableGenerator::new);
         handler.addGenerator(CGRecipeGenerator::new);
