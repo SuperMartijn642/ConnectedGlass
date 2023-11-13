@@ -10,8 +10,8 @@
       ],
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "connectedglass:tinted_borderless_glass_red"
+          "name": "connectedglass:tinted_borderless_glass_red",
+          "type": "minecraft:item"
         }
       ]
     }
