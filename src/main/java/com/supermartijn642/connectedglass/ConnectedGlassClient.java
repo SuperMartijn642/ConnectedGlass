@@ -1,7 +1,5 @@
 package com.supermartijn642.connectedglass;
 
-import com.supermartijn642.connectedglass.model.CGConnectedBakedModel;
-import com.supermartijn642.connectedglass.model.CGConnectedPaneBakedModel;
 import com.supermartijn642.core.registry.ClientRegistrationHandler;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.world.item.DyeColor;
@@ -36,15 +34,13 @@ public class ConnectedGlassClient implements ClientModInitializer {
             }
         }
 
-        // Add overrides for the baked models
+        // Add overrides for the pane models
         for(CGGlassType type : CGGlassType.values()){
-            handler.registerBlockModelOverwrite(type::getBlock, CGConnectedBakedModel::new);
             if(type.hasPanes)
-                handler.registerBlockModelOverwrite(type::getPane, CGConnectedPaneBakedModel::new);
+                handler.registerBlockModelOverwrite(type::getPane, CGPaneBakedModel::new);
             for(DyeColor color : DyeColor.values()){
-                handler.registerBlockModelOverwrite(() -> type.getBlock(color), CGConnectedBakedModel::new);
                 if(type.hasPanes)
-                    handler.registerBlockModelOverwrite(() -> type.getPane(color), CGConnectedPaneBakedModel::new);
+                    handler.registerBlockModelOverwrite(() -> type.getPane(color), CGPaneBakedModel::new);
             }
         }
     }
