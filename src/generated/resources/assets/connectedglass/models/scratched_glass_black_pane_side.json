@@ -1,7 +1,17 @@
 {
   "parent": "minecraft:block/template_glass_pane_side",
   "textures": {
-    "pane": "connectedglass:scratched_glass_black",
-    "edge": "connectedglass:scratched_glass_black"
-  }
+    "edge": "connectedglass:scratched_glass/scratched_glass_black_edge",
+    "pane": "connectedglass:scratched_glass/scratched_glass_black"
+  },
+  "connections": {
+    "predicates": [
+      {
+        "type": "fusion:is_same_block"
+      }
+    ],
+    "type": "fusion:or"
+  },
+  "loader": "fusion:model",
+  "type": "fusion:connecting"
 }
