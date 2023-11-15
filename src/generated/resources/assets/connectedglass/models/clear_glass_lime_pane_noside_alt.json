@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/template_glass_pane_noside_alt",
+  "parent": "connectedglass:block/template_glass_pane_noside_alt",
   "textures": {
     "edge": "connectedglass:clear_glass/clear_glass_lime_edge",
     "pane": "connectedglass:clear_glass/clear_glass_lime"
