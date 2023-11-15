@@ -1,6 +1,8 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "connectedglass:borderless_glass"
-  }
+    "all": "connectedglass:borderless_glass/borderless_glass"
+  },
+  "loader": "fusion:model",
+  "type": "fusion:connecting"
 }
