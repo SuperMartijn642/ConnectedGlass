@@ -1,6 +1,6 @@
 {
   "type": "fusion:connecting",
-  "parent": "minecraft:block/template_glass_pane_post",
+  "parent": "connectedglass:block/template_glass_pane_post",
   "connections": {
     "type": "fusion:or",
     "predicates": [
