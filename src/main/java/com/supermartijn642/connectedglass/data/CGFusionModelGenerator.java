@@ -60,7 +60,7 @@ public class CGFusionModelGenerator extends FusionModelProvider {
             ModelInstance.of(
                 DefaultModelTypes.CONNECTING,
                 ConnectingModelData.builder()
-                    .parent(new ResourceLocation("block/template_glass_pane_side"))
+                    .parent(new ResourceLocation("connectedglass", "block/template_glass_pane_side"))
                     .texture("pane", new ResourceLocation("connectedglass", texture))
                     .texture("edge", new ResourceLocation("connectedglass", texture + "_edge"))
                     .connection(DefaultConnectionPredicates.isSameBlock())
@@ -71,7 +71,7 @@ public class CGFusionModelGenerator extends FusionModelProvider {
             ModelInstance.of(
                 DefaultModelTypes.CONNECTING,
                 ConnectingModelData.builder()
-                    .parent(new ResourceLocation("block/template_glass_pane_post"))
+                    .parent(new ResourceLocation("connectedglass", "block/template_glass_pane_post"))
                     .texture("pane", new ResourceLocation("connectedglass", texture))
                     .texture("edge", new ResourceLocation("connectedglass", texture + "_edge"))
                     .connection(DefaultConnectionPredicates.isSameBlock())
@@ -82,7 +82,7 @@ public class CGFusionModelGenerator extends FusionModelProvider {
             ModelInstance.of(
                 DefaultModelTypes.CONNECTING,
                 ConnectingModelData.builder()
-                    .parent(new ResourceLocation("block/template_glass_pane_side_alt"))
+                    .parent(new ResourceLocation("connectedglass", "block/template_glass_pane_side_alt"))
                     .texture("pane", new ResourceLocation("connectedglass", texture))
                     .texture("edge", new ResourceLocation("connectedglass", texture + "_edge"))
                     .connection(DefaultConnectionPredicates.isSameBlock())
@@ -93,7 +93,7 @@ public class CGFusionModelGenerator extends FusionModelProvider {
             ModelInstance.of(
                 DefaultModelTypes.CONNECTING,
                 ConnectingModelData.builder()
-                    .parent(new ResourceLocation("block/template_glass_pane_noside"))
+                    .parent(new ResourceLocation("connectedglass", "block/template_glass_pane_noside"))
                     .texture("pane", new ResourceLocation("connectedglass", texture))
                     .texture("edge", new ResourceLocation("connectedglass", texture + "_edge"))
                     .connection(DefaultConnectionPredicates.isSameBlock())
@@ -104,7 +104,7 @@ public class CGFusionModelGenerator extends FusionModelProvider {
             ModelInstance.of(
                 DefaultModelTypes.CONNECTING,
                 ConnectingModelData.builder()
-                    .parent(new ResourceLocation("block/template_glass_pane_noside_alt"))
+                    .parent(new ResourceLocation("connectedglass", "block/template_glass_pane_noside_alt"))
                     .texture("pane", new ResourceLocation("connectedglass", texture))
                     .texture("edge", new ResourceLocation("connectedglass", texture + "_edge"))
                     .connection(DefaultConnectionPredicates.isSameBlock())
