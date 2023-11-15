@@ -1,4 +1,4 @@
-// 1.20.2	2023-11-13T23:57:12.270859	Core Lib Generators
+// 1.20.2	2023-11-15T14:46:04.8112062	Core Lib Generators
 5852f9af63a37293452925af5538099ce214a364 assets/connectedglass/blockstates/borderless_glass.json
 f55c5ea2da88fd304e3305d4c490e2c3c7e45666 assets/connectedglass/blockstates/borderless_glass_black.json
 4c563c53254abfd8e44e76c24c5f8b64c12aa5e2 assets/connectedglass/blockstates/borderless_glass_black_pane.json
@@ -238,7 +238,7 @@ db5a75330b8d7db64ef77766343b711cc0fb483e assets/connectedglass/models/item/tinte
 5dea1bf5211ee446c7dc1dd594c019d228dd00ab assets/connectedglass/models/item/tinted_borderless_glass_red.json
 88208a41535ef60abcae405ac08d56411e669853 assets/connectedglass/models/item/tinted_borderless_glass_white.json
 cc9ab86990ab12b8b4b020ec208eb6634850973b assets/connectedglass/models/item/tinted_borderless_glass_yellow.json
-f0bc790c40eb226d48de2a2a192b1d18f30ed82b assets/connectedglass/models/pane_item_template.json
+8319a5abdb2eff849cf2b0a6c39f90ce3743f2d3 assets/connectedglass/models/pane_item_template.json
 2d1dd048a5897c208b48e32e72557bfd7389d937 assets/minecraft/atlases/blocks.json
 104c8d0ffb70c02cddb089d454f490eff162c2c6 data/connectedglass/advancements/recipes/misc/borderless_glass1.json
 81fb807b0ef2fc54a02c37671263a517836ac7ff data/connectedglass/advancements/recipes/misc/borderless_glass_black1.json
