@@ -1,4 +1,4 @@
-// 1.19.2	2023-11-14T13:54:00.9762018	Core Lib Generators
+// 1.19.2	2023-11-15T14:56:45.6110888	Core Lib Generators
 5852f9af63a37293452925af5538099ce214a364 assets/connectedglass/blockstates/borderless_glass.json
 f55c5ea2da88fd304e3305d4c490e2c3c7e45666 assets/connectedglass/blockstates/borderless_glass_black.json
 4c563c53254abfd8e44e76c24c5f8b64c12aa5e2 assets/connectedglass/blockstates/borderless_glass_black_pane.json
@@ -238,7 +238,7 @@ db5a75330b8d7db64ef77766343b711cc0fb483e assets/connectedglass/models/item/tinte
 5dea1bf5211ee446c7dc1dd594c019d228dd00ab assets/connectedglass/models/item/tinted_borderless_glass_red.json
 88208a41535ef60abcae405ac08d56411e669853 assets/connectedglass/models/item/tinted_borderless_glass_white.json
 cc9ab86990ab12b8b4b020ec208eb6634850973b assets/connectedglass/models/item/tinted_borderless_glass_yellow.json
-b313d196acad2d30bcbc4a6effbfa28ebaf73dfe assets/connectedglass/models/pane_item_template.json
+aaf2a3196d153b487004d1423234eedd20e24427 assets/connectedglass/models/pane_item_template.json
 c8fb26a25a87c00b7551a82457d9b82a34d6da45 data/connectedglass/advancements/recipes/building_blocks/vanilla_black_stained_glass.json
 ba157eb8b8df2942594e2d0d197a9b373d2dc016 data/connectedglass/advancements/recipes/building_blocks/vanilla_blue_stained_glass.json
 0022782920a992bc4d57dc5f9da91ac061d47bcf data/connectedglass/advancements/recipes/building_blocks/vanilla_brown_stained_glass.json
