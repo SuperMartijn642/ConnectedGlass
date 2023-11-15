@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/template_glass_pane_side_alt",
+  "parent": "connectedglass:block/template_glass_pane_side_alt",
   "textures": {
     "edge": "connectedglass:borderless_glass/borderless_glass_purple_edge",
     "pane": "connectedglass:borderless_glass/borderless_glass_purple"
