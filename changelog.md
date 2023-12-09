@@ -1,11 +1,2 @@
 ### Connected Glass 1.1.9
-- Connected Glass now uses Fusion for connected textures
-- Support for Forge's and Fabric's appearance API
-- Resource packs can now properly chance glass blocks' models
-- Improved performance
-
-### Connected Glass 1.1.8
-- Fix concurrency issue
-
-### Connected Glass 1.1.7
-- Initial release of Connected Glass for Minecraft 1.20.2
+- Initial release of Connected Glass for Minecraft 1.20.3 & 1.20.4
