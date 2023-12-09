@@ -1,14 +1,14 @@
 package com.supermartijn642.connectedglass;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.AbstractGlassBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.TransparentBlock;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 
 /**
  * Created 5/7/2020 by SuperMartijn642
  */
-public class CGGlassBlock extends AbstractGlassBlock {
+public class CGGlassBlock extends TransparentBlock {
 
     public final ResourceLocation texture;
     public final boolean connected;
