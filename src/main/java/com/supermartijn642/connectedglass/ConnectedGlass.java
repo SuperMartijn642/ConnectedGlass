@@ -34,7 +34,8 @@ public class ConnectedGlass implements ModInitializer {
         handler.addProvider((generator) -> new CGChiselingRecipeProvider(generator));
         //noinspection Convert2MethodRef
         handler.addProvider((generator) -> new CGTextureProvider(generator));
-        handler.addProvider(CGFusionModelGenerator::new);
+        //noinspection Convert2MethodRef
+        handler.addProvider((generator) -> new CGFusionModelGenerator(generator));
         handler.addGenerator(CGModelGenerator::new);
         handler.addGenerator(CGBlockStateGenerator::new);
         handler.addGenerator(CGLanguageGenerator::new);
