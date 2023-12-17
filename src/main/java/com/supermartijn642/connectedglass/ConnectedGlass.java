@@ -37,7 +37,8 @@ public class ConnectedGlass {
         handler.addProvider((generator, fileHelper) -> new CGChiselingRecipeProvider(generator, fileHelper));
         //noinspection Convert2MethodRef
         handler.addProvider((generator, fileHelper) -> new CGTextureProvider(generator, fileHelper));
-        handler.addProvider(CGFusionModelGenerator::new);
+        //noinspection Convert2MethodRef
+        handler.addProvider(generator -> new CGFusionModelGenerator(generator));
         handler.addGenerator(CGModelGenerator::new);
         handler.addGenerator(CGBlockStateGenerator::new);
         handler.addGenerator(CGLanguageGenerator::new);
