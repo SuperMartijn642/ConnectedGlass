@@ -1,12 +1,11 @@
 package com.supermartijn642.connectedglass;
 
 import com.supermartijn642.connectedglass.data.*;
+import com.supermartijn642.core.CommonUtils;
 import com.supermartijn642.core.item.CreativeItemGroup;
 import com.supermartijn642.core.registry.GeneratorRegistrationHandler;
 import com.supermartijn642.core.registry.RegistrationHandler;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.fml.common.Mod;
 
 /**
  * Created 5/7/2020 by SuperMartijn642
@@ -18,7 +17,8 @@ public class ConnectedGlass {
 
     public ConnectedGlass(){
         register();
-        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> ConnectedGlassClient::register);
+        if(CommonUtils.getEnvironmentSide().isClient())
+            ConnectedGlassClient.register();
         registerGenerators();
     }
 
