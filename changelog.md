@@ -1,3 +1,8 @@
+### Connected Glass 1.1.11
+- Fixed mobs being able to spawn on the glass blocks
+- Added Japanese translations (thanks to ALFECLARE!)
+- Updated Russian translations (thanks to TheAnaxMan!)
+
 ### Connected Glass 1.1.10
 - Fixed dedicated server crash when Fusion is not installed
 
