@@ -36,7 +36,8 @@ dependencies {
     // Core library
     implementation "curse.maven:supermartijn642s-core-lib-454372:${core_library_file}"
     // Fusion
-    implementation "curse.maven:fusion-854949:${fusion_file}"
+//    implementation "curse.maven:fusion-854949:${fusion_file}"
+    implementation "com.supermartijn642:fusion:1.1.1-neoforge-mc1.20.4"
 
     // Rechiseled
     implementation "curse.maven:rechiseled-558998:${rechiseled_file}"
