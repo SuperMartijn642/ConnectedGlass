@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "connectedglass:scratched_glass_cyan_pane",
+    "connectedglass:clear_glass_cyan_pane",
+    "connectedglass:borderless_glass_cyan_pane"
+  ]
+}
