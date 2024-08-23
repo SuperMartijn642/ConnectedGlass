@@ -1,2 +1,7 @@
+### Connected Glass 1.1.12
+- Added Turkish translations (thanks to RuyaSavascisi!)
+- Added Ukrainian translations (thanks to MeDustyy!)
+- Added glass to the appropriate `c:...` glass tags
+
 ### Connected Glass 1.1.11
 - Initial release of Connected Glass for Minecraft 1.21 & 1.21.1
