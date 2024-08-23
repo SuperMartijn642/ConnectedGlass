@@ -1,3 +1,8 @@
+### Connected Glass 1.1.12
+- Added Turkish translations (thanks to !)
+- Added Ukrainian translations (thanks to !)
+- Fixed connecting glass from vanilla glass recipes
+
 ### Connected Glass 1.1.11a
 - Fixed Fusion being required on the server
 
