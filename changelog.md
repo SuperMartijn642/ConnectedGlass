@@ -1,3 +1,7 @@
+### Connected Glass 1.1.12
+- Added Turkish translations (thanks to RuyaSavascisi!)
+- Added Ukrainian translations (thanks to MeDustyy!)
+
 ### Connected Glass 1.1.11
 - Fixed mobs being able to spawn on the glass blocks
 - Added Japanese translations (thanks to ALFECLARE!)
