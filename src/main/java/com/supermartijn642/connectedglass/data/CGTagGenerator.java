@@ -3,12 +3,10 @@ package com.supermartijn642.connectedglass.data;
 import com.supermartijn642.connectedglass.CGGlassType;
 import com.supermartijn642.core.generator.ResourceCache;
 import com.supermartijn642.core.generator.TagGenerator;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
-
-import java.util.ArrayList;
 
 /**
  * Created 5/26/2020 by SuperMartijn642
@@ -21,13 +19,27 @@ public class CGTagGenerator extends TagGenerator {
 
     @Override
     public void generate(){
-        ArrayList<Block> glass = new ArrayList<>();
-
-        for(CGGlassType type : CGGlassType.values())
-            glass.addAll(type.blocks);
-
-        glass.forEach(this.blockTag(ConventionalBlockTags.GLASS_BLOCKS)::add);
-        glass.stream().map(Block::asItem).forEach(this.itemTag(ConventionalItemTags.GLASS_BLOCKS)::add);
+        for(CGGlassType type : CGGlassType.values()){
+            type.blocks.forEach(this.blockTag(ConventionalBlockTags.GLASS_BLOCKS)::add);
+            type.blocks.stream().map(Block::asItem).forEach(this.itemTag(ConventionalItemTags.GLASS_BLOCKS)::add);
+            if(type.isTinted){
+                type.blocks.forEach(this.blockTag(ConventionalBlockTags.GLASS_BLOCKS_TINTED)::add);
+                type.blocks.stream().map(Block::asItem).forEach(this.itemTag(ConventionalItemTags.GLASS_BLOCKS_TINTED)::add);
+            }else{
+                type.blocks.forEach(this.blockTag(ConventionalBlockTags.GLASS_BLOCKS_CHEAP)::add);
+                type.blocks.stream().map(Block::asItem).forEach(this.itemTag(ConventionalItemTags.GLASS_BLOCKS_CHEAP)::add);
+                this.blockTag(ConventionalBlockTags.GLASS_BLOCKS_COLORLESS).add(type.block);
+                this.itemTag(ConventionalItemTags.GLASS_BLOCKS_COLORLESS).add(type.block.asItem());
+            }
+            if(type.hasPanes){
+                type.panes.forEach(this.blockTag(ConventionalBlockTags.GLASS_PANES)::add);
+                type.panes.stream().map(Block::asItem).forEach(this.itemTag(ConventionalItemTags.GLASS_PANES)::add);
+                if(!type.isTinted){
+                    this.blockTag(ConventionalBlockTags.GLASS_PANES_COLORLESS).add(type.pane);
+                    this.itemTag(ConventionalItemTags.GLASS_PANES_COLORLESS).add(type.pane.asItem());
+                }
+            }
+        }
 
         // Impermeable tag
         TagBuilder<Block> impermeable = this.blockTag(BlockTags.IMPERMEABLE);
