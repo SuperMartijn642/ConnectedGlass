@@ -1,4 +1,4 @@
-// 1.20.6	2024-08-18T13:24:32.5411637	Core Lib Generators
+// 1.20.6	2024-08-23T23:36:36.0977794	Core Lib Generators
 5852f9af63a37293452925af5538099ce214a364 assets/connectedglass/blockstates/borderless_glass.json
 f55c5ea2da88fd304e3305d4c490e2c3c7e45666 assets/connectedglass/blockstates/borderless_glass_black.json
 4c563c53254abfd8e44e76c24c5f8b64c12aa5e2 assets/connectedglass/blockstates/borderless_glass_black_pane.json
@@ -238,7 +238,7 @@ db5a75330b8d7db64ef77766343b711cc0fb483e assets/connectedglass/models/item/tinte
 5dea1bf5211ee446c7dc1dd594c019d228dd00ab assets/connectedglass/models/item/tinted_borderless_glass_red.json
 88208a41535ef60abcae405ac08d56411e669853 assets/connectedglass/models/item/tinted_borderless_glass_white.json
 cc9ab86990ab12b8b4b020ec208eb6634850973b assets/connectedglass/models/item/tinted_borderless_glass_yellow.json
-e1ad70d41eae0a4cae439f078c442bb6c7ff46ab assets/connectedglass/models/pane_item_template.json
+672d48f5d9dd440472cd7c5a79bc241d0308367a assets/connectedglass/models/pane_item_template.json
 2d1dd048a5897c208b48e32e72557bfd7389d937 assets/minecraft/atlases/blocks.json
 f41223ffe7e2ea1c8fdafce2214074b55fd7fa83 data/connectedglass/advancements/recipes/misc/borderless_glass1.json
 586a122fff3bae8effa846f6bbd4d890ca9b274c data/connectedglass/advancements/recipes/misc/borderless_glass_black1.json
@@ -961,16 +961,16 @@ e50ee13b096fb6e9218d077ed580e82e59ea2011 data/connectedglass/recipes/vanilla_tin
 4fbcfe816ff934f595c6ae2e348b6792e2fe26db data/connectedglass/recipes/vanilla_white_stained_glass_pane.json
 170f7869a0531072f327a2b40168a5a4cc1bcae7 data/connectedglass/recipes/vanilla_yellow_stained_glass.json
 9a747a6a18357da259f054d1c43cd404871bb2fc data/connectedglass/recipes/vanilla_yellow_stained_glass_pane.json
-3f9c6668ed6e750e82e921ee14b8fe34dc025181 data/c/tags/blocks/glass_blocks.json
+095a42940d9a0e1cc173a98551e61944cf5e9ab3 data/c/tags/blocks/glass_blocks.json
+59c68a39824a8f7521023699a342b6542588520f data/c/tags/blocks/glass_blocks/cheap.json
 0c78e9fc7c4d69cce6408e50b6091cec0ee44b2e data/c/tags/blocks/glass_blocks/colorless.json
-81a8556dec018085d9eb8039ea172560dc0eefab data/c/tags/blocks/glass_blocks/tinted.json
-428519369f077b3bb55ee06f8118e7ab82ab12ee data/c/tags/blocks/glass_panes.json
-2fa51924df3fb0b9a91665d9b628a7f6da5a962a data/c/tags/blocks/glass_panes/colorless.json
-30f3cb5a474e9fe008890ff2b45172bc7601b8f4 data/c/tags/items/glass_blocks.json
-e61ea05e1f44efcd9990566c21e1b4030cab86f4 data/c/tags/items/glass_blocks/colorless.json
-7e9e699878497a84b442efd49d1425ef8080a57f data/c/tags/items/glass_blocks/tinted.json
-ba6cc236ab25e8e5d41c3b89006089cbc08596d3 data/c/tags/items/glass_panes.json
-22afea24f8e38552e2761db7ce7b1d1ae9dbbf7e data/c/tags/items/glass_panes/colorless.json
-8a23702b05296c8af5014d6aa6e9265ded85c7d9 data/forge/tags/blocks/glass_panes/tinted.json
-8a23702b05296c8af5014d6aa6e9265ded85c7d9 data/forge/tags/items/glass_panes/tinted.json
-03236a177f6f98f2362fc8a384621e6d7702f2f0 data/minecraft/tags/blocks/impermeable.json
+708dfb2998010313652645a217cabba4e5e5eee7 data/c/tags/blocks/glass_blocks/tinted.json
+f2b5d6e7889ed891fd7d7a0fd7e19800261d3d85 data/c/tags/blocks/glass_panes.json
+b4f86d6b333f62106eb58397594440b52728dbf5 data/c/tags/blocks/glass_panes/colorless.json
+c9842c2dcf339cdc3bcfbb6e82efa6a67815611d data/c/tags/items/glass_blocks.json
+9c50e09a457c4e3b05654a7650eeeaf97f4223e1 data/c/tags/items/glass_blocks/cheap.json
+1a1698d35c325bfd8e432da948cc7ccc65582461 data/c/tags/items/glass_blocks/colorless.json
+963d2e057741526b9d32adb82b76ef7a803b9ac2 data/c/tags/items/glass_blocks/tinted.json
+65bd35656bb6a33b41a04522acc450ca22039996 data/c/tags/items/glass_panes.json
+b4f86d6b333f62106eb58397594440b52728dbf5 data/c/tags/items/glass_panes/colorless.json
+ebeca42b6a793bf0e64e0e89c3ae437c96dcfe8b data/minecraft/tags/blocks/impermeable.json
