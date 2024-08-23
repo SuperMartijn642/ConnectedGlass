@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,11 +47,12 @@ public class CGRecipeGenerator extends RecipeGenerator {
                     lastTypeTinted == null ? color == null ? ConnectedGlass.tinted_glass : null : lastTypeTinted.getBlock(color) :
                     lastType == null ? this.getVanillaBlock(color) : lastType.getBlock(color);
                 if(previous != null){
+                    ItemStack input = new ItemStack(previous, 1, !type.isTinted && lastType == null && color != null ? color.getMetadata() : 0);
                     this.shaped(Registries.BLOCKS.getIdentifier(block).getResourcePath() + "1", Item.getItemFromBlock(block), 4)
                         .pattern("AA")
                         .pattern("AA")
-                        .input('A', Item.getItemFromBlock(previous))
-                        .unlockedBy(Item.getItemFromBlock(previous));
+                        .input('A', input)
+                        .unlockedBy(input);
                 }
             }
 
@@ -61,9 +63,9 @@ public class CGRecipeGenerator extends RecipeGenerator {
                     .pattern("ABA")
                     .pattern("AAA")
                     .input('A', Item.getItemFromBlock(type.block))
-                    .input('B', "dye" + Character.toUpperCase(block.getColor().getUnlocalizedName().charAt(0)) + block.getColor().getUnlocalizedName().substring(1))
+                    .input('B', getColorOreDict(block.getColor()))
                     .unlockedBy(Item.getItemFromBlock(type.block))
-                    .unlockedByOreDict("dye" + Character.toUpperCase(block.getColor().getUnlocalizedName().charAt(0)) + block.getColor().getUnlocalizedName().substring(1));
+                    .unlockedByOreDict(getColorOreDict(block.getColor()));
             }
 
             if(type.hasPanes){
@@ -74,11 +76,12 @@ public class CGRecipeGenerator extends RecipeGenerator {
                         lastTypeTinted == null ? null : lastTypeTinted.getPane(color) :
                         lastType == null ? this.getVanillaPane(color) : lastType.getPane(color);
                     if(previous != null){
+                        ItemStack input = new ItemStack(previous, 1, !type.isTinted && lastType == null && color != null ? color.getMetadata() : 0);
                         this.shaped(Registries.BLOCKS.getIdentifier(pane).getResourcePath() + "1", Item.getItemFromBlock(pane), 4)
                             .pattern("AA")
                             .pattern("AA")
-                            .input('A', Item.getItemFromBlock(previous))
-                            .unlockedBy(Item.getItemFromBlock(previous));
+                            .input('A', input)
+                            .unlockedBy(input);
                     }
                 }
 
@@ -89,9 +92,9 @@ public class CGRecipeGenerator extends RecipeGenerator {
                         .pattern("ABA")
                         .pattern("AAA")
                         .input('A', Item.getItemFromBlock(type.pane))
-                        .input('B', "dye" + Character.toUpperCase(pane.getColor().getUnlocalizedName().charAt(0)) + pane.getColor().getUnlocalizedName().substring(1))
+                        .input('B', getColorOreDict(pane.getColor()))
                         .unlockedBy(Item.getItemFromBlock(type.pane))
-                        .unlockedByOreDict("dye" + Character.toUpperCase(pane.getColor().getUnlocalizedName().charAt(0)) + pane.getColor().getUnlocalizedName().substring(1));
+                        .unlockedByOreDict(getColorOreDict(pane.getColor()));
                 }
 
                 // panes from blocks

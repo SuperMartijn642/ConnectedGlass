@@ -9,7 +9,7 @@
       {
         "type": "minecraft:item",
         "item": "minecraft:stained_glass",
-        "data": 0
+        "data": 2
       }
     ]
   },
