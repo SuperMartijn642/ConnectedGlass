@@ -30,15 +30,5 @@ public class ConnectedGlassClient {
                     handler.registerBlockModelTranslucentRenderType(() -> type.getPane(color));
             }
         }
-
-        // Add overrides for the pane models
-        for(CGGlassType type : CGGlassType.values()){
-            if(type.hasPanes)
-                handler.registerBlockModelOverwrite(type::getPane, CGPaneBakedModel::new);
-            for(DyeColor color : DyeColor.values()){
-                if(type.hasPanes)
-                    handler.registerBlockModelOverwrite(() -> type.getPane(color), CGPaneBakedModel::new);
-            }
-        }
     }
 }
