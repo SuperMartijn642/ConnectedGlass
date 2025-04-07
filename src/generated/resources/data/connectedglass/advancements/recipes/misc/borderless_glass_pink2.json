@@ -37,7 +37,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#c:pink_dyes"
+            "items": "#c:dyes/pink"
           }
         ]
       }
