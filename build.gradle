@@ -37,8 +37,7 @@ dependencies {
     // Core library
     implementation fg.deobf("curse.maven:supermartijn642s-core-lib-454372:${core_library_file}")
     // Fusion
-//    implementation fg.deobf("curse.maven:fusion-854949:${fusion_file}")
-    implementation fg.deobf("com.supermartijn642:fusion:1.1.1-forge-mc1.20.4")
+    implementation fg.deobf("curse.maven:fusion-854949:${fusion_file}")
 
     // Rechiseled
     implementation fg.deobf("curse.maven:rechiseled-558998:${rechiseled_file}")
