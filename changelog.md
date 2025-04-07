@@ -1,3 +1,6 @@
+### Connected Glass 1.1.13
+- Fusion is now used for culling top and bottom quads of glass panes
+
 ### Connected Glass 1.1.12
 - Added Turkish translations (thanks to RuyaSavascisi!)
 - Added Ukrainian translations (thanks to MeDustyy!)
