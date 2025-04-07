@@ -55,6 +55,8 @@ public class ConnectedGlass {
         handler.addGenerator(cache -> ((Function<ResourceCache,ResourceGenerator>)CGTextureProvider::new).apply(cache));
         //noinspection TrivialFunctionalExpressionUsage
         handler.addGenerator(cache -> ((Function<ResourceCache,ResourceGenerator>)CGFusionModelGenerator::new).apply(cache));
+        //noinspection TrivialFunctionalExpressionUsage
+        handler.addGenerator(cache -> ((Function<ResourceCache,ResourceGenerator>)CGFusionBlockModelModifierGenerator::new).apply(cache));
         handler.addGenerator(CGModelGenerator::new);
         handler.addGenerator(CGBlockStateGenerator::new);
         handler.addGenerator(CGLanguageGenerator::new);
