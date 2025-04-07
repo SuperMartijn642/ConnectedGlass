@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "connectedglass:clear_glass_red",
     "connectedglass:scratched_glass_red",
+    "connectedglass:clear_glass_red",
     "connectedglass:borderless_glass_red"
   ]
 }
