@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     "connectedglass:scratched_glass_purple_pane",
-    "connectedglass:borderless_glass_purple_pane",
-    "connectedglass:clear_glass_purple_pane"
+    "connectedglass:clear_glass_purple_pane",
+    "connectedglass:borderless_glass_purple_pane"
   ]
 }
