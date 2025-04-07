@@ -39,6 +39,7 @@ public class ConnectedGlass {
         handler.addProvider((generator, fileHelper) -> new CGTextureProvider(generator, fileHelper));
         //noinspection Convert2MethodRef
         handler.addProvider(generator -> new CGFusionModelGenerator(generator));
+        handler.addProvider(generator -> new CGFusionBlockModelModifierGenerator(generator.getPackOutput()));
         handler.addGenerator(CGAtlasSourceGenerator::new);
         handler.addGenerator(CGModelGenerator::new);
         handler.addGenerator(CGBlockStateGenerator::new);
