@@ -37,7 +37,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#c:red_dyes"
+            "items": "#c:dyes/red"
           }
         ]
       }

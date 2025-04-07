@@ -37,7 +37,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#c:lime_dyes"
+            "items": "#c:dyes/lime"
           }
         ]
       }
