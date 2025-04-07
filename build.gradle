@@ -2,7 +2,7 @@ plugins {
     id "eclipse"
     id "idea"
     id "java-library"
-    id "net.neoforged.gradle.userdev" version "7.0.160"
+    id "net.neoforged.gradle.userdev" version "7.0.184"
     id "me.modmuss50.mod-publish-plugin" version "0.5.2"
 }
 
@@ -36,8 +36,7 @@ dependencies {
     // Core library
     implementation "curse.maven:supermartijn642s-core-lib-454372:${core_library_file}"
     // Fusion
-//    implementation "curse.maven:fusion-854949:${fusion_file}"
-    implementation "com.supermartijn642:fusion:1.1.1-neoforge-mc1.20.4"
+    implementation "curse.maven:fusion-854949:${fusion_file}"
 
     // Rechiseled
     implementation "curse.maven:rechiseled-558998:${rechiseled_file}"
