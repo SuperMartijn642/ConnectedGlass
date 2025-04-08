@@ -6,12 +6,8 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "connectedglass:tinted_borderless_glass"
-    },
-    "B": {
-      "tag": "c:dyes/green"
-    }
+    "A": "connectedglass:tinted_borderless_glass",
+    "B": "#c:dyes/green"
   },
   "result": {
     "id": "connectedglass:tinted_borderless_glass_green",

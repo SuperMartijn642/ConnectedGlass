@@ -5,9 +5,7 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "connectedglass:clear_glass_red"
-    }
+    "A": "connectedglass:clear_glass_red"
   },
   "result": {
     "id": "connectedglass:clear_glass_red_pane",

@@ -6,12 +6,8 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "connectedglass:scratched_glass_pane"
-    },
-    "B": {
-      "tag": "c:dyes/lime"
-    }
+    "A": "connectedglass:scratched_glass_pane",
+    "B": "#c:dyes/lime"
   },
   "result": {
     "id": "connectedglass:scratched_glass_lime_pane",

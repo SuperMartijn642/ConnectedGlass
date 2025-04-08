@@ -6,12 +6,8 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "connectedglass:clear_glass"
-    },
-    "B": {
-      "tag": "c:dyes/light_gray"
-    }
+    "A": "connectedglass:clear_glass",
+    "B": "#c:dyes/light_gray"
   },
   "result": {
     "id": "connectedglass:clear_glass_light_gray",

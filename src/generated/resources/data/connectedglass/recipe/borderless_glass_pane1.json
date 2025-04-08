@@ -5,9 +5,7 @@
     "AA"
   ],
   "key": {
-    "A": {
-      "item": "minecraft:glass_pane"
-    }
+    "A": "minecraft:glass_pane"
   },
   "result": {
     "id": "connectedglass:borderless_glass_pane",

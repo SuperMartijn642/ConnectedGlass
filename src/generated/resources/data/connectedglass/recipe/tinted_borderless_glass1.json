@@ -5,9 +5,7 @@
     "AA"
   ],
   "key": {
-    "A": {
-      "item": "minecraft:tinted_glass"
-    }
+    "A": "minecraft:tinted_glass"
   },
   "result": {
     "id": "connectedglass:tinted_borderless_glass",
