@@ -6,12 +6,8 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "connectedglass:clear_glass_pane"
-    },
-    "B": {
-      "tag": "forge:dyes/gray"
-    }
+    "A": "connectedglass:clear_glass_pane",
+    "B": "#c:dyes/gray"
   },
   "result": {
     "id": "connectedglass:clear_glass_gray_pane",

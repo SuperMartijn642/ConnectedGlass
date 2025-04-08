@@ -6,12 +6,8 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "connectedglass:tinted_borderless_glass"
-    },
-    "B": {
-      "tag": "forge:dyes/orange"
-    }
+    "A": "connectedglass:tinted_borderless_glass",
+    "B": "#c:dyes/orange"
   },
   "result": {
     "id": "connectedglass:tinted_borderless_glass_orange",

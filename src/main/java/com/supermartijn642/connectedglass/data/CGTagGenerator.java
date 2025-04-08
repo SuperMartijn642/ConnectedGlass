@@ -19,20 +19,12 @@ import java.util.ArrayList;
 public class CGTagGenerator extends TagGenerator {
 
     @SuppressWarnings("unchecked")
-    private static final TagKey<Block>[] COLORED_GLASS_BLOCK_TAGS = new TagKey[]{
-        Tags.Blocks.GLASS_WHITE, Tags.Blocks.GLASS_ORANGE, Tags.Blocks.GLASS_MAGENTA, Tags.Blocks.GLASS_LIGHT_BLUE, Tags.Blocks.GLASS_YELLOW, Tags.Blocks.GLASS_LIME, Tags.Blocks.GLASS_PINK, Tags.Blocks.GLASS_GRAY, Tags.Blocks.GLASS_LIGHT_GRAY, Tags.Blocks.GLASS_CYAN, Tags.Blocks.GLASS_PURPLE, Tags.Blocks.GLASS_BLUE, Tags.Blocks.GLASS_BROWN, Tags.Blocks.GLASS_GREEN, Tags.Blocks.GLASS_RED, Tags.Blocks.GLASS_BLACK
+    private static final TagKey<Block>[] COLORED_BLOCK_TAGS = new TagKey[]{
+        Tags.Blocks.DYED_WHITE, Tags.Blocks.DYED_ORANGE, Tags.Blocks.DYED_MAGENTA, Tags.Blocks.DYED_LIGHT_BLUE, Tags.Blocks.DYED_YELLOW, Tags.Blocks.DYED_LIME, Tags.Blocks.DYED_PINK, Tags.Blocks.DYED_GRAY, Tags.Blocks.DYED_LIGHT_GRAY, Tags.Blocks.DYED_CYAN, Tags.Blocks.DYED_PURPLE, Tags.Blocks.DYED_BLUE, Tags.Blocks.DYED_BROWN, Tags.Blocks.DYED_GREEN, Tags.Blocks.DYED_RED, Tags.Blocks.DYED_BLACK
     };
     @SuppressWarnings("unchecked")
-    private static final TagKey<Block>[] COLORED_PANE_BLOCK_TAGS = new TagKey[]{
-        Tags.Blocks.GLASS_PANES_WHITE, Tags.Blocks.GLASS_PANES_ORANGE, Tags.Blocks.GLASS_PANES_MAGENTA, Tags.Blocks.GLASS_PANES_LIGHT_BLUE, Tags.Blocks.GLASS_PANES_YELLOW, Tags.Blocks.GLASS_PANES_LIME, Tags.Blocks.GLASS_PANES_PINK, Tags.Blocks.GLASS_PANES_GRAY, Tags.Blocks.GLASS_PANES_LIGHT_GRAY, Tags.Blocks.GLASS_PANES_CYAN, Tags.Blocks.GLASS_PANES_PURPLE, Tags.Blocks.GLASS_PANES_BLUE, Tags.Blocks.GLASS_PANES_BROWN, Tags.Blocks.GLASS_PANES_GREEN, Tags.Blocks.GLASS_PANES_RED, Tags.Blocks.GLASS_PANES_BLACK
-    };
-    @SuppressWarnings("unchecked")
-    private static final TagKey<Item>[] COLORED_GLASS_ITEM_TAGS = new TagKey[]{
-        Tags.Items.GLASS_WHITE, Tags.Items.GLASS_ORANGE, Tags.Items.GLASS_MAGENTA, Tags.Items.GLASS_LIGHT_BLUE, Tags.Items.GLASS_YELLOW, Tags.Items.GLASS_LIME, Tags.Items.GLASS_PINK, Tags.Items.GLASS_GRAY, Tags.Items.GLASS_LIGHT_GRAY, Tags.Items.GLASS_CYAN, Tags.Items.GLASS_PURPLE, Tags.Items.GLASS_BLUE, Tags.Items.GLASS_BROWN, Tags.Items.GLASS_GREEN, Tags.Items.GLASS_RED, Tags.Items.GLASS_BLACK
-    };
-    @SuppressWarnings("unchecked")
-    private static final TagKey<Item>[] COLORED_PANE_ITEM_TAGS = new TagKey[]{
-        Tags.Items.GLASS_PANES_WHITE, Tags.Items.GLASS_PANES_ORANGE, Tags.Items.GLASS_PANES_MAGENTA, Tags.Items.GLASS_PANES_LIGHT_BLUE, Tags.Items.GLASS_PANES_YELLOW, Tags.Items.GLASS_PANES_LIME, Tags.Items.GLASS_PANES_PINK, Tags.Items.GLASS_PANES_GRAY, Tags.Items.GLASS_PANES_LIGHT_GRAY, Tags.Items.GLASS_PANES_CYAN, Tags.Items.GLASS_PANES_PURPLE, Tags.Items.GLASS_PANES_BLUE, Tags.Items.GLASS_PANES_BROWN, Tags.Items.GLASS_PANES_GREEN, Tags.Items.GLASS_PANES_RED, Tags.Items.GLASS_PANES_BLACK
+    private static final TagKey<Item>[] COLORED_ITEM_TAGS = new TagKey[]{
+        Tags.Items.DYED_WHITE, Tags.Items.DYED_ORANGE, Tags.Items.DYED_MAGENTA, Tags.Items.DYED_LIGHT_BLUE, Tags.Items.DYED_YELLOW, Tags.Items.DYED_LIME, Tags.Items.DYED_PINK, Tags.Items.DYED_GRAY, Tags.Items.DYED_LIGHT_GRAY, Tags.Items.DYED_CYAN, Tags.Items.DYED_PURPLE, Tags.Items.DYED_BLUE, Tags.Items.DYED_BROWN, Tags.Items.DYED_GREEN, Tags.Items.DYED_RED, Tags.Items.DYED_BLACK
     };
 
     public CGTagGenerator(ResourceCache cache){
@@ -69,30 +61,26 @@ public class CGTagGenerator extends TagGenerator {
             }
         }
 
-        glass.forEach(this.blockTag(Tags.Blocks.GLASS)::add);
-        glass.stream().map(Block::asItem).forEach(this.itemTag(Tags.Items.GLASS)::add);
-        glassColored.forEach(this.blockTag(Tags.Blocks.STAINED_GLASS)::add);
-        glassColored.stream().map(Block::asItem).forEach(this.itemTag(Tags.Items.STAINED_GLASS)::add);
+        glass.forEach(this.blockTag(Tags.Blocks.GLASS_BLOCKS)::add);
+        glass.stream().map(Block::asItem).forEach(this.itemTag(Tags.Items.GLASS_BLOCKS)::add);
         glassColored.forEach(b -> {
-            this.blockTag(COLORED_GLASS_BLOCK_TAGS[b.getColor().getId()]).add(b);
-            this.itemTag(COLORED_GLASS_ITEM_TAGS[b.getColor().getId()]).add(b.asItem());
+            this.blockTag(COLORED_BLOCK_TAGS[b.getColor().getId()]).add(b);
+            this.itemTag(COLORED_ITEM_TAGS[b.getColor().getId()]).add(b.asItem());
         });
-        glassColorless.forEach(this.blockTag(Tags.Blocks.GLASS_COLORLESS)::add);
-        glassColorless.stream().map(Block::asItem).forEach(this.itemTag(Tags.Items.GLASS_COLORLESS)::add);
-        glassTinted.forEach(this.blockTag(Tags.Blocks.GLASS_TINTED)::add);
-        glassTinted.stream().map(Block::asItem).forEach(this.itemTag(Tags.Items.GLASS_TINTED)::add);
+        glassColorless.forEach(this.blockTag(Tags.Blocks.GLASS_BLOCKS_COLORLESS)::add);
+        glassColorless.stream().map(Block::asItem).forEach(this.itemTag(Tags.Items.GLASS_BLOCKS_COLORLESS)::add);
+        glassTinted.forEach(this.blockTag(Tags.Blocks.GLASS_BLOCKS_TINTED)::add);
+        glassTinted.stream().map(Block::asItem).forEach(this.itemTag(Tags.Items.GLASS_BLOCKS_TINTED)::add);
         panes.forEach(this.blockTag(Tags.Blocks.GLASS_PANES)::add);
         panes.stream().map(Block::asItem).forEach(this.itemTag(Tags.Items.GLASS_PANES)::add);
-        panesColored.forEach(this.blockTag(Tags.Blocks.STAINED_GLASS_PANES)::add);
-        panesColored.stream().map(Block::asItem).forEach(this.itemTag(Tags.Items.STAINED_GLASS_PANES)::add);
         panesColored.forEach(b -> {
-            this.blockTag(COLORED_PANE_BLOCK_TAGS[b.getColor().getId()]).add(b);
-            this.itemTag(COLORED_PANE_ITEM_TAGS[b.getColor().getId()]).add(b.asItem());
+            this.blockTag(COLORED_BLOCK_TAGS[b.getColor().getId()]).add(b);
+            this.itemTag(COLORED_ITEM_TAGS[b.getColor().getId()]).add(b.asItem());
         });
         panesColorless.forEach(this.blockTag(Tags.Blocks.GLASS_PANES_COLORLESS)::add);
         panesColorless.stream().map(Block::asItem).forEach(this.itemTag(Tags.Items.GLASS_PANES_COLORLESS)::add);
-        panesTinted.forEach(this.blockTag("forge", "glass_panes/tinted")::add);
-        panesTinted.stream().map(Block::asItem).forEach(this.itemTag("forge", "glass_panes/tinted")::add);
+        panesTinted.forEach(this.blockTag("c", "glass_panes/tinted")::add);
+        panesTinted.stream().map(Block::asItem).forEach(this.itemTag("c", "glass_panes/tinted")::add);
 
         // Impermeable tag
         TagBuilder<Block> impermeable = this.blockTag(BlockTags.IMPERMEABLE);

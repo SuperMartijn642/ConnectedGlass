@@ -6,12 +6,8 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "connectedglass:scratched_glass_pane"
-    },
-    "B": {
-      "tag": "forge:dyes/black"
-    }
+    "A": "connectedglass:scratched_glass_pane",
+    "B": "#c:dyes/black"
   },
   "result": {
     "id": "connectedglass:scratched_glass_black_pane",

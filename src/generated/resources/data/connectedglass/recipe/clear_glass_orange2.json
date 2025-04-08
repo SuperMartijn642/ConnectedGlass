@@ -6,12 +6,8 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "connectedglass:clear_glass"
-    },
-    "B": {
-      "tag": "forge:dyes/orange"
-    }
+    "A": "connectedglass:clear_glass",
+    "B": "#c:dyes/orange"
   },
   "result": {
     "id": "connectedglass:clear_glass_orange",
