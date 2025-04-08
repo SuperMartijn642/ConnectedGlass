@@ -1,8 +1,7 @@
 package com.supermartijn642.connectedglass;
 
-import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 
 /**
@@ -10,17 +9,17 @@ import net.minecraft.world.level.block.state.BlockState;
  */
 public class CGColoredTintedGlassBlock extends CGColoredGlassBlock {
 
-    public CGColoredTintedGlassBlock(String texture, boolean connected, DyeColor color){
-        super(texture, connected, color);
+    public CGColoredTintedGlassBlock(ResourceLocation identifier, String texture, boolean connected, DyeColor color){
+        super(identifier, texture, connected, color);
     }
 
     @Override
-    public boolean propagatesSkylightDown(BlockState state, BlockGetter level, BlockPos pos){
+    protected boolean propagatesSkylightDown(BlockState blockState){
         return false;
     }
 
     @Override
-    public int getLightBlock(BlockState state, BlockGetter level, BlockPos pos){
-        return level.getMaxLightLevel();
+    protected int getLightBlock(BlockState blockState){
+        return 15;
     }
 }

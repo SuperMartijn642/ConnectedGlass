@@ -6,12 +6,8 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "connectedglass:clear_glass_pane"
-    },
-    "B": {
-      "tag": "c:dyes/orange"
-    }
+    "A": "connectedglass:clear_glass_pane",
+    "B": "#c:dyes/orange"
   },
   "result": {
     "id": "connectedglass:clear_glass_orange_pane",

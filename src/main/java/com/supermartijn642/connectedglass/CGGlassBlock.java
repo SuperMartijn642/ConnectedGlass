@@ -1,5 +1,7 @@
 package com.supermartijn642.connectedglass;
 
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.TransparentBlock;
@@ -13,8 +15,8 @@ public class CGGlassBlock extends TransparentBlock {
     public final ResourceLocation texture;
     public final boolean connected;
 
-    public CGGlassBlock(String texture, boolean connected){
-        super(Properties.of().sound(SoundType.GLASS).instrument(NoteBlockInstrument.HAT).strength(0.3f).noOcclusion().isValidSpawn((a, b, c, d) -> false).isRedstoneConductor((a, b, c) -> false).isSuffocating((a, b, c) -> false).isViewBlocking((a, b, c) -> false));
+    public CGGlassBlock(ResourceLocation identifier, String texture, boolean connected){
+        super(Properties.of().sound(SoundType.GLASS).instrument(NoteBlockInstrument.HAT).strength(0.3f).noOcclusion().isValidSpawn((a, b, c, d) -> false).isRedstoneConductor((a, b, c) -> false).isSuffocating((a, b, c) -> false).isViewBlocking((a, b, c) -> false).setId(ResourceKey.create(Registries.BLOCK, identifier)));
         this.texture = ResourceLocation.fromNamespaceAndPath("connectedglass", texture);
         this.connected = connected;
     }

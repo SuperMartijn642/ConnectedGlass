@@ -1,5 +1,8 @@
 package com.supermartijn642.connectedglass;
 
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -11,8 +14,8 @@ public class CGPaneBlock extends IronBarsBlock {
 
     public final CGGlassBlock block;
 
-    public CGPaneBlock(CGGlassBlock block){
-        super(Properties.of().instrument(NoteBlockInstrument.HAT).sound(SoundType.GLASS).strength(0.3f).noOcclusion());
+    public CGPaneBlock(ResourceLocation identifier, CGGlassBlock block){
+        super(Properties.of().instrument(NoteBlockInstrument.HAT).sound(SoundType.GLASS).strength(0.3f).noOcclusion().setId(ResourceKey.create(Registries.BLOCK, identifier)));
         this.block = block;
     }
 }
