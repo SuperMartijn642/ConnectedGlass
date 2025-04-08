@@ -5,15 +5,14 @@ import com.supermartijn642.rechiseled.api.ChiseledTextureProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 /**
  * Created 13/11/2023 by SuperMartijn642
  */
 public class CGTextureProvider extends ChiseledTextureProvider {
 
-    public CGTextureProvider(DataGenerator generator, ExistingFileHelper fileHelper){
-        super("connectedglass", generator, fileHelper);
+    public CGTextureProvider(DataGenerator generator){
+        super("connectedglass", generator);
     }
 
     @Override

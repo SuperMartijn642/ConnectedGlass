@@ -88,7 +88,7 @@ runs {
         argument "-nogui"
     }
 
-    data {
+    clientData {
         //noinspection GroovyAssignabilityCheck
         arguments "--mod", mod_id
         arguments "--all"
