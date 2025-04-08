@@ -19,13 +19,6 @@ public class CGModelGenerator extends ModelGenerator {
 
     @Override
     public void generate(){
-        // Create the glass block models
-        for(CGGlassType type : CGGlassType.values()){
-            this.model("item/" + type.getRegistryName()).parent(type.getRegistryName());
-            for(DyeColor color : DyeColor.values())
-                this.model("item/" + type.getRegistryName(color)).parent(type.getRegistryName(color));
-        }
-
         // Pane item model template
         this.model("pane_item_template")
             .parent("minecraft", "block/block")

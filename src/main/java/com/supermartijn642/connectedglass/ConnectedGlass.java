@@ -43,6 +43,7 @@ public class ConnectedGlass {
         handler.addGenerator(CGAtlasSourceGenerator::new);
         handler.addGenerator(CGModelGenerator::new);
         handler.addGenerator(CGBlockStateGenerator::new);
+        handler.addGenerator(CGItemInfoGenerator::new);
         handler.addGenerator(CGLanguageGenerator::new);
         handler.addGenerator(CGLootTableGenerator::new);
         handler.addGenerator(CGRecipeGenerator::new);
