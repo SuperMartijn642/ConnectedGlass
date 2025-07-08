@@ -1,5 +1,5 @@
 plugins {
-    id "fabric-loom" version "1.10-SNAPSHOT"
+    id "fabric-loom" version "1.11-SNAPSHOT"
     id "me.modmuss50.mod-publish-plugin" version "0.5.2"
 }
 
@@ -39,7 +39,8 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
 
     // Core library
-    modImplementation "curse.maven:supermartijn642s-core-lib-454372:${core_library_file}"
+//    modImplementation "curse.maven:supermartijn642s-core-lib-454372:${core_library_file}"
+    modImplementation "a:supermartijn642corelib:1.1.18b-fabric-mc1.21.6"
     // Fusion
     modImplementation "curse.maven:fusion-854949:${fusion_file}"
 
