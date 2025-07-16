@@ -2,13 +2,10 @@ package com.supermartijn642.connectedglass;
 
 import com.supermartijn642.core.registry.ClientRegistrationHandler;
 import net.minecraft.world.item.DyeColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.common.Mod;
 
 /**
  * Created 5/7/2020 by SuperMartijn642
  */
-@Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ConnectedGlassClient {
 
     public static void register(){
