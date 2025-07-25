@@ -7,7 +7,7 @@
     },
     {
       "apply": {
-        "model": "connectedglass:scratched_glass_gray_pane_side"
+        "model": "connectedglass:scratched_glass_gray_pane_side_north"
       },
       "when": {
         "north": "true"
@@ -15,7 +15,7 @@
     },
     {
       "apply": {
-        "model": "connectedglass:scratched_glass_gray_pane_side",
+        "model": "connectedglass:scratched_glass_gray_pane_side_east",
         "y": 90
       },
       "when": {
@@ -24,7 +24,7 @@
     },
     {
       "apply": {
-        "model": "connectedglass:scratched_glass_gray_pane_side_alt"
+        "model": "connectedglass:scratched_glass_gray_pane_side_south"
       },
       "when": {
         "south": "true"
@@ -32,7 +32,7 @@
     },
     {
       "apply": {
-        "model": "connectedglass:scratched_glass_gray_pane_side_alt",
+        "model": "connectedglass:scratched_glass_gray_pane_side_west",
         "y": 90
       },
       "when": {
