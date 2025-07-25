@@ -9,7 +9,7 @@
     {
       "apply": {
         "type": "supermartijn642corelib:any_model_location",
-        "model": "connectedglass:borderless_glass_lime_pane_side"
+        "model": "connectedglass:borderless_glass_lime_pane_side_north"
       },
       "when": {
         "north": "true"
@@ -18,7 +18,7 @@
     {
       "apply": {
         "type": "supermartijn642corelib:any_model_location",
-        "model": "connectedglass:borderless_glass_lime_pane_side",
+        "model": "connectedglass:borderless_glass_lime_pane_side_east",
         "y": 90
       },
       "when": {
@@ -28,7 +28,7 @@
     {
       "apply": {
         "type": "supermartijn642corelib:any_model_location",
-        "model": "connectedglass:borderless_glass_lime_pane_side_alt"
+        "model": "connectedglass:borderless_glass_lime_pane_side_south"
       },
       "when": {
         "south": "true"
@@ -37,7 +37,7 @@
     {
       "apply": {
         "type": "supermartijn642corelib:any_model_location",
-        "model": "connectedglass:borderless_glass_lime_pane_side_alt",
+        "model": "connectedglass:borderless_glass_lime_pane_side_west",
         "y": 90
       },
       "when": {
