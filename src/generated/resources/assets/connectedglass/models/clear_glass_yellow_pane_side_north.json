@@ -1,0 +1,39 @@
+{
+  "type": "fusion:connecting",
+  "parent": "connectedglass:block/template_glass_pane_side",
+  "connections": {
+    "type": "fusion:or",
+    "predicates": [
+      {
+        "type": "fusion:or",
+        "predicates": [
+          {
+            "type": "fusion:match_state",
+            "block": "connectedglass:clear_glass_yellow_pane",
+            "properties": {
+              "north": [
+                "true"
+              ]
+            }
+          },
+          {
+            "type": "fusion:is_direction",
+            "directions": [
+              "bottom_left",
+              "bottom_right",
+              "left",
+              "right",
+              "top_left",
+              "top_right"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "loader": "fusion:model",
+  "textures": {
+    "edge": "connectedglass:clear_glass/clear_glass_yellow_edge",
+    "pane": "connectedglass:clear_glass/clear_glass_yellow"
+  }
+}

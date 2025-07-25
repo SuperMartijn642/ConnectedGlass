@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     "connectedglass:borderless_glass_light_gray",
-    "connectedglass:clear_glass_light_gray",
-    "connectedglass:scratched_glass_light_gray"
+    "connectedglass:scratched_glass_light_gray",
+    "connectedglass:clear_glass_light_gray"
   ]
 }
