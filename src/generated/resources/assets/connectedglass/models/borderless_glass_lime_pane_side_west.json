@@ -1,0 +1,39 @@
+{
+  "parent": "connectedglass:block/template_glass_pane_side_alt",
+  "textures": {
+    "edge": "connectedglass:borderless_glass/borderless_glass_lime_edge",
+    "pane": "connectedglass:borderless_glass/borderless_glass_lime"
+  },
+  "connections": {
+    "predicates": [
+      {
+        "predicates": [
+          {
+            "block": "connectedglass:borderless_glass_lime_pane",
+            "properties": {
+              "west": [
+                "true"
+              ]
+            },
+            "type": "fusion:match_state"
+          },
+          {
+            "directions": [
+              "bottom_left",
+              "bottom_right",
+              "left",
+              "right",
+              "top_left",
+              "top_right"
+            ],
+            "type": "fusion:is_direction"
+          }
+        ],
+        "type": "fusion:or"
+      }
+    ],
+    "type": "fusion:or"
+  },
+  "loader": "fusion:model",
+  "type": "fusion:connecting"
+}
