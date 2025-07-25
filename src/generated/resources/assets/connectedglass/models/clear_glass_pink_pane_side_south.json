@@ -1,0 +1,39 @@
+{
+  "parent": "connectedglass:block/template_glass_pane_side_alt",
+  "textures": {
+    "edge": "connectedglass:clear_glass/clear_glass_pink_edge",
+    "pane": "connectedglass:clear_glass/clear_glass_pink"
+  },
+  "connections": {
+    "predicates": [
+      {
+        "predicates": [
+          {
+            "block": "connectedglass:clear_glass_pink_pane",
+            "properties": {
+              "south": [
+                "true"
+              ]
+            },
+            "type": "fusion:match_state"
+          },
+          {
+            "directions": [
+              "bottom_left",
+              "bottom_right",
+              "left",
+              "right",
+              "top_left",
+              "top_right"
+            ],
+            "type": "fusion:is_direction"
+          }
+        ],
+        "type": "fusion:or"
+      }
+    ],
+    "type": "fusion:or"
+  },
+  "loader": "fusion:model",
+  "type": "fusion:connecting"
+}
