@@ -16,22 +16,22 @@
         16.0
       ],
       "faces": {
-        "east": {
-          "texture": "#all"
-        },
-        "up": {
-          "texture": "#edge"
-        },
         "west": {
           "texture": "#all"
         },
-        "down": {
+        "south": {
           "texture": "#edge"
         },
         "north": {
           "texture": "#edge"
         },
-        "south": {
+        "down": {
+          "texture": "#edge"
+        },
+        "east": {
+          "texture": "#all"
+        },
+        "up": {
           "texture": "#edge"
         }
       }
