@@ -25,13 +25,13 @@
         "east": {
           "texture": "#all"
         },
-        "down": {
-          "texture": "#edge"
-        },
         "north": {
           "texture": "#edge"
         },
         "up": {
+          "texture": "#edge"
+        },
+        "down": {
           "texture": "#edge"
         }
       }
