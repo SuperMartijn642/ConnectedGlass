@@ -4,7 +4,7 @@ import com.supermartijn642.core.item.BaseBlockItem;
 import com.supermartijn642.core.item.ItemProperties;
 import com.supermartijn642.core.registry.RegistrationHandler;
 import com.supermartijn642.core.registry.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -62,12 +62,12 @@ public enum CGGlassType {
         // Create uncolored block and pane
         this.block = helper.register(this.getRegistryName(),
             this.isTinted ?
-                new CGTintedGlassBlock(ResourceLocation.fromNamespaceAndPath("connectedglass", this.getRegistryName()), this.name().toLowerCase(Locale.ROOT), true) :
-                new CGGlassBlock(ResourceLocation.fromNamespaceAndPath("connectedglass", this.getRegistryName()), this.name().toLowerCase(Locale.ROOT), true)
+                new CGTintedGlassBlock(Identifier.fromNamespaceAndPath("connectedglass", this.getRegistryName()), this.name().toLowerCase(Locale.ROOT), true) :
+                new CGGlassBlock(Identifier.fromNamespaceAndPath("connectedglass", this.getRegistryName()), this.name().toLowerCase(Locale.ROOT), true)
         );
         this.blocks.add(this.block);
         if(this.hasPanes){
-            this.pane = helper.register(this.getPaneRegistryName(), new CGPaneBlock(ResourceLocation.fromNamespaceAndPath("connectedglass", this.getPaneRegistryName()), this.block));
+            this.pane = helper.register(this.getPaneRegistryName(), new CGPaneBlock(Identifier.fromNamespaceAndPath("connectedglass", this.getPaneRegistryName()), this.block));
             this.panes.add(this.pane);
         }
 
@@ -75,13 +75,13 @@ public enum CGGlassType {
         for(DyeColor color : DyeColor.values()){
             CGColoredGlassBlock block = helper.register(this.getRegistryName(color),
                 this.isTinted ?
-                    new CGColoredTintedGlassBlock(ResourceLocation.fromNamespaceAndPath("connectedglass", this.getRegistryName(color)), this.name().toLowerCase(Locale.ROOT) + "_" + color.name().toLowerCase(Locale.ROOT), true, color) :
-                    new CGColoredGlassBlock(ResourceLocation.fromNamespaceAndPath("connectedglass", this.getRegistryName(color)), this.name().toLowerCase(Locale.ROOT) + "_" + color.name().toLowerCase(Locale.ROOT), true, color)
+                    new CGColoredTintedGlassBlock(Identifier.fromNamespaceAndPath("connectedglass", this.getRegistryName(color)), this.name().toLowerCase(Locale.ROOT) + "_" + color.name().toLowerCase(Locale.ROOT), true, color) :
+                    new CGColoredGlassBlock(Identifier.fromNamespaceAndPath("connectedglass", this.getRegistryName(color)), this.name().toLowerCase(Locale.ROOT) + "_" + color.name().toLowerCase(Locale.ROOT), true, color)
             );
             this.blocks.add(block);
             this.colored_blocks.put(color, block);
             if(this.hasPanes){
-                CGColoredPaneBlock pane = helper.register(this.getPaneRegistryName(color), new CGColoredPaneBlock(ResourceLocation.fromNamespaceAndPath("connectedglass", this.getPaneRegistryName(color)), block));
+                CGColoredPaneBlock pane = helper.register(this.getPaneRegistryName(color), new CGColoredPaneBlock(Identifier.fromNamespaceAndPath("connectedglass", this.getPaneRegistryName(color)), block));
                 this.panes.add(pane);
                 this.colored_panes.put(color, pane);
             }
@@ -90,11 +90,11 @@ public enum CGGlassType {
 
     public void registerItems(RegistrationHandler.Helper<Item> helper){
         this.blocks.forEach(block -> {
-            ResourceLocation identifier = Registries.BLOCKS.getIdentifier(block);
+            Identifier identifier = Registries.BLOCKS.getIdentifier(block);
             helper.register(identifier.getPath(), new BaseBlockItem(block, ItemProperties.create().group(ConnectedGlass.GROUP)));
         });
         this.panes.forEach(pane -> {
-            ResourceLocation identifier = Registries.BLOCKS.getIdentifier(pane);
+            Identifier identifier = Registries.BLOCKS.getIdentifier(pane);
             helper.register(identifier.getPath(), new BaseBlockItem(pane, ItemProperties.create().group(ConnectedGlass.GROUP)));
         });
     }

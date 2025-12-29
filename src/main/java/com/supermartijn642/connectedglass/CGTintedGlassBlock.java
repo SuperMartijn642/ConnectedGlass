@@ -1,6 +1,6 @@
 package com.supermartijn642.connectedglass;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.state.BlockState;
 
 /**
@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
  */
 public class CGTintedGlassBlock extends CGGlassBlock {
 
-    public CGTintedGlassBlock(ResourceLocation identifier, String texture, boolean connected){
+    public CGTintedGlassBlock(Identifier identifier, String texture, boolean connected){
         super(identifier, texture, connected);
     }
 

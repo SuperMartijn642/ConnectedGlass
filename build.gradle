@@ -44,7 +44,7 @@ dependencies {
     modImplementation "curse.maven:fusion-854949:${fusion_file}"
 
     // Rechiseled
-    modImplementation "curse.maven:rechiseled-558998:${rechiseled_file}"
+    modCompileOnly "curse.maven:rechiseled-558998:${rechiseled_file}"
 
     // Config library
     modRuntimeOnly "curse.maven:supermartijn642s-config-lib-438332:${config_library_file}"
