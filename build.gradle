@@ -44,8 +44,6 @@ dependencies {
 
     // Config library
     runtimeOnly "curse.maven:supermartijn642s-config-lib-438332:${config_library_file}"
-    // Just Enough Items
-//    runtimeOnly "curse.maven:jei-238222:${just_enough_items_file}"
 
     // Hack fix for now, force jopt-simple to be exactly 5.0.4 because Mojang ships that version, but some transitive dependencies request 6.0+
     implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
