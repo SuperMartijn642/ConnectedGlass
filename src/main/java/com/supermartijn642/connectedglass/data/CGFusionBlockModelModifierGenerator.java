@@ -3,7 +3,7 @@ package com.supermartijn642.connectedglass.data;
 import com.supermartijn642.connectedglass.CGGlassType;
 import com.supermartijn642.fusion.api.provider.FusionBlockModelModifierProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.DyeColor;
 
 /**
@@ -18,7 +18,7 @@ public class CGFusionBlockModelModifierGenerator extends FusionBlockModelModifie
     @Override
     protected void generate(){
         // Use pane culling fix for all the pane models
-        ModifierBuilder modifier = this.modifier(ResourceLocation.fromNamespaceAndPath("connectedglass", "pane_culling_fix"));
+        ModifierBuilder modifier = this.modifier(Identifier.fromNamespaceAndPath("connectedglass", "pane_culling_fix"));
         modifier.paneCullingFix(true);
         for(CGGlassType type : CGGlassType.values()){
             if(!type.hasPanes)

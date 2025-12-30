@@ -16,9 +16,9 @@ public class ConnectedGlassClient {
             if(type.isTinted)
                 handler.registerBlockModelTranslucentRenderType(type::getBlock);
             else
-                handler.registerBlockModelCutoutMippedRenderType(type::getBlock);
+                handler.registerBlockModelCutoutRenderType(type::getBlock);
             if(type.hasPanes)
-                handler.registerBlockModelCutoutMippedRenderType(type::getPane);
+                handler.registerBlockModelCutoutRenderType(type::getPane);
 
             // Register translucent render type for all the colored blocks
             for(DyeColor color : DyeColor.values()){
