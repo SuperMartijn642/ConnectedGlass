@@ -1,6 +1,6 @@
 package com.supermartijn642.connectedglass;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.BeaconBeamBlock;
 
@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.BeaconBeamBlock;
  */
 public class CGColoredPaneBlock extends CGPaneBlock implements BeaconBeamBlock {
 
-    public CGColoredPaneBlock(ResourceLocation identifier, CGColoredGlassBlock block){
+    public CGColoredPaneBlock(Identifier identifier, CGColoredGlassBlock block){
         super(identifier, block);
     }
 
