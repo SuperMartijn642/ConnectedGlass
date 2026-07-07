@@ -1,8 +1,6 @@
 package com.supermartijn642.connectedglass;
 
-import com.supermartijn642.core.registry.ClientRegistrationHandler;
 import net.fabricmc.api.ClientModInitializer;
-import net.minecraft.world.item.DyeColor;
 
 /**
  * Created 5/7/2020 by SuperMartijn642
@@ -15,23 +13,5 @@ public class ConnectedGlassClient implements ClientModInitializer {
     }
 
     public static void register(){
-        ClientRegistrationHandler handler = ClientRegistrationHandler.get("connectedglass");
-
-        // Set render type for all the blocks
-        for(CGGlassType type : CGGlassType.values()){
-            if(type.isTinted)
-                handler.registerBlockModelTranslucentRenderType(type::getBlock);
-            else
-                handler.registerBlockModelCutoutRenderType(type::getBlock);
-            if(type.hasPanes)
-                handler.registerBlockModelCutoutRenderType(type::getPane);
-
-            // Register translucent render type for all the colored blocks
-            for(DyeColor color : DyeColor.values()){
-                handler.registerBlockModelTranslucentRenderType(() -> type.getBlock(color));
-                if(type.hasPanes)
-                    handler.registerBlockModelTranslucentRenderType(() -> type.getPane(color));
-            }
-        }
     }
 }

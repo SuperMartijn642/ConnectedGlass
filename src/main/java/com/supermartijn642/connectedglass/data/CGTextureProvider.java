@@ -2,7 +2,7 @@ package com.supermartijn642.connectedglass.data;
 
 import com.supermartijn642.connectedglass.CGGlassType;
 import com.supermartijn642.rechiseled.api.ChiseledTextureProvider;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.DyeColor;
 
@@ -11,7 +11,7 @@ import net.minecraft.world.item.DyeColor;
  */
 public class CGTextureProvider extends ChiseledTextureProvider {
 
-    public CGTextureProvider(FabricDataOutput generator){
+    public CGTextureProvider(FabricPackOutput generator){
         super("connectedglass", generator);
     }
 

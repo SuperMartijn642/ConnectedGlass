@@ -2,14 +2,14 @@
   "type": "rechiseled:chiseling",
   "entries": [
     {
-      "connecting_item": "connectedglass:borderless_glass",
-      "item": "minecraft:glass"
+      "block": "minecraft:glass",
+      "connecting_block": "connectedglass:borderless_glass"
     },
     {
-      "connecting_item": "connectedglass:clear_glass"
+      "connecting_block": "connectedglass:clear_glass"
     },
     {
-      "connecting_item": "connectedglass:scratched_glass"
+      "connecting_block": "connectedglass:scratched_glass"
     }
   ],
   "overwrite": false

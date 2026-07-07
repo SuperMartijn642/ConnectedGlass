@@ -11,7 +11,7 @@ import net.fabricmc.api.ModInitializer;
  */
 public class ConnectedGlass implements ModInitializer {
 
-    public static final CreativeItemGroup GROUP = CreativeItemGroup.create("connectedglass", () -> CGGlassType.BORDERLESS_GLASS.getBlock().asItem());
+    public static final CreativeItemGroup GROUP = CreativeItemGroup.create("connectedglass", () -> CGGlassType.BORDERLESS_GLASS.getBlock().asItem()).sortAlphabetically();
 
     @Override
     public void onInitialize(){
