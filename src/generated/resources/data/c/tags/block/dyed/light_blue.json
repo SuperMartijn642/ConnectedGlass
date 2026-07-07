@@ -3,9 +3,9 @@
   "values": [
     "connectedglass:borderless_glass_light_blue",
     "connectedglass:borderless_glass_light_blue_pane",
-    "connectedglass:scratched_glass_light_blue_pane",
     "connectedglass:clear_glass_light_blue",
+    "connectedglass:clear_glass_light_blue_pane",
     "connectedglass:scratched_glass_light_blue",
-    "connectedglass:clear_glass_light_blue_pane"
+    "connectedglass:scratched_glass_light_blue_pane"
   ]
 }

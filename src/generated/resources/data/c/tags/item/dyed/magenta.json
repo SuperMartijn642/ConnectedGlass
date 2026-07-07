@@ -3,9 +3,9 @@
   "values": [
     "connectedglass:borderless_glass_magenta",
     "connectedglass:borderless_glass_magenta_pane",
-    "connectedglass:scratched_glass_magenta",
     "connectedglass:clear_glass_magenta",
-    "connectedglass:scratched_glass_magenta_pane",
-    "connectedglass:clear_glass_magenta_pane"
+    "connectedglass:clear_glass_magenta_pane",
+    "connectedglass:scratched_glass_magenta",
+    "connectedglass:scratched_glass_magenta_pane"
   ]
 }

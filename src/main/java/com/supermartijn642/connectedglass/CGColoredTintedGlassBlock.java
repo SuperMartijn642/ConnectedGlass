@@ -19,7 +19,7 @@ public class CGColoredTintedGlassBlock extends CGColoredGlassBlock {
     }
 
     @Override
-    protected int getLightBlock(BlockState blockState){
+    protected int getLightDampening(BlockState state){
         return 15;
     }
 }

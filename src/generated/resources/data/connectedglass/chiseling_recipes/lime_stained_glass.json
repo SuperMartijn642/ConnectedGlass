@@ -2,14 +2,14 @@
   "type": "rechiseled:chiseling",
   "entries": [
     {
-      "connecting_item": "connectedglass:borderless_glass_lime",
-      "item": "minecraft:lime_stained_glass"
+      "block": "minecraft:lime_stained_glass",
+      "connecting_block": "connectedglass:borderless_glass_lime"
     },
     {
-      "connecting_item": "connectedglass:clear_glass_lime"
+      "connecting_block": "connectedglass:clear_glass_lime"
     },
     {
-      "connecting_item": "connectedglass:scratched_glass_lime"
+      "connecting_block": "connectedglass:scratched_glass_lime"
     }
   ],
   "overwrite": false

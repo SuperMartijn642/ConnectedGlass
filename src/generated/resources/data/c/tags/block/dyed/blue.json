@@ -1,11 +1,11 @@
 {
   "replace": false,
   "values": [
-    "connectedglass:scratched_glass_blue_pane",
-    "connectedglass:clear_glass_blue_pane",
-    "connectedglass:scratched_glass_blue",
+    "connectedglass:borderless_glass_blue",
     "connectedglass:borderless_glass_blue_pane",
     "connectedglass:clear_glass_blue",
-    "connectedglass:borderless_glass_blue"
+    "connectedglass:clear_glass_blue_pane",
+    "connectedglass:scratched_glass_blue",
+    "connectedglass:scratched_glass_blue_pane"
   ]
 }

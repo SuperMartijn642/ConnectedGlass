@@ -4,25 +4,27 @@ import com.supermartijn642.connectedglass.CGGlassType;
 import com.supermartijn642.connectedglass.CGPaneBlock;
 import com.supermartijn642.fusion.api.model.DefaultModelTypes;
 import com.supermartijn642.fusion.api.model.ModelInstance;
-import com.supermartijn642.fusion.api.model.data.ConnectingModelData;
-import com.supermartijn642.fusion.api.predicate.ConnectionDirection;
-import com.supermartijn642.fusion.api.predicate.ConnectionPredicate;
-import com.supermartijn642.fusion.api.predicate.DefaultConnectionPredicates;
+import com.supermartijn642.fusion.api.model.types.connecting.ConnectingModelData;
 import com.supermartijn642.fusion.api.provider.FusionModelProvider;
+import com.supermartijn642.fusion.api.texture.types.connecting.predicates.ConnectionDirection;
+import com.supermartijn642.fusion.api.texture.types.connecting.predicates.ConnectionPredicate;
+import com.supermartijn642.fusion.api.texture.types.connecting.predicates.DefaultConnectionPredicates;
 import com.supermartijn642.fusion.api.util.Pair;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.DyeColor;
+import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created 26/09/2022 by SuperMartijn642
  */
 public class CGFusionModelGenerator extends FusionModelProvider {
 
-    public CGFusionModelGenerator(DataGenerator generator){
-        super("connectedglass", generator.getPackOutput());
+    public CGFusionModelGenerator(DataGenerator generator, ExistingFileHelper existingFileHelper){
+        super("connectedglass", generator.getPackOutput(), existingFileHelper);
     }
 
     @Override
@@ -34,7 +36,7 @@ public class CGFusionModelGenerator extends FusionModelProvider {
                     DefaultModelTypes.CONNECTING,
                     ConnectingModelData.builder()
                         .parent(Identifier.withDefaultNamespace("block/cube_all"))
-                        .texture("all", Identifier.fromNamespaceAndPath("connectedglass", type.getRegistryName() + "/" + type.getRegistryName()))
+                        .material("all", Identifier.fromNamespaceAndPath("connectedglass", type.getRegistryName() + "/" + type.getRegistryName()))
                         .build()
                 )
             );
@@ -44,7 +46,7 @@ public class CGFusionModelGenerator extends FusionModelProvider {
                         DefaultModelTypes.CONNECTING,
                         ConnectingModelData.builder()
                             .parent(Identifier.withDefaultNamespace("block/cube_all"))
-                            .texture("all", Identifier.fromNamespaceAndPath("connectedglass", type.getRegistryName() + "/" + type.getRegistryName(color)))
+                            .material("all", Identifier.fromNamespaceAndPath("connectedglass", type.getRegistryName() + "/" + type.getRegistryName(color)))
                             .build()
                     )
                 );
@@ -68,9 +70,9 @@ public class CGFusionModelGenerator extends FusionModelProvider {
                 DefaultModelTypes.CONNECTING,
                 ConnectingModelData.builder()
                     .parent(Identifier.fromNamespaceAndPath("connectedglass", "block/template_glass_pane_post"))
-                    .texture("pane", Identifier.fromNamespaceAndPath("connectedglass", texture))
-                    .texture("edge", Identifier.fromNamespaceAndPath("connectedglass", texture + "_edge"))
-                    .connection(DefaultConnectionPredicates.isSameBlock())
+                    .material("pane", Identifier.fromNamespaceAndPath("connectedglass", texture))
+                    .material("edge", Identifier.fromNamespaceAndPath("connectedglass", texture + "_edge"))
+                    .defaultConnections(DefaultConnectionPredicates.isSameBlock())
                     .build()
             )
         );
@@ -80,9 +82,9 @@ public class CGFusionModelGenerator extends FusionModelProvider {
                 DefaultModelTypes.CONNECTING,
                 ConnectingModelData.builder()
                     .parent(Identifier.fromNamespaceAndPath("connectedglass", "block/template_glass_pane_side"))
-                    .texture("pane", Identifier.fromNamespaceAndPath("connectedglass", texture))
-                    .texture("edge", Identifier.fromNamespaceAndPath("connectedglass", texture + "_edge"))
-                    .connection(DefaultConnectionPredicates.matchState(block, Pair.of(CGPaneBlock.NORTH, true)).or(notUpOrDown))
+                    .material("pane", Identifier.fromNamespaceAndPath("connectedglass", texture))
+                    .material("edge", Identifier.fromNamespaceAndPath("connectedglass", texture + "_edge"))
+                    .defaultConnections(DefaultConnectionPredicates.matchState(List.of(block), Pair.of(CGPaneBlock.NORTH, true)).or(notUpOrDown))
                     .build()
             )
         );
@@ -91,9 +93,9 @@ public class CGFusionModelGenerator extends FusionModelProvider {
                 DefaultModelTypes.CONNECTING,
                 ConnectingModelData.builder()
                     .parent(Identifier.fromNamespaceAndPath("connectedglass", "block/template_glass_pane_side"))
-                    .texture("pane", Identifier.fromNamespaceAndPath("connectedglass", texture))
-                    .texture("edge", Identifier.fromNamespaceAndPath("connectedglass", texture + "_edge"))
-                    .connection(DefaultConnectionPredicates.matchState(block, Pair.of(CGPaneBlock.EAST, true)).or(notUpOrDown))
+                    .material("pane", Identifier.fromNamespaceAndPath("connectedglass", texture))
+                    .material("edge", Identifier.fromNamespaceAndPath("connectedglass", texture + "_edge"))
+                    .defaultConnections(DefaultConnectionPredicates.matchState(List.of(block), Pair.of(CGPaneBlock.EAST, true)).or(notUpOrDown))
                     .build()
             )
         );
@@ -102,9 +104,9 @@ public class CGFusionModelGenerator extends FusionModelProvider {
                 DefaultModelTypes.CONNECTING,
                 ConnectingModelData.builder()
                     .parent(Identifier.fromNamespaceAndPath("connectedglass", "block/template_glass_pane_side_alt"))
-                    .texture("pane", Identifier.fromNamespaceAndPath("connectedglass", texture))
-                    .texture("edge", Identifier.fromNamespaceAndPath("connectedglass", texture + "_edge"))
-                    .connection(DefaultConnectionPredicates.matchState(block, Pair.of(CGPaneBlock.SOUTH, true)).or(notUpOrDown))
+                    .material("pane", Identifier.fromNamespaceAndPath("connectedglass", texture))
+                    .material("edge", Identifier.fromNamespaceAndPath("connectedglass", texture + "_edge"))
+                    .defaultConnections(DefaultConnectionPredicates.matchState(List.of(block), Pair.of(CGPaneBlock.SOUTH, true)).or(notUpOrDown))
                     .build()
             )
         );
@@ -113,9 +115,9 @@ public class CGFusionModelGenerator extends FusionModelProvider {
                 DefaultModelTypes.CONNECTING,
                 ConnectingModelData.builder()
                     .parent(Identifier.fromNamespaceAndPath("connectedglass", "block/template_glass_pane_side_alt"))
-                    .texture("pane", Identifier.fromNamespaceAndPath("connectedglass", texture))
-                    .texture("edge", Identifier.fromNamespaceAndPath("connectedglass", texture + "_edge"))
-                    .connection(DefaultConnectionPredicates.matchState(block, Pair.of(CGPaneBlock.WEST, true)).or(notUpOrDown))
+                    .material("pane", Identifier.fromNamespaceAndPath("connectedglass", texture))
+                    .material("edge", Identifier.fromNamespaceAndPath("connectedglass", texture + "_edge"))
+                    .defaultConnections(DefaultConnectionPredicates.matchState(List.of(block), Pair.of(CGPaneBlock.WEST, true)).or(notUpOrDown))
                     .build()
             )
         );
@@ -124,9 +126,9 @@ public class CGFusionModelGenerator extends FusionModelProvider {
                 DefaultModelTypes.CONNECTING,
                 ConnectingModelData.builder()
                     .parent(Identifier.fromNamespaceAndPath("connectedglass", "block/template_glass_pane_noside"))
-                    .texture("pane", Identifier.fromNamespaceAndPath("connectedglass", texture))
-                    .texture("edge", Identifier.fromNamespaceAndPath("connectedglass", texture + "_edge"))
-                    .connection(DefaultConnectionPredicates.isSameBlock())
+                    .material("pane", Identifier.fromNamespaceAndPath("connectedglass", texture))
+                    .material("edge", Identifier.fromNamespaceAndPath("connectedglass", texture + "_edge"))
+                    .defaultConnections(DefaultConnectionPredicates.isSameBlock())
                     .build()
             )
         );
@@ -135,9 +137,9 @@ public class CGFusionModelGenerator extends FusionModelProvider {
                 DefaultModelTypes.CONNECTING,
                 ConnectingModelData.builder()
                     .parent(Identifier.fromNamespaceAndPath("connectedglass", "block/template_glass_pane_noside_alt"))
-                    .texture("pane", Identifier.fromNamespaceAndPath("connectedglass", texture))
-                    .texture("edge", Identifier.fromNamespaceAndPath("connectedglass", texture + "_edge"))
-                    .connection(DefaultConnectionPredicates.isSameBlock())
+                    .material("pane", Identifier.fromNamespaceAndPath("connectedglass", texture))
+                    .material("edge", Identifier.fromNamespaceAndPath("connectedglass", texture + "_edge"))
+                    .defaultConnections(DefaultConnectionPredicates.isSameBlock())
                     .build()
             )
         );
