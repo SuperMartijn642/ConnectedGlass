@@ -2,14 +2,14 @@
   "type": "rechiseled:chiseling",
   "entries": [
     {
-      "connecting_item": "connectedglass:borderless_glass_magenta_pane",
-      "item": "minecraft:magenta_stained_glass_pane"
+      "block": "minecraft:magenta_stained_glass_pane",
+      "connecting_block": "connectedglass:borderless_glass_magenta_pane"
     },
     {
-      "connecting_item": "connectedglass:clear_glass_magenta_pane"
+      "connecting_block": "connectedglass:clear_glass_magenta_pane"
     },
     {
-      "connecting_item": "connectedglass:scratched_glass_magenta_pane"
+      "connecting_block": "connectedglass:scratched_glass_magenta_pane"
     }
   ],
   "overwrite": false

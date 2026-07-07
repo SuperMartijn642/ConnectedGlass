@@ -2,14 +2,14 @@
   "type": "rechiseled:chiseling",
   "entries": [
     {
-      "connecting_item": "connectedglass:borderless_glass_cyan_pane",
-      "item": "minecraft:cyan_stained_glass_pane"
+      "block": "minecraft:cyan_stained_glass_pane",
+      "connecting_block": "connectedglass:borderless_glass_cyan_pane"
     },
     {
-      "connecting_item": "connectedglass:clear_glass_cyan_pane"
+      "connecting_block": "connectedglass:clear_glass_cyan_pane"
     },
     {
-      "connecting_item": "connectedglass:scratched_glass_cyan_pane"
+      "connecting_block": "connectedglass:scratched_glass_cyan_pane"
     }
   ],
   "overwrite": false

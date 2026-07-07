@@ -2,14 +2,14 @@
   "type": "rechiseled:chiseling",
   "entries": [
     {
-      "connecting_item": "connectedglass:borderless_glass_light_gray_pane",
-      "item": "minecraft:light_gray_stained_glass_pane"
+      "block": "minecraft:light_gray_stained_glass_pane",
+      "connecting_block": "connectedglass:borderless_glass_light_gray_pane"
     },
     {
-      "connecting_item": "connectedglass:clear_glass_light_gray_pane"
+      "connecting_block": "connectedglass:clear_glass_light_gray_pane"
     },
     {
-      "connecting_item": "connectedglass:scratched_glass_light_gray_pane"
+      "connecting_block": "connectedglass:scratched_glass_light_gray_pane"
     }
   ],
   "overwrite": false
