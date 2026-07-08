@@ -32,50 +32,14 @@ public class CGChiselingRecipeProvider extends ChiselingRecipeProvider {
         for(DyeColor color : DyeColor.values()){
             ChiselingRecipeBuilder builder = this.beginRecipe(color.getName() + "_stained_glass");
 
-            Item glass = switch(color){
-                case WHITE -> Items.WHITE_STAINED_GLASS;
-                case ORANGE -> Items.ORANGE_STAINED_GLASS;
-                case MAGENTA -> Items.MAGENTA_STAINED_GLASS;
-                case LIGHT_BLUE -> Items.LIGHT_BLUE_STAINED_GLASS;
-                case YELLOW -> Items.YELLOW_STAINED_GLASS;
-                case LIME -> Items.LIME_STAINED_GLASS;
-                case PINK -> Items.PINK_STAINED_GLASS;
-                case GRAY -> Items.GRAY_STAINED_GLASS;
-                case LIGHT_GRAY -> Items.LIGHT_GRAY_STAINED_GLASS;
-                case CYAN -> Items.CYAN_STAINED_GLASS;
-                case PURPLE -> Items.PURPLE_STAINED_GLASS;
-                case BLUE -> Items.BLUE_STAINED_GLASS;
-                case BROWN -> Items.BROWN_STAINED_GLASS;
-                case GREEN -> Items.GREEN_STAINED_GLASS;
-                case RED -> Items.RED_STAINED_GLASS;
-                case BLACK -> Items.BLACK_STAINED_GLASS;
-            };
-
+            Item glass = Items.STAINED_GLASS.pick(color);
             builder.entry(e -> e.regularBlock(glass).connectingBlock(CGGlassType.BORDERLESS_GLASS.getBlock(color).asItem()));
             builder.entry(e -> e.connectingBlock(CGGlassType.CLEAR_GLASS.getBlock(color).asItem()));
             builder.entry(e -> e.connectingBlock(CGGlassType.SCRATCHED_GLASS.getBlock(color).asItem()));
 
             ChiselingRecipeBuilder paneBuilder = this.beginRecipe(color.getName() + "_stained_glass_pane");
 
-            Item pane = switch(color){
-                case WHITE -> Items.WHITE_STAINED_GLASS_PANE;
-                case ORANGE -> Items.ORANGE_STAINED_GLASS_PANE;
-                case MAGENTA -> Items.MAGENTA_STAINED_GLASS_PANE;
-                case LIGHT_BLUE -> Items.LIGHT_BLUE_STAINED_GLASS_PANE;
-                case YELLOW -> Items.YELLOW_STAINED_GLASS_PANE;
-                case LIME -> Items.LIME_STAINED_GLASS_PANE;
-                case PINK -> Items.PINK_STAINED_GLASS_PANE;
-                case GRAY -> Items.GRAY_STAINED_GLASS_PANE;
-                case LIGHT_GRAY -> Items.LIGHT_GRAY_STAINED_GLASS_PANE;
-                case CYAN -> Items.CYAN_STAINED_GLASS_PANE;
-                case PURPLE -> Items.PURPLE_STAINED_GLASS_PANE;
-                case BLUE -> Items.BLUE_STAINED_GLASS_PANE;
-                case BROWN -> Items.BROWN_STAINED_GLASS_PANE;
-                case GREEN -> Items.GREEN_STAINED_GLASS_PANE;
-                case RED -> Items.RED_STAINED_GLASS_PANE;
-                case BLACK -> Items.BLACK_STAINED_GLASS_PANE;
-            };
-
+            Item pane = Items.STAINED_GLASS_PANE.pick(color);
             paneBuilder.entry(e -> e.regularBlock(pane).connectingBlock(CGGlassType.BORDERLESS_GLASS.getPane(color).asItem()));
             paneBuilder.entry(e -> e.connectingBlock(CGGlassType.CLEAR_GLASS.getPane(color).asItem()));
             paneBuilder.entry(e -> e.connectingBlock(CGGlassType.SCRATCHED_GLASS.getPane(color).asItem()));
