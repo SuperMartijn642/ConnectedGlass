@@ -143,22 +143,7 @@ public class CGRecipeGenerator extends RecipeGenerator {
 
     private void gatherVanillaBlocks(){
         this.addVanillaBlock(Blocks.GLASS);
-        this.addVanillaBlock(Blocks.WHITE_STAINED_GLASS);
-        this.addVanillaBlock(Blocks.ORANGE_STAINED_GLASS);
-        this.addVanillaBlock(Blocks.MAGENTA_STAINED_GLASS);
-        this.addVanillaBlock(Blocks.LIGHT_BLUE_STAINED_GLASS);
-        this.addVanillaBlock(Blocks.YELLOW_STAINED_GLASS);
-        this.addVanillaBlock(Blocks.LIME_STAINED_GLASS);
-        this.addVanillaBlock(Blocks.PINK_STAINED_GLASS);
-        this.addVanillaBlock(Blocks.GRAY_STAINED_GLASS);
-        this.addVanillaBlock(Blocks.LIGHT_GRAY_STAINED_GLASS);
-        this.addVanillaBlock(Blocks.CYAN_STAINED_GLASS);
-        this.addVanillaBlock(Blocks.PURPLE_STAINED_GLASS);
-        this.addVanillaBlock(Blocks.BLUE_STAINED_GLASS);
-        this.addVanillaBlock(Blocks.BROWN_STAINED_GLASS);
-        this.addVanillaBlock(Blocks.GREEN_STAINED_GLASS);
-        this.addVanillaBlock(Blocks.RED_STAINED_GLASS);
-        this.addVanillaBlock(Blocks.BLACK_STAINED_GLASS);
+        Blocks.STAINED_GLASS.forEach(this::addVanillaBlock);
     }
 
     private void addVanillaBlock(Block block){
@@ -172,22 +157,7 @@ public class CGRecipeGenerator extends RecipeGenerator {
 
     private void gatherVanillaPanes(){
         this.addVanillaPane(Blocks.GLASS_PANE);
-        this.addVanillaPane(Blocks.WHITE_STAINED_GLASS_PANE);
-        this.addVanillaPane(Blocks.ORANGE_STAINED_GLASS_PANE);
-        this.addVanillaPane(Blocks.MAGENTA_STAINED_GLASS_PANE);
-        this.addVanillaPane(Blocks.LIGHT_BLUE_STAINED_GLASS_PANE);
-        this.addVanillaPane(Blocks.YELLOW_STAINED_GLASS_PANE);
-        this.addVanillaPane(Blocks.LIME_STAINED_GLASS_PANE);
-        this.addVanillaPane(Blocks.PINK_STAINED_GLASS_PANE);
-        this.addVanillaPane(Blocks.GRAY_STAINED_GLASS_PANE);
-        this.addVanillaPane(Blocks.LIGHT_GRAY_STAINED_GLASS_PANE);
-        this.addVanillaPane(Blocks.CYAN_STAINED_GLASS_PANE);
-        this.addVanillaPane(Blocks.PURPLE_STAINED_GLASS_PANE);
-        this.addVanillaPane(Blocks.BLUE_STAINED_GLASS_PANE);
-        this.addVanillaPane(Blocks.BROWN_STAINED_GLASS_PANE);
-        this.addVanillaPane(Blocks.GREEN_STAINED_GLASS_PANE);
-        this.addVanillaPane(Blocks.RED_STAINED_GLASS_PANE);
-        this.addVanillaPane(Blocks.BLACK_STAINED_GLASS_PANE);
+        Blocks.STAINED_GLASS_PANE.forEach(this::addVanillaPane);
     }
 
     private void addVanillaPane(Block pane){
