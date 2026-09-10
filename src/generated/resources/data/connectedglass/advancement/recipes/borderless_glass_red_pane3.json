@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "connectedglass:borderless_glass_red_pane3"
+        "recipes": "connectedglass:borderless_glass_red_pane3"
       }
     },
     "recipe_condition": {

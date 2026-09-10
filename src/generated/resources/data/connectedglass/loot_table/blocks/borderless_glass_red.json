@@ -2,7 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1.0,
+      "rolls": 1,
       "conditions": [
         {
           "predicate": {
@@ -17,7 +17,7 @@
               ]
             }
           },
-          "condition": "minecraft:match_tool"
+          "type": "minecraft:match_tool"
         }
       ],
       "entries": [

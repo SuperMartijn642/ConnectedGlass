@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "connectedglass:scratched_glass_brown_pane2"
+        "recipes": "connectedglass:scratched_glass_brown_pane2"
       }
     },
     "recipe_condition1": {
