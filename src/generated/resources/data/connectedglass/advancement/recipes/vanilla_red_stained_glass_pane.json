@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "connectedglass:vanilla_red_stained_glass_pane"
+        "recipes": "connectedglass:vanilla_red_stained_glass_pane"
       }
     },
     "recipe_condition": {

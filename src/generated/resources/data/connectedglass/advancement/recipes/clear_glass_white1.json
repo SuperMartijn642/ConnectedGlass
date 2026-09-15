@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "connectedglass:clear_glass_white1"
+        "recipes": "connectedglass:clear_glass_white1"
       }
     },
     "recipe_condition": {
