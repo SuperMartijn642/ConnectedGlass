@@ -1,4 +1,4 @@
-// 26.3-rc-2	2026-09-15T10:02:06.891477	Core Lib Generators
+// 26.3-rc-2	2026-10-06T18:30:44.8063343	Core Lib Generators
 5852f9af63a37293452925af5538099ce214a364 assets/connectedglass/blockstates/borderless_glass.json
 f55c5ea2da88fd304e3305d4c490e2c3c7e45666 assets/connectedglass/blockstates/borderless_glass_black.json
 bcbdcaf36a60d440f9eaadb5374f0c39af61d218 assets/connectedglass/blockstates/borderless_glass_black_pane.json
@@ -1024,4 +1024,5 @@ e61ea05e1f44efcd9990566c21e1b4030cab86f4 data/c/tags/item/glass_blocks/colorless
 592dd255eec546cf9f83e6ddfe9495cbd5df84e9 data/c/tags/item/glass_blocks/tinted.json
 59b344df4ed2794c8d640dc5ae4b382b6f888f4c data/c/tags/item/glass_panes.json
 8f09446fca60acc70e7ab26ea44f701cb70a4a53 data/c/tags/item/glass_panes/colorless.json
+96a123daa4da2af63fa1c9987698896c8e34bc59 data/minecraft/tags/block/blocks_motion_no_leaves.json
 96a123daa4da2af63fa1c9987698896c8e34bc59 data/minecraft/tags/block/impermeable.json
