@@ -41,9 +41,12 @@ public class CGTagGenerator extends TagGenerator {
             }
         }
 
-        // Impermeable tag
+        // Vanilla behaviour tags
         TagBuilder<Block> impermeable = this.blockTag(BlockTags.IMPERMEABLE);
         for(CGGlassType type : CGGlassType.values())
             type.blocks.forEach(impermeable::add);
+        TagBuilder<Block> blocksMotion = this.blockTag(BlockTags.BLOCKS_MOTION_NO_LEAVES);
+        for(CGGlassType type : CGGlassType.values())
+            type.blocks.forEach(blocksMotion::add);
     }
 }
