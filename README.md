@@ -1,4 +1,4 @@
-![Connected Glass](https://imgur.com/9HhMKLg.png)  
+![Connected Glass](https://github.com/SuperMartijn642/ConnectedGlass/blob/f09e53a40ad27785735eae8207cf7b3a1c9a425f/assets/new_logo_large.png?raw=true)  
 **Connected Glass** adds new types of glass with connecting textures! This includes regular, clear and the old glass textures!
 
 ---
